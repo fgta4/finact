@@ -1,0 +1,115 @@
+<div id="obj_framecontainer" class="page-frame-container">
+</div>
+
+<div id="obj_pageheader" class="hidden-element">
+	<div class="page-descr"><?=$this->reporttitle?></div>
+	<div class="page-paging">page x of y</div>
+</div>
+
+
+<div id="wrapper" class="report-wrapper">
+
+	<div id="obj_report_header" class="report-header fullwidth">
+		<div style="display: flex; justify-content: space-between">
+			<div>
+				<div class="report-title"><?=$this->reporttitle?></div>
+				<div><?=$this->reportsubtitle?></div>
+				<div>per <?=$this->reportdate?></div>
+			</div>
+			<div>
+				<div style="text-align: right; font-weight: bold; margin-bottom: 2mm"><?=__COMPANY_NAME__?></div>
+				<div class="page-paging" style="text-align: right">generat date: <?=date('d/m/Y')?></div>
+				<div id="obj_paging_page_1" class="page-paging" style="text-align: right">page x of y</div>
+			</div>
+		</div>
+	</div>
+
+	<table id="obj_reporttable" class="report-table fullwidth"  cellpadding="0" cellspacing="0" data-cols-width="5,8,10,10,10,50,15,15,15,15"> 
+		<thead id="obj_reporttable_header" class="report-page-header">
+			<!-- <tr>
+				<th class="cell-header col-no" data-fill-color='CCCCCC'>No</th>
+				<th class="cell-header col-hidden" data-fill-color='CCCCCC'>block</th>
+				<th class="cell-header col-descr" data-fill-color='CCCCCC'>Partner Name</th>
+				<th class="cell-header col-amount" data-fill-color='CCCCCC'>Outstanding</th>
+				<th class="cell-header col-amount" data-fill-color='CCCCCC'>Current</th>
+				<th class="cell-header col-amount" data-fill-color='CCCCCC'>0-30</th>
+				<th class="cell-header col-amount" data-fill-color='CCCCCC'>30-60</th>
+				<th class="cell-header col-amount" data-fill-color='CCCCCC'>60-90</th>
+				<th class="cell-header col-amount" data-fill-color='CCCCCC'>90-120</th>
+				<th class="cell-header col-amount" data-fill-color='CCCCCC'>more than 120</th>
+			</tr> -->
+			<?php if ($this->tableheadertype=='det') { ?>
+			<tr>
+				<td class="col-def col-head rhpad col-no" rowspan="2">No.</td>
+				<td class="col-def col-head col-hidden">block</td>
+				<td class="col-def col-head rhpad-top" colspan="5">Partner/Account</td>
+				<td class="col-def col-head rhpad col-amount" rowspan="2">outstanding</td>
+				<td class="col-def col-head rhpad col-amount" rowspan="2">current</td>
+				<td class="col-def col-head rhpad col-amount" rowspan="2">0-30</td>
+				<td class="col-def col-head rhpad col-amount" rowspan="2">31-60</td>
+				<td class="col-def col-head rhpad col-amount" rowspan="2">61-90</td>
+				<td class="col-def col-head rhpad col-amount" rowspan="2">91-120</td>
+				<td class="col-def col-head rhpad col-amount" rowspan="2">>120</td>
+			</tr>				
+			<tr>
+				<td class="col-def col-head col-hidden">block</td>
+				<td class="col-def col-head rhpad-bottom col-jurnalid">Jurnal ID</td>
+				<td class="col-def col-head rhpad-bottom col-date">Date</td>
+				<td class="col-def col-head rhpad-bottom col-due">due</td>
+				<td class="col-def col-head rhpad-bottom col-descr">Descr</td>
+				<td class="col-def col-head rhpad-bottom col-curr">Curr</td>
+			</tr>
+
+
+			<?php } else if ($this->tableheadertype=='coa') { ?>
+			<tr>
+				<td class="col-def col-head rhpad col-no">no</td>
+				<td class="col-def col-head rhpad col-hidden">block</td>
+				<td class="col-def col-head rhpad" colspan="5">Partner/Account</td>
+				<td class="col-def col-head rhpad col-amount">outstanding</td>
+				<td class="col-def col-head rhpad col-amount">current</td>
+				<td class="col-def col-head rhpad col-amount">0-30</td>
+				<td class="col-def col-head rhpad col-amount">31-60</td>
+				<td class="col-def col-head rhpad col-amount">61-90</td>
+				<td class="col-def col-head rhpad col-amount">91-120</td>
+				<td class="col-def col-head rhpad col-amount">>120</td>
+			</tr>
+
+			<?php } else { ?>
+				<tr>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-no">no</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-hidden">block</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom" colspan="5">Partner</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-amount">outstanding</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-amount">current</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-amount">0-30</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-amount">31-60</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-amount">61-90</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-amount">91-120</td>
+				<td class="col-def col-head rhpad report-row-pad-bottom col-amount">>120</td>
+			</tr>
+
+			<?php } ?>	
+		</thead>
+
+		<tfoot id="obj_reporttable_footer" class="report-page-footer">
+			<tr id="obj_reporttable_loadinginfo">
+				<td>
+					<div id="obj_reporttable_loadingmessage" class="footerstatusbox" style="position: absolute; padding-top: 10px; font-weight: bold">Wait, report are still loading ...</div>
+				</td>
+			</tr>
+		</tfoot>
+
+		<tbody id="obj_reporttable_body">
+		</tbody>
+	</table>
+
+
+
+	<div id="obj_report_footer" class="fullwidth report-footer report-footer-initial">
+		<div class="report-footer-content">
+		</div>
+	</div>
+
+
+</div>

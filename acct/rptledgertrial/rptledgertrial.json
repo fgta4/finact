@@ -1,0 +1,9 @@
+{
+	"title" : "Trial Balance",
+	"variance" : {},
+	"allowanonymous" : false,
+	"allowedgroups" : ["public"],
+	"apis" : {
+	}	
+}
+

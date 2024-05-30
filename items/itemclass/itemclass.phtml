@@ -1,0 +1,16 @@
+<?php require_once dirname(__FILE__).'/itemclass-list.phtml' ?>
+<?php require_once dirname(__FILE__).'/itemclass-edit.phtml' ?>
+<?php require_once dirname(__FILE__).'/itemclass-accountgrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/itemclass-accountform.phtml' ?>
+<?php require_once dirname(__FILE__).'/itemclass-filesgrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/itemclass-filesform.phtml' ?>
+
+
+
+<?php
+$customrecordstatus = __DIR__.'/itemclass-customrecordstatus.phtml'; 
+if (is_file($customrecordstatus)) {
+	include $customrecordstatus;
+} else { ?>
+
+<?php } ?>

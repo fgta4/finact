@@ -1,0 +1,338 @@
+<div id="pnl_edititemform">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Edit Item</div>
+		<a id="pnl_edititemform-btn_edit" href="javascript:void(0)" class="easyui-linkbutton" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+	<div id="pnl_edititemform-title" style="margin-top: 0px; margin-bottom: 30px; font-weight: bold; font-size: 1.2em">XXXXXXX</div>
+
+
+	<form id="pnl_edititemform-form">
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_id" class="easyui-textbox" mapping="inquirydetil_id"  maxlength="14"  style="width: 400px" data-options="multiline:false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row inquiryselect asset" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Asset</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_itemasset_id" class="easyui-combo" style="width: 400px" mapping="itemasset_id" display="itemasset_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row inquiryselect item" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Item</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_item_id" class="easyui-combo" style="width: 400px" mapping="item_id" display="item_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row inquiryselect stock" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Item Stock</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_itemstock_id" class="easyui-combo" style="width: 400px" mapping="itemstock_id" display="itemstock_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row inquiryselect partner" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Partner</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_partner_id" class="easyui-combo" style="width: 400px" mapping="partner_id" display="partner_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row inquiryselect class" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Class</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_itemclass_id" class="easyui-combo" style="width: 400px" mapping="itemclass_id" display="itemclass_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Class harus diisi'"  validType="requiredcombo['pnl_edititemform-cbo_itemclass_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+		<div class="form_row empl" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Empl</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_empl_id" class="easyui-combo" style="width: 400px" mapping="empl_id" display="empl_name" data-options="editable:false, valueField:'id', textField:'text' ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row empl">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Grade</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_hrgrd_id" class="easyui-combo" style="width: 400px" mapping="hrgrd_id" display="hrgrd_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Grade harus diisi', prompt: '-- PILIH --', disabled: true">
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Descr</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_descr" class="easyui-textbox" mapping="inquirydetil_descr"  maxlength="255"  style="width: 400px" data-options="multiline:false, required: true, invalidMessage:'Descr harus diisi'  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_edititemform-inquirydetil_qty">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Qty</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_qty" class="easyui-numberbox" mapping="inquirydetil_qty" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_edititemform-inquirydetil_days">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Days</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_days" class="easyui-numberbox" mapping="inquirydetil_days" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_edititemform-inquirydetil_task">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Task</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_task" class="easyui-numberbox" mapping="inquirydetil_task" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Est.Rate</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_estrate" class="easyui-numberbox" mapping="inquirydetil_estrate" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div  id="total"  class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Total</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_estvalue" class="easyui-numberbox" mapping="inquirydetil_estvalue" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:',', disabled: true  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Actual Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquirydetil_value" class="easyui-numberbox" mapping="inquirydetil_value" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:',', disabled: true  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+		<div class="form_row hidden" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Budget Account</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-cbo_projbudgetdet_id" class="easyui-combo" style="width: 400px" mapping="projbudgetdet_id" display="projbudgetdet_descr" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage:'Tidak ada allokasi budget untuk item yg dipilih'"  validType="requiredcombo['pnl_edititemform-cbo_projbudgetdet_id']" >
+				<!-- <input id="pnl_edititemform-cbo_projbudgetdet_id" class="easyui-combo" style="width: 400px" mapping="projbudgetdet_id" display="projbudgetdet_descr" data-options="editable:false, valueField:'id', textField:'text'" > -->
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+		<div class="form_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-chk_inquirydetil_isoverbudget" class="easyui-checkbox c1" mapping="inquirydetil_isoverbudget" data-options="label: 'Request Over Budget', labelPosition: 'after', checked: false , labelWidth: '200px'">
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-chk_inquirydetil_isunbudget" class="easyui-checkbox c1" mapping="inquirydetil_isunbudget" data-options="label: 'Request UnBudgettetd', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+			</div>
+		</div>
+
+
+
+		<?=$this->Section('Information', true, true)?>
+		<div class="fgta_section_collapsible defbottomborder" style="display: none">	
+
+
+			<div class="form_row" >
+				<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Budget Available</div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-txt_inquirydetil_budgetavailable" class="easyui-numberbox" mapping="inquirydetil_budgetavailable" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , disabled: true">
+					<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Budget Qty Available</div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-txt_inquirydetil_budgetqtyavailable" class="easyui-numberbox" mapping="inquirydetil_budgetqtyavailable" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , disabled: true">
+					<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Budget Days Available</div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-txt_inquirydetil_budgetdaysavailable" class="easyui-numberbox" mapping="inquirydetil_budgetdaysavailable" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , disabled: true">
+					<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Budget Task Available</div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-txt_inquirydetil_budgettaskavailable" class="easyui-numberbox" mapping="inquirydetil_budgettaskavailable" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , disabled: true">
+					<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_isadvproces" class="easyui-checkbox c1" mapping="inquirydetil_isadvproces" data-options="label: 'Process as Advance', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+			
+			<div class="form_row" >
+				<div class="form_label_col">Metric</div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_isuseqty" class="easyui-checkbox c1" mapping="inquirydetil_isuseqty" data-options="label: 'Use Qty', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_isusedays" class="easyui-checkbox c1" mapping="inquirydetil_isusedays" data-options="label: 'Use Days', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_isusetask" class="easyui-checkbox c1" mapping="inquirydetil_isusetask" data-options="label: 'Use Task', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+
+
+			<div class="form_row" >
+				<div class="form_label_col">Restrict To Budget</div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_islimitqty" class="easyui-checkbox c1" mapping="inquirydetil_islimitqty" data-options="label: 'Limit Qty', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_islimitdays" class="easyui-checkbox c1" mapping="inquirydetil_islimitdays" data-options="label: 'Limit Days', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+			
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_islimittask" class="easyui-checkbox c1" mapping="inquirydetil_islimittask" data-options="label: 'Limit Task', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_islimitvalue" class="easyui-checkbox c1" mapping="inquirydetil_islimitvalue" data-options="label: 'Limit Value', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">                                           
+					<input id="pnl_edititemform-chk_inquirydetil_isallowoverbudget" class="easyui-checkbox c1" mapping="inquirydetil_isallowoverbudget" data-options="label: 'Allow Request Over Budget', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+			<div class="form_row" >
+				<div class="form_label_col"></div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-chk_inquirydetil_isallowunbudget" class="easyui-checkbox c1" mapping="inquirydetil_isallowunbudget" data-options="label: 'Allow Request UnBudget', labelPosition: 'after', checked: false , labelWidth: '200px', disabled: true">
+				</div>
+			</div>
+
+
+
+			<div class="form_row" >
+				<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Stock Available</div>
+				<div class="form_input_col" style="border: 0px solid black">
+					<input id="pnl_edititemform-txt_inquirydetil_qtyavailable" class="easyui-numberbox" mapping="inquirydetil_qtyavailable" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , disabled: true">
+					<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Acc Budget</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_accbudget_id" class="easyui-textbox" mapping="accbudget_id"  maxlength="20"  style="width: 400px" data-options="multiline:false , disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">COA</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_coa_id" class="easyui-textbox" mapping="coa_id"  maxlength="17"  style="width: 400px" data-options="multiline:false , disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Inquiry</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edititemform-txt_inquiry_id" class="easyui-textbox" mapping="inquiry_id"  maxlength="14"  style="width: 400px" data-options="multiline:false  , disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+	</form>
+
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<div style="margin-bottom: 10px">
+				<input id="pnl_edititemform-autoadd" type="checkbox"><label for="pnl_edititemform-autoadd">Otomatis tambah baru setelah berhasil disimpan</label>
+			</div>
+			<div>
+				<a id="pnl_edititemform-btn_save" class="easyui-linkbutton c1" style="width: 100px">Simpan</a>
+			</div>
+		</div>
+	</div>	
+
+
+
+	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; height: 40px; display: flex; justify-content: space-between; padding: 5px 2px 2px 2px ">
+		<div>
+			<a id="pnl_edititemform-btn_prev" class="easyui-linkbutton c8" style="width: 50px">Prev</a>
+			<a id="pnl_edititemform-btn_next" class="easyui-linkbutton c8" style="width: 50px">Next</a>
+		</div>
+
+		<div>
+			<a id="pnl_edititemform-btn_addnew" class="easyui-linkbutton c8" style="width: 100px">Tambah Baru</a>
+		</div>
+
+		<div>
+			<a id="pnl_edititemform-btn_delete" class="easyui-linkbutton c5" style="width: 100px">Hapus</a>
+		</div>
+	</div>
+
+
+
+
+</div>	

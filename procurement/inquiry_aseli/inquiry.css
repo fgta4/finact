@@ -1,0 +1,27 @@
+.hide_advance {
+	display: none;
+}
+
+.hide_viabank {
+	display: none;
+}
+
+
+.partnerbank {
+    background-color: #ffce9c;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+
+}
+
+
+#total .form_input_col > span > input {
+	background-color: rgb(177, 236, 177);
+	font-weight: bold;
+	color: rgb(27, 3, 44);
+}
+
+
+

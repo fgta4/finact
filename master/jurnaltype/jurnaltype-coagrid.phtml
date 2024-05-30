@@ -1,0 +1,92 @@
+<div id="pnl_editcoagrid">
+	<div class="fgta-page-title">Daftar Chart of Accounts</div>
+	<div id="pnl_editcoagrid-title" class="fgta-page-subtitle">XXXXXXX</div>
+
+	<!--// Untuk keperluan search di detil
+	<div id="pnl_editcoagrid-pnl_head" style="display: flex; align-items: flex-end">
+		<div class="list-search-wrap" style="width: calc(100% - 65px); display: flex;">
+			<div class="list-search-item" style="width: 50px;">Cari</div>
+			<div class="list-search-item">
+				<input id="pnl_editcoagrid-txt_search" class="easyui-textbox" style="width: 100%">
+			</div>
+			<div class="list-search-item" style="width: 45px">
+				<a href="javascript:void(0)" id="pnl_editcoagrid-btn_load" class="easyui-linkbutton c8 fgta-button-listload" style="width: 45px">Load</a>
+			</div>
+		</div>
+	</div>	
+	//-->
+
+
+	<?php
+	$customheadpanel = __DIR__.'/jurnaltype-coagrid-customheadpanel.phtml';
+	if (is_file($customheadpanel)) {
+		include $customheadpanel;
+	} 
+	?>
+
+	<div style="margin-top: 10px; margin-bottom: 15px">
+		<table id="pnl_editcoagrid-tbl_list" paging="true" cellspacing="0" width="100%" class="deftable">
+			<?php
+			$customview = __DIR__.'/jurnaltype-coagrid-customview.phtml'; 
+			if (is_file($customview)) {
+				include $customview;
+			} else { ?>
+			<thead>
+
+				<tr>
+<th type="check">chk</th>					
+					<th mapping="jurnaltypecoa_id">jurnaltypecoa_id</th>
+					<th mapping="coa_name">coa_name</th>
+					<th mapping="jurnaltypecoa_isdebet" type="checkbox">jurnaltypecoa_isdebet</th>
+					<th mapping="jurnaltypecoa_iskredit" type="checkbox">jurnaltypecoa_iskredit</th>
+
+					<th mapping=""></th>
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+<td class="fgtable-head rowcheck" style="width: 30px; border-bottom: 1px solid #000000; text-align: center">*</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000">ID</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000">COA</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000; text-align: center">Debet</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000; text-align: center">Kredit</td>
+
+					<td class="fgtable-head" style="border-bottom: 1px solid #000000; text-align: center">&nbsp;</td>
+				</tr>
+			</thead>
+			<?php } ?>
+			
+			<?php
+			$tablefooter = __DIR__.'/jurnaltype-coagrid-tablefooter.phtml';
+			if (is_file($tablefooter)) {
+				include $tablefooter;
+			} 
+			?>
+			
+		</table>
+	</div>
+
+
+
+	<div class="pnl_editcoagrid-control" style="display: flex; justify-content: space-between; margin-bottom: 100px">
+		<div>
+			<a id="pnl_editcoagrid-removechecked" href="javascript:void(0)" class="easyui-linkbutton c8 fgta-button-rowdel">Hapus Checked</a>
+		</div>
+
+		<div>
+			<a id="pnl_editcoagrid-addrow" href="javascript:void(0)" class="easyui-linkbutton c8 fgta-button-rowadd">Tambah Baris</a>
+		</div>
+
+		<div>
+		</div>
+
+	</div>
+
+
+
+	<?php
+	$customfootpanel = __DIR__.'/jurnaltype-coagrid-customfootpanel.phtml';
+	if (is_file($customfootpanel)) {
+		include $customfootpanel;
+	} 
+	?>
+
+</div>	

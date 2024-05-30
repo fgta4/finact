@@ -1,0 +1,93 @@
+.col-def {
+	font-size: 0.8em;
+}
+
+.col-head {
+	font-weight: bold;
+	background-color: #999;
+	color: #fff;
+
+}
+.col-hidden {
+	display: none;
+}
+
+
+.cell-row-even {
+	background-color: #eee;
+}
+
+.cell-row-odd {
+	background-color: #fff;
+}
+
+.col-no {
+	width: 0.6cm;
+	text-align: right;
+	padding-right: 1mm;
+}
+
+.col-jurnalid {
+	width: 2.5cm;
+	padding-left: 4mm;
+}
+
+.col-date {
+	width: 1.6cm;
+}
+
+.col-due {
+	width: 0.9cm;
+	text-align: right;
+	padding-right: 1mm;
+}
+
+.col-curr {
+	width: 0.9cm;
+	text-align: center;
+}
+
+.col-descr {
+	width: auto;
+}
+
+.col-amount {
+	width: 2cm;
+	text-align: right;
+}
+
+
+.col-coa {
+	width: auto;
+	padding-left: 2mm;
+}
+
+
+.report-row-bold {
+	font-weight: bold;
+}
+
+.report-row-italic {
+	font-style: italic;
+}
+
+.rhpad {
+	padding-top: 1mm;
+	padding-bottom: 1mm;
+}
+
+.rhpad-top {
+	padding-top: 1mm;
+}
+
+.rhpad-bottom {
+	padding-bottom: 1mm;
+}
+
+.report-row-pad-top {
+	border-top: 1mm solid #fff;
+}
+
+.report-row-pad-bottom {
+	border-bottom: 1mm solid #fff;
+}

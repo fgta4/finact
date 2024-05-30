@@ -1,0 +1,7 @@
+ownershiptype
+
+original path : /apps/finact/items/ownershiptype
+created by    : Agung Nugroho
+                agung_dhewe@yahoo.com
+created date  : 2019-12-11
+================================================

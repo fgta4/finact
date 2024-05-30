@@ -1,0 +1,9 @@
+{
+	"title" : "Buku Besar by Account",
+	"variance" : {},
+	"allowanonymous" : false,
+	"allowedgroups" : ["public"],
+	"apis" : {
+	}	
+}
+

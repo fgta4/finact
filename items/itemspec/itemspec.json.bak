@@ -1,0 +1,15 @@
+{
+	"title" : "Model Spec",
+	"icon" : "icon-itemspec-white.svg",
+	"backcolor" : "#bdb63a",
+	"variance" : {},
+	"allowanonymous" : true,
+	"allowedgroups" : ["public"],
+	"apis" : {
+		"save" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"delete" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"open" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"list" : { "allowanonymous": false, "allowedgroups" : ["public"] }
+	}	
+}
+

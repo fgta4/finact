@@ -1,0 +1,145 @@
+<?php namespace FGTA4\apis;
+
+if (!defined('FGTA4')) {
+	die('Forbiden');
+}
+
+require_once __ROOT_DIR.'/core/sqlutil.php';
+require_once __DIR__ . '/xapi.base.php';
+
+if (is_file(__DIR__ .'/data-approval-handler.php')) {
+	require_once __DIR__ .'/data-approval-handler.php';
+}
+
+
+use \FGTA4\exceptions\WebException;
+
+
+
+/**
+ * finact/procurement/inquiry/apis/approval-open.php
+ *
+ * ==========
+ * Detil-Open
+ * ==========
+ * Menampilkan satu baris data/record sesuai PrimaryKey,
+ * dari tabel approval inquiry (trn_inquiryappr)
+ *
+ * Agung Nugroho <agung@fgta.net> http://www.fgta.net
+ * Tangerang, 26 Maret 2021
+ *
+ * digenerate dengan FGTA4 generator
+ * tanggal 26/03/2023
+ */
+$API = new class extends inquiryBase {
+
+	public function execute($options) {
+		$event = 'on-open';
+		$tablename = 'trn_inquiryappr';
+		$primarykey = 'inquiryappr_id';
+		$userdata = $this->auth->session_get_user();
+
+		$handlerclassname = "\\FGTA4\\apis\\inquiry_approvalHandler";
+		$hnd = null;
+		if (class_exists($handlerclassname)) {
+			$hnd = new inquiry_approvalHandler($options);
+			$hnd->caller = &$this;
+			$hnd->db = $this->db;
+			$hnd->auth = $this->auth;
+			$hnd->reqinfo = $this->reqinfo;
+			$hnd->event = $event;
+		} else {
+			$hnd = new \stdClass;
+		}
+
+		try {
+
+			if (method_exists(get_class($hnd), 'init')) {
+				// init(object &$options) : void
+				$hnd->init($options);
+			}
+
+			$result = new \stdClass; 
+
+			$criteriaValues = [
+				"inquiryappr_id" => " inquiryappr_id = :inquiryappr_id "
+			];
+			if (method_exists(get_class($hnd), 'buildOpenCriteriaValues')) {
+				// buildOpenCriteriaValues(object $options, array &$criteriaValues) : void
+				$hnd->buildOpenCriteriaValues($options, $criteriaValues);
+			}
+			$where = \FGTA4\utils\SqlUtility::BuildCriteria($options->criteria, $criteriaValues);
+			$result = new \stdClass; 
+
+			if (method_exists(get_class($hnd), 'prepareOpenData')) {
+				// prepareOpenData(object $options, $criteriaValues) : void
+				$hnd->prepareOpenData($options, $criteriaValues);
+			}
+
+			$sqlFieldList = [
+				'inquiryappr_id' => 'A.`inquiryappr_id`', 'inquiryappr_isapproved' => 'A.`inquiryappr_isapproved`', 'inquiryappr_by' => 'A.`inquiryappr_by`', 'inquiryappr_date' => 'A.`inquiryappr_date`',
+				'inquiry_version' => 'A.`inquiry_version`', 'inquiryappr_isdeclined' => 'A.`inquiryappr_isdeclined`', 'inquiryappr_declinedby' => 'A.`inquiryappr_declinedby`', 'inquiryappr_declineddate' => 'A.`inquiryappr_declineddate`',
+				'inquiryappr_notes' => 'A.`inquiryappr_notes`', 'inquiry_id' => 'A.`inquiry_id`', 'docauth_descr' => 'A.`docauth_descr`', 'docauth_order' => 'A.`docauth_order`',
+				'docauth_value' => 'A.`docauth_value`', 'docauth_min' => 'A.`docauth_min`', 'authlevel_id' => 'A.`authlevel_id`', 'authlevel_name' => 'A.`authlevel_name`',
+				'auth_id' => 'A.`auth_id`', 'auth_name' => 'A.`auth_name`', '_createby' => 'A.`_createby`', '_createdate' => 'A.`_createdate`',
+				'_createby' => 'A.`_createby`', '_createdate' => 'A.`_createdate`', '_modifyby' => 'A.`_modifyby`', '_modifydate' => 'A.`_modifydate`'
+			];
+			$sqlFromTable = "trn_inquiryappr A";
+			$sqlWhere = $where->sql;
+
+			if (method_exists(get_class($hnd), 'SqlQueryOpenBuilder')) {
+				// SqlQueryOpenBuilder(array &$sqlFieldList, string &$sqlFromTable, string &$sqlWhere, array &$params) : void
+				$hnd->SqlQueryOpenBuilder($sqlFieldList, $sqlFromTable, $sqlWhere, $where->params);
+			}
+			$sqlFields = \FGTA4\utils\SqlUtility::generateSqlSelectFieldList($sqlFieldList);
+
+
+
+			$sqlData = "
+				select 
+				$sqlFields 
+				from 
+				$sqlFromTable 
+				$sqlWhere 
+			";
+
+			$stmt = $this->db->prepare($sqlData);
+			$stmt->execute($where->params);
+			$row  = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+			$record = [];
+			foreach ($row as $key => $value) {
+				$record[$key] = $value;
+			}
+
+			$result->record = array_merge($record, [
+				
+				// // jikalau ingin menambah atau edit field di result record, dapat dilakukan sesuai contoh sbb: 
+				// 'tambahan' => 'dta',
+				//'tanggal' => date("d/m/Y", strtotime($record['tanggal'])),
+				//'gendername' => $record['gender']
+				
+
+/*{__LOOKUPUSERMERGE__}*/
+				'_createby' => \FGTA4\utils\SqlUtility::Lookup($record['_createby'], $this->db, $GLOBALS['MAIN_USERTABLE'], 'user_id', 'user_fullname'),
+				'_modifyby' => \FGTA4\utils\SqlUtility::Lookup($record['_modifyby'], $this->db, $GLOBALS['MAIN_USERTABLE'], 'user_id', 'user_fullname'),
+
+			]);
+
+
+	
+
+
+			if (method_exists(get_class($hnd), 'DataOpen')) {
+				//  DataOpen(array &$record) : void 
+				$hnd->DataOpen($result->record);
+			}
+
+
+			return $result;
+		} catch (\Exception $ex) {
+			throw $ex;
+		}
+	}
+
+};

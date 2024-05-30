@@ -1,0 +1,71 @@
+<div id="pnl_list">
+	<div class="fgta-page-title">Transaksi Pettycash</div>
+
+	<div id="pnl_list-pnl_head" style="display: flex; align-items: flex-end">
+		<div class="list-buttonbaru" style="text-align: right; width: calc(100% - 10px); float: right;  position: absolute">
+			<a href="javascript:void(0)" id="pnl_list-btn_new" class="easyui-linkbutton c8" style="width: 60px">Baru</a>
+		</div>
+		<?php
+		$customsearch = __DIR__.'/pettycash-list-customsearch.phtml'; 
+		if (is_file($customsearch)) {
+			include $customsearch;
+		} else { ?>
+		<!-- Simple Query -->
+		<div class="list-search-wrap" style="width: calc(100% - 65px); display: flex;">
+			<div class="list-search-item" style="width: 50px;">Cari</div>
+			<div class="list-search-item">
+				<input id="pnl_list-txt_search" class="easyui-textbox" style="width: 100%">
+			</div>
+			<div class="list-search-item" style="width: 45px">
+				<a href="javascript:void(0)" id="pnl_list-btn_load" class="easyui-linkbutton c8" style="width: 45px">Load</a>
+			</div>
+		</div>
+		<?php } ?>
+	</div>
+
+
+	<div style="margin-top: 10px">
+		<table id="pnl_list-tbl_list" paging="true" cellspacing="0" width="100%" class="deftable">
+			<thead>
+				<?php
+				$customview = __DIR__.'/pettycash-list-customview.phtml'; 
+				if (is_file($customview)) {
+					include $customview;
+				} else { ?>
+				<tr>
+					<th mapping="pettycash_descr">pettycash_descr</th>
+					<th mapping="pettycash_value" style="text-align: right"  formatter="row_format_number">pettycash_value</th>
+					<th mapping="pettycash_iscommit" type="checkbox">pettycash_iscommit</th>
+
+
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td class="fgtable-head" style="border-bottom: 1px solid #000000">Descr</td>
+					<td class="fgtable-head" style="width: 200px; text-align: right; border-bottom: 1px solid #000000">Value</td>
+					<td class="fgtable-head" style="width: 80px; border-bottom: 1px solid #000000; text-align: center">Com</td>
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td class="fgtable-shade" style="border-bottom: 1px solid #ccc; font-weight: bold">Saldo Awal</td>
+					<td class="fgtable-shade" style="width: 200px; text-align: right; border-bottom: 1px solid #ccc; font-weight: bold" id="pnl_list-txt_saldoawal">xxxx</td>
+					<td class="fgtable-shade" style="width: 80px; border-bottom: 1px solid #ccc; text-align: center">&nbsp;</td>
+				</tr>
+				<?php } ?>
+			</thead>
+			<tfoot>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td style="border-bottom: 1px solid #ccc; font-weight: bold">Total Mutasi</td>
+					<td style="width: 200px; text-align: right; border-bottom: 1px solid #ccc; font-weight: bold" id="pnl_list-txt_mutasi">xxxx</td>
+					<td style="width: 80px; border-bottom: 1px solid #ccc; text-align: center">&nbsp;</td>
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td class="fgtable-shade" style="border-bottom: 1px solid #ccc; font-weight: bold">Saldo Akhir</td>
+					<td class="fgtable-shade" style="width: 200px; text-align: right; border-bottom: 1px solid #ccc; font-weight: bold" id="pnl_list-txt_saldoakhir">xxxx</td>
+					<td class="fgtable-shade" style="width: 80px; border-bottom: 1px solid #ccc; text-align: center">&nbsp;</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+
+
+</div>

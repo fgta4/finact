@@ -1,0 +1,10 @@
+Budget Dept
+		
+Original Path : /Volumes/Development/fgtacloud4u/server/apps/finact/budget/budgetdeptprop
+Creator Name  : Agung Nugroho
+                agung.dhewe@gmail.com
+Created Date  : Thu Jan 25 2024 09:55:21 GMT+0700 (Western Indonesia Time)				 
+=========================================================================================
+
+<put your notes here>
+		

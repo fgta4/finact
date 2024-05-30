@@ -1,0 +1,101 @@
+<?php
+
+	$doc_iso_reg = "<yout form iso number>";
+	$report_title['id'] = "Cashflow";
+	$report_title['en'] = "Cashflow";
+
+	$report_printid = strtoupper(uniqid());
+	$report_printdate = date('d/m/Y');
+
+	$doc_descr = $this->report_title;
+?>
+
+<script>
+	// terima parameter dari PHP
+	global.reportparameter = {
+		dt: '<?=$this->reportparameter->dt?>',
+		rpttype: '<?=$this->reportparameter->rpttype?>',
+		dept_id: '<?=$this->reportparameter->dept_id?>',
+		partner_id: '<?=$this->reportparameter->partner_id?>',
+		project_id: '<?=$this->reportparameter->project_id?>',
+	}
+</script>
+<div style="position: absolute; z-index: 1">
+	<div  id="pagemeasure">&nbsp;</div>
+</div>
+
+
+
+
+<div id="wrapper" style="z-index: 10">
+	<!-- page header: selalu ditampilkan pada tiap halaman, kecuali halaman 1 -->
+	<div id="pageheader" class="fullwidth">
+		<div>
+			<div><?=$report_title['id']?></div>
+			<div style="font-style: italic"><?=$doc_descr?></div>
+		</div>
+		<div style="text-align: right; width: 70mm;">
+			<div style="display:inline-block; width: 38mm;"><b>Print Id</b> <?=$report_printid?></div>
+			<div style="display:inline-block; width: 30mm;">&nbsp;</div>
+			
+		</div>
+	</div>
+
+
+	<!-- report header --->
+	<div id="reporttitle" class="fullwidth">
+		<div style="display: flex; justify-content: space-between">
+
+			<div >
+				<div style="font-size: 7pt; font-style: italic"><?=$doc_iso_reg?></div>
+				<div style="font-weight: bold; font-size: 12pt; "><?=__COMPANY_NAME__?></div>
+				<div style="font-weight: bold; font-size: 12pt; margin-top: 2mm"><?=$report_title['id']?></div>
+			</div>	
+			<div style="text-align: right">
+				<!-- <img id="ellogo" src="index.php/public/assets/logo-printform-right.svg"> -->
+			</div>			
+		</div>
+	</div>
+
+
+	<div class="fullwidth" style="position: relative; margin-top: 2mm; ">
+		<div style="display: flex; justify-content: space-between; margin-top: 2mm">
+			<div><?=$doc_descr?></div>
+			<div style="font-size: 8pt;"><b>Page</b> 1 <b>of</b> <span id="reporttotalpage">1</span></div>
+			<!-- <div style="text-align: right; font-size: 8pt"><b>Print Id</b> <?=$report_printid?></div> -->
+		</div>
+	</div>
+
+
+	<!-- report content -->
+	<div id="reportcontent" class="fullwidth">
+		<table id="obj_reporttable" width="100%" style="margin-bottom: 30px" margin="0" padding="0">
+			<thead id="obj_reporttable_thead">
+				<tr>
+					<th class="rowhead rptrow-rownumber" data-fill-color='CCCCCC'>No</th>
+					<th class="rowhead rptrow-coa_id " data-fill-color='CCCCCC'>Kode COA</th>
+					<th class="rowhead" data-fill-color='CCCCCC'>Account</th>
+					<th class="rowhead rptrow-group01" data-fill-color='CCCCCC' id="obj_reporttable_colgroup01">group01</th>
+					<th class="rowhead rptrow-value" data-fill-color='CCCCCC'>Bulan Ini</th>
+					<th class="rowhead rptrow-value" data-fill-color='CCCCCC'>s/d Bulan lalu</th>
+				</tr>
+			</thead>
+			<tbody id="obj_reporttable_tbody">
+			</tbody>
+			<tfoot>
+				<tr id="obj_reporttable_thead_loadingmessage" style="display: none">
+					<td><div style="position: absolute; padding-top: 10px; font-weight: bold">Wait, report are still loading ...</div></td>
+				</tr>
+			</tfoot>			
+		</table>
+		<script>global.totalrowcount = 0</script>
+	</div>
+
+
+</div>
+
+<div id="wrapperfooter" class="fullwidth" style="z-index: 20">
+	<div id="reportfooter" style="display: flex; justify-content: space-between; height: 10mm; ">
+		&nbsp;
+	<div>				
+</div>

@@ -1,0 +1,101 @@
+.grd-cell-sub {
+	display: flex;
+	column-gap: 3px;
+}
+
+/* Mobile */
+@media screen and (max-width: 520px) {
+	.desktop-only {
+		display: none;
+	}
+
+	.grd-lst-id {
+		font-weight: bold
+	}
+	
+	.grd-lst-desc {
+		padding: 0px 0px 0px 10px; 
+		font-weight:lighter; 
+		font-style:italic
+	}
+	
+	.grd-lst-per {
+		padding: 4px 0px 0px 10px;
+	}
+	
+}
+
+/* Desktop */
+@media screen and (min-width: 521px) {
+	.mobile-only {
+		display: none;
+	}
+	
+	.grd-lst-desc {
+		font-weight:lighter; 
+		font-style:italic
+	}
+}
+
+
+.jurnal-list-commit {
+	background-color: #eee;
+}
+
+.jurnal-list-post {
+	background-color: #ddd;
+}
+
+.jurnal-list-close {
+	background-color: #ccc;
+}
+
+
+.status-row {
+	margin-bottom: 3px;
+}
+
+.status-button {
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #666;
+	border-bottom: 1px solid #666;
+	color: #fff;
+	font-weight: bold;
+	font-size: 9px;
+	padding: 1px;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.status-button.unbalance {
+	background: rgb(183, 67, 67);
+
+}
+
+.status-button.emptyrows {
+	background: rgb(81, 42, 44);
+}
+
+.status-button.commit {
+	background: rgb(40, 81, 215);
+}
+
+.status-button.posted {
+	background: rgb(11, 175, 11);
+}
+
+.status-button.linked {
+	background: rgb(235, 124, 27);
+}
+
+.status-button.responded {
+	background: rgb(145, 46, 169);
+}
+
+.status-button.closed {
+	background: rgb(79, 77, 77);
+}

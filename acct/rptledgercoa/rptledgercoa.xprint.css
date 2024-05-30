@@ -1,0 +1,69 @@
+
+
+
+.cell-row-even {
+	background-color: #eee;
+}
+
+.cell-row-odd {
+	background-color: #fff;
+}
+
+
+.coasum-coaname {
+	font-weight: bold;
+	padding-top: 10px;
+	border-top: 1px solid #999;
+	/* background-color: #ccc; */
+	background-color: #fff !important;
+	padding-bottom: 5px;
+}
+
+.coasum-saldoawal {
+	font-weight: bold;
+	background-color: #fff !important;
+	padding-bottom: 2px;
+}
+
+.coasum-saldoakhir {
+	font-weight: bold;
+	padding-bottom: 20px;
+	background-color: #fff !important;
+	padding-top: 2px;
+}
+
+.coasum-saldoakhir.col-amount  {
+	border-top: 1px solid #000
+}
+
+
+.col-no {
+	width: 0.6cm;
+	text-align: right;
+	font-size: 0.8em;
+}
+
+.col-coa {
+	width: 1.5cm;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+.col-descr {
+	font-size: 0.8em;
+}
+
+.col-amount {
+	width: 2cm;
+	text-align: right;
+	font-size: 0.8em;
+}
+
+.col-hidden {
+	display: none;
+}
+/*
+.col-descr {
+
+}
+*/

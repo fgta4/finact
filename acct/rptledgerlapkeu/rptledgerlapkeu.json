@@ -1,0 +1,9 @@
+{
+	"title" : "Laporan Keuangan",
+	"variance" : {},
+	"allowanonymous" : false,
+	"allowedgroups" : ["public"],
+	"apis" : {
+	}	
+}
+

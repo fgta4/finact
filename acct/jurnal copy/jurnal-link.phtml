@@ -1,0 +1,79 @@
+<!-- ini blank phtml -->
+<div id="pnl_editlink">
+	<div class="fgta-page-title">Link Jurnal</div>
+
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Jurnal ID</div>
+		<div class="form_input_col"><span id="pnl_editlink-jurnal_id"></span> <span id="pnl_editlink-jurnaldetil_id"></span></div>
+	</div>
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Descr</div>
+		<div class="form_input_col" id="pnl_editlink-jurnaldetil_descr"></div>
+	</div>
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">COA</div>
+		<div class="form_input_col" id="pnl_editlink-coa_name"></div>
+	</div>
+
+	<div class="form_row_split">
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Unit</div>
+		<div class="form_input_col" id="pnl_editlink-unit_name"></div>
+	</div>
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Dept</div>
+		<div class="form_input_col" id="pnl_editlink-dept_name"></div>
+	</div>
+	</div>
+
+	<div class="form_row_split">
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Partner</div>
+		<div class="form_input_col" id="pnl_editlink-partner_name"></div>
+	</div>
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Project</div>
+		<div class="form_input_col" id="pnl_editlink-project_name"></div>
+	</div>
+	</div>
+
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Value</div>
+		<div class="form_input_col" id="pnl_editlink-jurnal_value"></div>
+	</div>
+
+	<div class="form_row pnl_edit_row" >
+		<div class="form_label_col">Search</div>
+		<div class="form_input_col" >
+			<div style="display: flex">
+				<div>
+					<input id="pnl_editlink-txt_search" class="easyui-textbox">
+				</div>
+				<div>
+					<a href="javascript:void(0)" id="pnl_editlink-btn_load" class="easyui-linkbutton c8" style="width: 45px">Load</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div style="margin-top: 10px">
+		<table id="pnl_editlink-tbl_list" paging="true" cellspacing="0" width="100%" class="deftable">
+			<thead>
+				<tr>
+					<th mapping="jurnal_id">jurnal_id</th>
+					<th mapping="jurnal_date">jurnal_date</th>
+					<th mapping="jurnaldetil_descr" style="cursor:pointer">jurnaldetil_descr</th>
+					<th mapping="outstanding_idr" style="text-align: right"  formatter="row_format_number">outstanding_idr</th>
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000">ID</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000">Date</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000">Descr</td>
+					<td class="fgtable-head" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">IDR</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>	

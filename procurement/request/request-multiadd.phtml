@@ -1,0 +1,61 @@
+<div id="pnl_editmultiadd">
+	<div class="fgta-page-title">Inquiry Items</div>
+	<div id="pnl_editmultiadd-title" style="margin-top: 0px; margin-bottom: 30px; font-weight: bold; font-size: 1.2em">XXXXXXX</div>
+
+
+	<div id="pnl_editmultiadd-pnl_head" style="display: flex; align-items: flex-end">
+		<div class="list-search-wrap" style="width: calc(100% - 65px); display: flex;">
+			<div class="list-search-item" style="width: 50px;">Cari</div>
+			<div class="list-search-item">
+				<input id="pnl_editmultiadd-txt_search" class="easyui-textbox" data-options="width:'100px'">
+			</div>
+			<div class="list-search-item" style="width: 45px">
+				<a href="javascript:void(0)" id="pnl_editmultiadd-btn_load" class="easyui-linkbutton c8" style="width: 65px">Search</a>
+			</div>
+		</div>
+		<div style="text-align: right; width: 200px">
+			<a href="javascript:void(0)" class="pnl_editmultiadd-apply easyui-linkbutton c8">Apply</a>
+		</div>
+	</div>	
+	
+
+
+	<div style="margin-top: 10px; margin-bottom: 15px">
+		<table id="pnl_editmultiadd-tbl_list" paging="true" cellspacing="0" width="100%" >
+			<thead>
+				<tr>
+					<th type="check">chk</th>					
+					<th mapping="itemclass_name">itemclass_name</th>
+					<th mapping="inquirydetil_qty" style="text-align: right" formatter="row_format_number">inquirydetil_qty</th>
+					<th mapping="inquirydetil_days" style="text-align: right" formatter="row_format_number">inquirydetil_days</th>
+					<th mapping="inquirydetil_task" style="text-align: right" formatter="row_format_number">inquirydetil_task</th>
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td class="fgtable-head-alt1" style="width: 30px; border-bottom: 1px solid #000000; text-align: center">*</td>
+					<td class="fgtable-head-alt1" style="width: 100px; border-bottom: 1px solid #000000">Class</td>
+					<td class="fgtable-head-alt1" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Qty</td>
+					<td class="fgtable-head-alt1" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Days</td>
+					<td class="fgtable-head-alt1" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Task</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+
+	<div id="pnl_editmultiadd-control" style="display: flex; justify-content: space-between; margin-bottom: 100px">
+		<div>
+			<div style="margin-bottom: 10px">
+				<input id="pnl_editmultiadd-stay" type="checkbox"><label for="pnl_editmultiadd-stay">Tetap di halaman ini</label>
+			</div>
+			<a href="javascript:void(0)" class="pnl_editmultiadd-apply easyui-linkbutton c8">Apply</a>
+		</div>
+
+		<div>
+		</div>
+
+		<div>
+		</div>
+
+	</div>	
+
+</div>

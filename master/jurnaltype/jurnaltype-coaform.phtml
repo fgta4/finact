@@ -1,0 +1,89 @@
+<div id="pnl_editcoaform">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div id="pnl_editcoaform-caption">{{STATE_BEG}}Chart of Accounts{{STATE_END}}</div>
+		<a id="pnl_editcoaform-btn_edit" href="javascript:void(0)" class="easyui-linkbutton fgta-button-edit" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+	<div id="pnl_editcoaform-title" class="fgta-page-subtitle">XXXXXXX</div>
+
+
+	<form id="pnl_editcoaform-form">
+
+		<div class="form_row pnl_editcoaform_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editcoaform-txt_jurnaltypecoa_id" class="easyui-textbox" mapping="jurnaltypecoa_id" uppercase="true" maxlength="14"  style="width: 400px" data-options="multiline:false , required: true, invalidMessage: 'ID harus diisi' ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_editcoaform_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">COA</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editcoaform-cbo_coa_id" class="easyui-combo" style="width: 400px" mapping="coa_id" display="coa_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'COA harus diisi'"  validType="requiredcombo['pnl_editcoaform-cbo_coa_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_editcoaform_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editcoaform-chk_jurnaltypecoa_isdebet" class="easyui-checkbox c1" mapping="jurnaltypecoa_isdebet" data-options="label: 'Debet', labelPosition: 'after', checked: false ">
+			</div>
+		</div>
+
+		<div class="form_row pnl_editcoaform_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editcoaform-chk_jurnaltypecoa_iskredit" class="easyui-checkbox c1" mapping="jurnaltypecoa_iskredit" data-options="label: 'Kredit', labelPosition: 'after', checked: false ">
+			</div>
+		</div>
+
+		<div class="form_row pnl_editcoaform_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Type Jurnal</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editcoaform-txt_jurnaltype_id" class="easyui-textbox" mapping="jurnaltype_id"  maxlength="10"  style="width: 400px" data-options="multiline:false , disabled: true , disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+	</form>
+
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<div style="margin-bottom: 10px">
+				<input id="pnl_editcoaform-autoadd" type="checkbox"><label for="pnl_editcoaform-autoadd">Otomatis tambah baru setelah berhasil disimpan</label>
+			</div>
+			<div>
+				<a id="pnl_editcoaform-btn_save" class="easyui-linkbutton c1 fgta-button-save" style="width: 100px">Simpan</a>
+			</div>
+		</div>
+	</div>	
+
+
+	<?php
+	$custombuttonbar = __DIR__.'/jurnaltype-coaform-custombuttonbar.phtml';
+	if (is_file($custombuttonbar)) {
+		include $custombuttonbar;
+	} else { ?>
+	<div id="pnl_editcoaform-buttonbar" style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; height: 40px; display: flex; justify-content: space-between; padding: 5px 2px 2px 2px ">
+		<div id="pnl_editcoaform-buttonbar-left">
+			<a id="pnl_editcoaform-btn_prev" class="easyui-linkbutton c8 fgta-button-detilprev" style="width: 50px">Prev</a>
+			<a id="pnl_editcoaform-btn_next" class="easyui-linkbutton c8 fgta-button-detilnext" style="width: 50px">Next</a>
+		</div>
+
+		<div id="pnl_editcoaform-buttonbar-middle">
+			<a id="pnl_editcoaform-btn_addnew" class="easyui-linkbutton c8 fgta-button-detiladd" style="width: 100px">Tambah Baru</a>
+		</div>
+
+		<div id="pnl_editcoaform-buttonbar-right">
+			<a id="pnl_editcoaform-btn_delete" class="easyui-linkbutton c5" style="width: 100px">Hapus</a>
+		</div>
+	</div>
+	<?php } ?>
+
+
+
+
+</div>	

@@ -1,0 +1,36 @@
+<div id="pnl_list">
+	<!-- <div class="fgta-page-title">Trial Balance</div> -->
+
+	<div id="pnl_list-pnl_head" style="display: flex; justify-content: space-between; margin-top: 10px ">
+		<div>
+			<span>Report</span>
+			<select id="pnl_list-cbo_report_type" class="easyui-combobox" name="dept" style="width:200px;">
+				<option value="summary">CF Summary</option>
+				<!-- <option value="summarydept">LR Summary dept</option> -->
+				<option value="summaryproject">CF Summary project</option>
+				<!-- <option value="bydept">LR By Dept</option> -->
+				<!-- <option value="bypartner">LR By Partner</option> -->
+				<option value="byproject">CF By Project</option>
+			</select>
+			<select id="pnl_list-cbo_dept_id" class="easyui-combobox" style="width:200px;">
+			</select>
+			<select id="pnl_list-cbo_project_id" class="easyui-combobox" style="width:200px;">
+			</select>
+			<select id="pnl_list-cbo_partner_id" class="easyui-combobox" style="width:200px;">
+			</select>
+			<span style="margin-left: 10px">Per Tanggal</span>
+			<input id="pnl_list-dt_report_date" class="easyui-datebox" style="width: 130px" mapping="jurnal_date" data-options="editable:false ">
+			<a href="javascript:void(0)" id="pnl_list-btn_load" class="easyui-linkbutton c8" style="width: 45px">Load</a>
+		</div>
+
+		
+		<div style="text-align: right">
+		<a href="javascript:void(0)" id="pnl_list-btn_export" class="easyui-linkbutton c8" style="width: 100px">Export</a>
+		<a href="javascript:void(0)" id="pnl_list-btn_print" class="easyui-linkbutton c8" style="width: 45px">Print</a>
+		</div>
+	</div>
+	<div id="rpt_container"  style="margin-top: 10px; border: 1px solid #000">
+		<iframe id="obj_report" style="border: 0px; width:100%; height:100%;">
+		</iframe>
+	</div>
+</div>	

@@ -1,0 +1,61 @@
+<div id="obj_framecontainer" class="page-frame-container">
+</div>
+
+<div id="obj_pageheader" class="hidden-element">
+	<div class="page-descr"><?=$this->reporttitle?></div>
+	<div class="page-paging">page x of y</div>
+</div>
+
+
+<div id="wrapper" class="report-wrapper">
+
+	<div id="obj_report_header" class="report-header fullwidth">
+		<div style="display: flex; justify-content: space-between">
+			<div>
+				<div class="report-title"><?=$this->reporttitle?></div>
+				<div><?=$this->reportsubtitle?></div>
+				<div>per <?=$this->reportdate?></div>
+			</div>
+			<div>
+				<div style="text-align: right; font-weight: bold; margin-bottom: 2mm"><?=__COMPANY_NAME__?></div>
+				<div class="page-paging" style="text-align: right">generat date: <?=date('d/m/Y')?></div>
+				<div id="obj_paging_page_1" class="page-paging" style="text-align: right">page x of y</div>
+			</div>
+		</div>
+	</div>
+
+	<table id="obj_reporttable" class="report-table fullwidth" cellpadding="0" cellspacing="0" data-cols-width="5,8,10,10,10,50,15,15,15,15"> 
+		<thead id="obj_reporttable_header" class="report-page-header">
+			<th class="cell-header col-no" data-fill-color='CCCCCC'>No</th>
+			<th class="cell-header col-hidden" data-fill-color='CCCCCC'>RowType</th>
+			<th class="cell-header col-coa" data-fill-color='CCCCCC'>ID</th>
+			<th class="cell-header col-hidden" data-fill-color='CCCCCC'>Parent</th>
+			<th class="cell-header col-hidden" data-fill-color='CCCCCC'>Level</th>
+			<th class="cell-header col-descr" data-fill-color='CCCCCC'>Account</th>
+			<th class="cell-header col-amount" data-fill-color='CCCCCC'>Saldo Awal</th>
+			<th class="cell-header col-amount" data-fill-color='CCCCCC'>Debet</th>
+			<th class="cell-header col-amount" data-fill-color='CCCCCC'>Kredit</th>
+			<th class="cell-header col-amount" data-fill-color='CCCCCC'>Saldo Akhir</th>
+		</thead>
+
+		<tfoot id="obj_reporttable_footer" class="report-page-footer">
+			<tr id="obj_reporttable_loadinginfo">
+				<td>
+					<div id="obj_reporttable_loadingmessage" class="footerstatusbox" style="position: absolute; padding-top: 10px; font-weight: bold">Wait, report are still loading ...</div>
+				</td>
+			</tr>
+		</tfoot>
+
+		<tbody id="obj_reporttable_body">
+		</tbody>
+	</table>
+
+
+
+	<div id="obj_report_footer" class="fullwidth report-footer report-footer-initial">
+		<div class="report-footer-content">
+		</div>
+	</div>
+
+
+</div>

@@ -1,0 +1,118 @@
+<?php
+
+	$doc_iso_reg = "<yout form iso number>";
+	$report_title['id'] = "Chart Of Account";
+	$report_title['en'] = "";
+
+	$report_printid = strtoupper(uniqid());
+	$report_printdate = date('d/m/Y');
+	$report_date = $report_printdate; //$this->report_date;
+
+	$doc_descr = "per tanggal $report_printdate";
+?>
+
+
+
+<div style="position: absolute; z-index: 1">
+	<div  id="pagemeasure">&nbsp;</div>
+</div>
+
+
+<div id="wrapper" style="z-index: 10">
+
+	<!-- page header: selalu ditampilkan pada tiap halaman, kecuali halaman 1 -->
+	<div id="pageheader" class="fullwidth">
+		<div>
+			<div><?=$report_title['id']?></div>
+			<div style="font-style: italic"><?=$doc_descr?></div>
+		</div>
+		<div style="text-align: right; width: 70mm;">
+			<div style="display:inline-block; width: 38mm;"><b>Print Id</b> <?=$report_printid?></div>
+			<div style="display:inline-block; width: 30mm;">&nbsp;</div>
+			
+		</div>
+	</div>
+
+
+	<!-- report header --->
+	<div id="reporttitle" class="fullwidth">
+		<div style="display: flex; justify-content: space-between">
+
+			<div >
+				<div style="font-size: 7pt; font-style: italic"><?=$doc_iso_reg?></div>
+				<div style="font-weight: bold; font-size: 12pt; "><?=__COMPANY_NAME__?></div>
+				<div style="font-weight: bold; font-size: 12pt; margin-top: 2mm"><?=$report_title['id']?></div>
+			</div>	
+			<div style="text-align: right">
+				<!-- <img id="ellogo" src="index.php/public/assets/logo-printform-right.svg"> -->
+			</div>			
+		</div>
+	</div>
+
+
+	<div class="fullwidth" style="position: relative; margin-top: 2mm; ">
+		<div style="display: flex; justify-content: space-between; margin-top: 2mm">
+			<div><?=$doc_descr?></div>
+			<div style="font-size: 8pt;"><b>Page</b> 1 <b>of</b> <span id="reporttotalpage">1</span></div>
+			<!-- <div style="text-align: right; font-size: 8pt"><b>Print Id</b> <?=$report_printid?></div> -->
+		</div>
+	</div>
+
+
+	<!-- report content -->
+	<div id="reportcontent" class="fullwidth">
+		<table id="obj_reporttable" width="100%" data-cols-width="10,60,30">
+			<thead>
+				<tr>
+					<th class="rowhead ptdata-col-no" data-fill-color='CCCCCC'>Li</th>
+					<th class="rowhead rptdata-col-accfincode" data-fill-color='CCCCCC'>Account</th>
+					<th class="rowhead rptdata-col-accfinname" data-fill-color='CCCCCC'>Nama</th>
+					<th class="rowhead rptdata-col-accfinparent" data-fill-color='CCCCCC'>Parent</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 45 -->
+				<?php 
+				$i=0;
+				foreach ($this->rows as $row) { 
+					$i++;
+
+					$isparent = $row['accfin_isparent'];
+					$level = (int)$row['accfin_level'];
+					$padleft = $level==0 ? 0 : 10* ($level-1);
+
+					if ($isparent==1) {
+						$cssclass = 'rptdata-col-accfinname parent'; 
+					} else {
+						$cssclass = 'rptdata-col-accfinname detil';
+					}
+
+					$csspaddleft = "padding-left: {$padleft}mm";
+				?>
+				<tr>
+					<td class="row rptdata-col-no"><?=$i?></td>
+					<td class="row rptdata-col-accfincode"><?=$row['accfin_id']?></td>
+					<td class="row <?=$cssclass?>" style="<?=$csspaddleft?>; "><?=$row['accfin_name']?></td>
+					<td class="row rptdata-col-accfinparent"><?=$row['accfin_parent']?></td>
+					<!-- <td class="row rptdata-col-val" data-t="n" data-num-fmt="#,##0"></td> -->
+				</tr>
+				<?php } ?>
+				<!-- <tr>
+					<td class="rowfoot" colspan="2" style="text-align: center" data-fill-color='CCCCCC'>TOTAL</td>
+					<td class="rowfoot rptdata-col-val" data-t="n" data-num-fmt="#,##0" data-fill-color='CCCCCC'>10000</td>
+				</tr>				 -->
+			</tbody>
+			<tfoot>
+			</tfoot>			
+		</table>
+		<script>global.totalrowcount = '<?=($i-1)?>'</script>
+	</div>
+
+
+</div>
+
+<div id="wrapperfooter" class="fullwidth" style="z-index: 20">
+	<div id="reportfooter" style="display: flex; justify-content: space-between; height: 10mm; ">
+		&nbsp;
+	<div>				
+</div>

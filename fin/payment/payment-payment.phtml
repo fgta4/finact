@@ -1,0 +1,229 @@
+<!-- ini blank phtml -->
+<div id="pnl_editpayment">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Pembayaran</div>
+		<a id="pnl_editpayment-btn_edit" href="javascript:void(0)" class="easyui-linkbutton" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+
+	<form id="pnl_editpayment-form">
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_jurnal_id" class="easyui-textbox" mapping="jurnal_id"  maxlength="14" style="width: 400px" data-options="multiline: false , required: true, invalidMessage: 'ID harus diisi', disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_edit-billin_id">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Permintaan Pembayaran</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_billin_id" class="easyui-combo" style="width: 400px" mapping="billin_id" display="billin_descr" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE', disabled: true"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_editpayment-billinpaym_id">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Term</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_billinpaym_id" class="easyui-combo" style="width: 400px" mapping="billinpaym_id" display="billinpaym_descr" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Partner</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_partner_id" class="easyui-combo" style="width: 400px" mapping="partner_id" display="partner_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE', disabled: true"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Dept</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_dept_id" class="easyui-combo" style="width: 400px" mapping="dept_id" display="dept_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Dept harus diisi', prompt: '-- PILIH --'"  validType="requiredcombo['pnl_editpayment-cbo_dept_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Tipe Pembayaran</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_paymtype_id" class="easyui-combo" style="width: 400px" mapping="paymtype_id" display="paymtype_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Tipe Pembayaran harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_editpayment-cbo_paymtype_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+		<div id="pnl_editpayment-entry">
+
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Dibayar Kepada</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_name" class="easyui-textbox" mapping="paymto_name"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+
+		<div class="form_row" id="pnl_editpayment-paymto_bankacc">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">No Rekening Bank</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_bankacc" class="easyui-textbox" mapping="paymto_bankacc"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>		
+
+		<div class="form_row" id="pnl_editpayment-paymto_bankaccname" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Nama di Rekening</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_bankaccname" class="easyui-textbox" mapping="paymto_bankaccname"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_editpayment-paymto_bankname">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Nama Bank</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_bankname" class="easyui-textbox" mapping="paymto_bankname"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_editpayment-paymto_gironum">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">No Giro / Cek</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_gironum" class="easyui-textbox" mapping="paymto_gironum"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_editpayment-paymto_girodate">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Tgl Cair Giro</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-dt_paymto_girodate" class="easyui-datebox" style="width: 400px" mapping="paymto_girodate" data-options="editable:false ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">UP</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_upname" class="easyui-textbox" mapping="paymto_upname"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Jabatan</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_upposition" class="easyui-textbox" mapping="paymto_upposition"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Phone</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_paymto_upphone" class="easyui-textbox" mapping="paymto_upphone"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Account Bank</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_bankrekening_id" class="easyui-combo" style="width: 400px" mapping="bankrekening_id" display="bankrekening_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">coa (Credit)</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_coa_id" class="easyui-combo" style="width: 400px" mapping="coa_id" display="coa_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Akun Finance harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_editpayment-cbo_coa_id']"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>	
+		
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">coa Finance</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_accfin_id" class="easyui-combo" style="width: 400px" mapping="accfin_id" display="accfin_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Akun Finance harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_editpayment-cbo_accfin_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_jurnal_valfrg" class="easyui-numberbox" mapping="jurnal_valfrg" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Currency</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-cbo_curr_id" class="easyui-combo" style="width: 400px" mapping="curr_id" display="curr_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Currency harus diisi', prompt: '-- PILIH --', disabled: true"   validType="requiredcombo['pnl_edit-cbo_curr_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_edit-jurnal_valfrgrate">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Rate</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_jurnal_valfrgrate" class="easyui-numberbox" mapping="jurnal_valfrgrate" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , required: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" id="pnl_edit-jurnal_validr">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">IDR</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpayment-txt_jurnal_validr" class="easyui-numberbox" mapping="jurnal_validr" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true, disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+
+
+		</div>
+
+
+	</form>	
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<a id="pnl_editpayment-btn_save" class="easyui-linkbutton c1" style="width">Simpan</a>
+		</div>
+	</div>		
+
+
+
+	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; display: flex; justify-content: space-between; padding: 10px 2px 2px 2px ">
+		<div>
+			<!-- letakkan tombol yang lin disini -->
+			<!-- <a id="pnl_edit-btn_print" href="javascript:void(0)" class="easyui-linkbutton c8" style="margin-left:10px; margin-bottom: 10px;" data-options="iconCls:'icon-print'">print</a> -->
+			<!-- <a id="pnl_edit-btn_commit" href="javascript:void(0)" class="easyui-linkbutton c8" style="margin-left:10px; margin-bottom: 10px;" data-options="iconCls:'fgta-icon-commit'">Commit</a>			 -->
+			<!-- <a id="pnl_edit-btn_uncommit" href="javascript:void(0)" class="easyui-linkbutton c8" style="margin-left:10px; margin-bottom: 10px;" data-options="iconCls:'fgta-icon-uncommit'">UnCommit</a> -->
+			
+		
+		</div>
+		<div>
+			<a id="pnl_editpayment-btn_delete" style="visibility: hidden" class="easyui-linkbutton c5" style="margin-bottom: 10px; margin-right: 10px">Hapus</a>
+		</div>
+	</div>
+
+
+</div>	

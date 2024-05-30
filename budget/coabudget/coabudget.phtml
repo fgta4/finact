@@ -1,0 +1,14 @@
+<?php require_once dirname(__FILE__).'/coabudget-list.phtml' ?>
+<?php require_once dirname(__FILE__).'/coabudget-edit.phtml' ?>
+<?php require_once dirname(__FILE__).'/coabudget-deptgrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/coabudget-deptform.phtml' ?>
+
+
+
+<?php
+$customrecordstatus = __DIR__.'/coabudget-customrecordstatus.phtml'; 
+if (is_file($customrecordstatus)) {
+	include $customrecordstatus;
+} else { ?>
+
+<?php } ?>

@@ -1,0 +1,8 @@
+<script>
+	function test($partner_id, $date) {
+		console.log($partner_id, $date);
+		$ui.getPages().ITEMS['pnl_list'].handler.opendetil($partner_id, $date);
+	}
+</script>
+
+<?php require_once dirname(__FILE__).'/rptaccfin-list.phtml' ?>

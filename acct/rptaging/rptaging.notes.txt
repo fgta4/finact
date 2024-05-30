@@ -1,0 +1,7 @@
+reporting
+
+original path : /apps/finact/acct/rptaging
+created by    : Agung Nugroho
+                agung_dhewe@yahoo.com
+created date  : 2023-08-15
+================================================

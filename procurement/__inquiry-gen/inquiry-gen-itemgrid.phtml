@@ -1,0 +1,67 @@
+<div id="pnl_edititemgrid">
+	<div class="fgta-page-title">Daftar Item</div>
+	<div id="pnl_edititemgrid-title" style="margin-top: 0px; margin-bottom: 30px; font-weight: bold; font-size: 1.2em">XXXXXXX</div>
+
+	<!--// Untuk keperluan search di detil
+	<div id="pnl_edititemgrid-pnl_head" style="display: flex; align-items: flex-end">
+		<div class="list-search-wrap" style="width: calc(100% - 65px); display: flex;">
+			<div class="list-search-item" style="width: 50px;">Cari</div>
+			<div class="list-search-item">
+				<input id="pnl_edititemgrid-txt_search" class="easyui-textbox" style="width: 100%">
+			</div>
+			<div class="list-search-item" style="width: 45px">
+				<a href="javascript:void(0)" id="pnl_edititemgrid-btn_load" class="easyui-linkbutton c8" style="width: 45px">Load</a>
+			</div>
+		</div>
+	</div>	
+	//-->
+
+	<div style="margin-top: 10px; margin-bottom: 15px">
+		<table id="pnl_edititemgrid-tbl_list" paging="true" cellspacing="0" width="100%" class="deftable">
+			<thead>
+				<tr>
+<th type="check">chk</th>					
+					<th mapping="itemclass_name">itemclass_name</th>
+					<th mapping="inquirydetil_qty" style="text-align: right" formatter="row_format_number">inquirydetil_qty</th>
+					<th mapping="inquirydetil_days" style="text-align: right" formatter="row_format_number">inquirydetil_days</th>
+					<th mapping="inquirydetil_task" style="text-align: right" formatter="row_format_number">inquirydetil_task</th>
+					<th mapping="inquirydetil_estrate" style="text-align: right" formatter="row_format_number">inquirydetil_estrate</th>
+					<th mapping="inquirydetil_estvalue" style="text-align: right" formatter="row_format_number">inquirydetil_estvalue</th>
+					<th mapping="inquirydetil_isunbudget" type="checkbox">inquirydetil_isunbudget</th>
+					<th mapping="inquirydetil_isallowoverbudget" type="checkbox">inquirydetil_isallowoverbudget</th>
+
+					<th mapping=""></th>
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+<td class="fgtable-head" style="width: 30px; border-bottom: 1px solid #000000; text-align: center">*</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000">Class</td>
+					<td class="fgtable-head" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Qty</td>
+					<td class="fgtable-head" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Days</td>
+					<td class="fgtable-head" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Task</td>
+					<td class="fgtable-head" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Est.Rate</td>
+					<td class="fgtable-head" style="width: 100px; text-align: right; border-bottom: 1px solid #000000">Est.Value</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000; text-align: center">UnBudgettetd</td>
+					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000; text-align: center">Over Budget</td>
+
+					<td class="fgtable-head" style="border-bottom: 1px solid #000000; text-align: center">&nbsp;</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+	<div id="pnl_edititemgrid-control" style="display: flex; justify-content: space-between; margin-bottom: 100px">
+		<div>
+			<a id="pnl_edititemgrid-removechecked" href="javascript:void(0)" class="easyui-linkbutton c8">Hapus Checked</a>
+		</div>
+
+		<div>
+			<a id="pnl_edititemgrid-addrow" href="javascript:void(0)" class="easyui-linkbutton c8">Tambah Baris</a>
+		</div>
+
+		<div>
+		</div>
+
+	</div>
+
+
+</div>	

@@ -1,0 +1,9 @@
+{
+	"title" : "Buku Besar",
+	"variance" : {},
+	"allowanonymous" : false,
+	"allowedgroups" : ["public"],
+	"apis" : {
+	}	
+}
+

@@ -1,0 +1,17 @@
+{
+	"title" : "Purchase Order",
+	"icon": "icon-order-white.svg",
+	"backcolor": "#348183",
+	"variance" : {
+
+	},
+	"allowanonymous" : false,
+	"allowedgroups" : ["public"],
+	"apis" : {
+		"save" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"delete" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"open" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"list" : { "allowanonymous": false, "allowedgroups" : ["public"] }
+	}	
+}
+

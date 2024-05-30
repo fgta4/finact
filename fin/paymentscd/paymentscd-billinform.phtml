@@ -1,0 +1,187 @@
+<div id="pnl_editbillinform">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Edit Bills</div>
+		<a id="pnl_editbillinform-btn_edit" href="javascript:void(0)" class="easyui-linkbutton" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+	<div id="pnl_editbillinform-title" style="margin-top: 0px; margin-bottom: 30px; font-weight: bold; font-size: 1.2em">XXXXXXX</div>
+
+
+	<form id="pnl_editbillinform-form">
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_paymentscdbillin_id" class="easyui-textbox" mapping="paymentscdbillin_id"  maxlength="14"  style="width: 400px" data-options="multiline:false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Bill</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-cbo_billinpaym_id" class="easyui-combo" style="width: 400px" mapping="billinpaym_id" display="billinpaym_descr" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Bill harus diisi', prompt: '-- PILIH --'"  validType="requiredcombo['pnl_editbillinform-cbo_billinpaym_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Date</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-dt_billinpaym_date" class="easyui-datebox" style="width: 400px" mapping="billinpaym_date" data-options="editable:false, disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Schedule To</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-dt_billinpaym_datescd" class="easyui-datebox" style="width: 400px" mapping="billinpaym_datescd" data-options="editable:false ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Descr</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_descr" class="easyui-textbox" mapping="billinpaym_descr"  maxlength="255"  style="width: 400px" data-options="multiline:false , required: true, invalidMessage: 'Descr harus diisi', disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Currency</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-cbo_curr_id" class="easyui-combo" style="width: 400px" mapping="curr_id" display="curr_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Currency harus diisi', prompt: '-- PILIH --', disabled: true"  validType="requiredcombo['pnl_editbillinform-cbo_curr_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Rate</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_frgrate" class="easyui-numberbox" mapping="billinpaym_frgrate" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , required: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Item Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_itemfrg" class="easyui-numberbox" mapping="billinpaym_itemfrg" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Item IDR</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_itemidr" class="easyui-numberbox" mapping="billinpaym_itemidr" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true, disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">PPN Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_ppnfrg" class="easyui-numberbox" mapping="billinpaym_ppnfrg" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true, disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">PPN IDR</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_ppnidr" class="easyui-numberbox" mapping="billinpaym_ppnidr" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true, disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">PPh Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_pphfrg" class="easyui-numberbox" mapping="billinpaym_pphfrg" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true, disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">PPh IDR</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billinpaym_pphidr" class="easyui-numberbox" mapping="billinpaym_pphidr" style="width: 400px; text-align:right" data-options="precision: 2, decimalSeparator:'.', groupSeparator:','  , required: true, disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Rekening Bank</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-cbo_bankrekening_id" class="easyui-combo" style="width: 400px" mapping="bankrekening_id" display="bankrekening_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Rekening Bank harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_editbillinform-cbo_bankrekening_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Account Finance</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-cbo_acc_fin" class="easyui-combo" style="width: 400px" mapping="acc_fin" display="accfin_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+
+
+
+
+		<div class="form_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Bill</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_billin_id" class="easyui-textbox" mapping="billin_id"  maxlength="14"  style="width: 400px" data-options="multiline:false , disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" style="display: none">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Schedule</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editbillinform-txt_paymentscd_id" class="easyui-textbox" mapping="paymentscd_id"  maxlength="14"  style="width: 400px" data-options="multiline:false  , disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+	</form>
+
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<div style="margin-bottom: 10px">
+				<input id="pnl_editbillinform-autoadd" type="checkbox"><label for="pnl_editbillinform-autoadd">Otomatis tambah baru setelah berhasil disimpan</label>
+			</div>
+			<div>
+				<a id="pnl_editbillinform-btn_save" class="easyui-linkbutton c1" style="width: 100px">Simpan</a>
+			</div>
+		</div>
+	</div>	
+
+
+
+	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; height: 40px; display: flex; justify-content: space-between; padding: 5px 2px 2px 2px ">
+		<div>
+			<a id="pnl_editbillinform-btn_prev" class="easyui-linkbutton c8" style="width: 50px">Prev</a>
+			<a id="pnl_editbillinform-btn_next" class="easyui-linkbutton c8" style="width: 50px">Next</a>
+		</div>
+
+		<div>
+			<a id="pnl_editbillinform-btn_addnew" class="easyui-linkbutton c8" style="width: 100px">Tambah Baru</a>
+		</div>
+
+		<div>
+			<a id="pnl_editbillinform-btn_delete" class="easyui-linkbutton c5" style="width: 100px">Hapus</a>
+		</div>
+	</div>
+
+
+
+
+</div>	

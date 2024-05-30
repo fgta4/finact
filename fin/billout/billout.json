@@ -1,0 +1,20 @@
+{
+	"title" : "Tagihan Keluar",
+	"icon": "icon-billout-white.svg",
+	"backcolor": "#7d7aa9",
+	"variance" : {
+		"view" : {"title":"Billout (View)"},
+		"entry" : {"title":"Billout (Entry)","data":{}},
+		"post" : {"title":"Billout (Post)","data":{}},
+		"unpost" : {"title":"Billout (UnPost)","data":{}}
+	},
+	"allowanonymous" : false,
+	"allowedgroups" : ["public"],
+	"apis" : {
+		"save" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"delete" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"open" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"list" : { "allowanonymous": false, "allowedgroups" : ["public"] }
+	}	
+}
+

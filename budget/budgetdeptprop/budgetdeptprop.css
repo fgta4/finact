@@ -1,0 +1,19 @@
+.pastebox {
+	height: 32px;
+	width: 200px;
+	background-color: #00000033;
+	padding-top: 8px;
+	margin-left: 0px;
+	padding-left: 15px;
+	overflow: hidden;
+}
+
+
+[contenteditable][placeholder]:empty:before {
+	margin-top: 0px;
+	content: attr(placeholder);
+	position: absolute;
+	color: gray;
+	background-color: transparent;
+}
+  

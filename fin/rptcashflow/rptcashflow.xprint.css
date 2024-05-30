@@ -1,0 +1,42 @@
+.rptrow-basic {
+	font-size: 8pt;
+	vertical-align: top;
+}
+
+.rptrow-subtotalrow {
+	padding-top: 1mm;
+	padding-bottom: 3mm
+}
+
+.rptrow-bold {
+	font-weight: bold;
+}
+
+.rptrow-value {
+	text-align: right;
+	width: 25mm;
+	padding-left: 1mm;
+	padding-right: 1mm;
+
+}
+
+
+.rptrow-accfin_id {
+	width: 20mm;
+	padding-left: 1mm;
+	padding-right: 1mm;
+}
+
+
+.rptrow-rownumber {
+	text-align: right;
+	width: 8mm;
+	padding-left: 1mm;
+	padding-right: 1mm;
+}
+
+.rptrow-group01 {
+	width: 40mm;
+	padding-left: 1mm;
+	padding-right: 1mm;
+}

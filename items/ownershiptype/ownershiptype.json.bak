@@ -1,0 +1,15 @@
+{
+	"title" : "Ownership Type",
+	"icon" : "icon-ownershiptype-white.svg",
+	"backcolor" : "#7f5e5e",
+	"variance" : {},
+	"allowanonymous" : true,
+	"allowedgroups" : ["public"],
+	"apis" : {
+		"save" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"delete" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"open" : { "allowanonymous": false, "allowedgroups" : ["public"] },
+		"list" : { "allowanonymous": false, "allowedgroups" : ["public"] }
+	}	
+}
+

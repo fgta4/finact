@@ -1,0 +1,16 @@
+<?php require_once dirname(__FILE__).'/jurnalsaldo-list.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsaldo-edit.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsaldo-saldogrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsaldo-saldoform.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsaldo-summarygrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsaldo-summaryform.phtml' ?>
+
+
+
+<?php
+$customrecordstatus = __DIR__.'/jurnalsaldo-customrecordstatus.phtml'; 
+if (is_file($customrecordstatus)) {
+	include $customrecordstatus;
+} else { ?>
+
+<?php } ?>

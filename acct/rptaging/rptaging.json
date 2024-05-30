@@ -1,0 +1,9 @@
+{
+	"title" : "Aging AR/AP",
+	"variance" : {},
+	"allowanonymous" : false,
+	"allowedgroups" : ["public"],
+	"apis" : {
+	}	
+}
+

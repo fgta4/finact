@@ -1,0 +1,91 @@
+<div id="pnl_editpropform">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div id="pnl_editpropform-caption">{{STATE_BEG}}Properties{{STATE_END}}</div>
+		<a id="pnl_editpropform-btn_edit" href="javascript:void(0)" class="easyui-linkbutton fgta-button-edit" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+	<div id="pnl_editpropform-title" class="fgta-page-subtitle">XXXXXXX</div>
+
+
+	<form id="pnl_editpropform-form">
+
+		<div class="form_row pnl_editpropform_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpropform-txt_itemstockprop_id" class="easyui-textbox" mapping="itemstockprop_id"  maxlength="14"  style="width: 400px" data-options="multiline:false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_editpropform_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Prop Type</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpropform-cbo_itemproptype_id" class="easyui-combo" style="width: 400px" mapping="itemproptype_id" display="itemproptype_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Tipe Properties harus diisi'"  validType="requiredcombo['pnl_editpropform-cbo_itemproptype_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_editpropform_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpropform-txt_itemstockprop_keys" class="easyui-textbox" mapping="itemstockprop_keys"  maxlength="90"  style="width: 400px" data-options="multiline:false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_editpropform_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpropform-txt_itemstockprop_value" class="easyui-textbox" mapping="itemstockprop_value"  maxlength="255"  style="width: 400px" data-options="multiline:false , required: true, invalidMessage: 'Value harus diisi' ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_editpropform_row" style="display: none">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ItemStock ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_editpropform-txt_itemstock_id" class="easyui-textbox" mapping="itemstock_id"  maxlength="14"  style="width: 400px" data-options="multiline:false  , disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+	</form>
+
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<div style="margin-bottom: 10px">
+				<input id="pnl_editpropform-autoadd" type="checkbox"><label for="pnl_editpropform-autoadd">Otomatis tambah baru setelah berhasil disimpan</label>
+			</div>
+			<div>
+				<a id="pnl_editpropform-btn_save" class="easyui-linkbutton c1 fgta-button-save" style="width: 100px">Simpan</a>
+			</div>
+		</div>
+	</div>	
+
+
+	<?php
+	$custombuttonbar = __DIR__.'/itemstock-propform-custombuttonbar.phtml';
+	if (is_file($custombuttonbar)) {
+		include $custombuttonbar;
+	} else { ?>
+	<div id="pnl_editpropform-buttonbar" style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; height: 40px; display: flex; justify-content: space-between; padding: 5px 2px 2px 2px ">
+		<div id="pnl_editpropform-buttonbar-left">
+			<a id="pnl_editpropform-btn_prev" class="easyui-linkbutton c8 fgta-button-detilprev" style="width: 50px">Prev</a>
+			<a id="pnl_editpropform-btn_next" class="easyui-linkbutton c8 fgta-button-detilnext" style="width: 50px">Next</a>
+		</div>
+
+		<div id="pnl_editpropform-buttonbar-middle">
+			<a id="pnl_editpropform-btn_addnew" class="easyui-linkbutton c8 fgta-button-detiladd" style="width: 100px">Tambah Baru</a>
+		</div>
+
+		<div id="pnl_editpropform-buttonbar-right">
+			<a id="pnl_editpropform-btn_delete" class="easyui-linkbutton c5" style="width: 100px">Hapus</a>
+		</div>
+	</div>
+	<?php } ?>
+
+
+
+
+</div>	

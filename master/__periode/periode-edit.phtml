@@ -1,0 +1,109 @@
+<div id="pnl_edit">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Edit Periode Bulanan</div>
+		<a id="pnl_edit-btn_edit" href="javascript:void(0)" class="easyui-linkbutton" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+
+
+	<form id="pnl_edit-form">
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_periodemo_id" class="easyui-textbox" mapping="periodemo_id" uppercase="true" maxlength="6" style="width: 400px" data-options="multiline: false , disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Periode Name</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_periodemo_name" class="easyui-textbox" mapping="periodemo_name" uppercase="true" maxlength="30" style="width: 400px" data-options="multiline: false , disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Year</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_periodemo_year" class="easyui-numberbox" mapping="periodemo_year" maxlength="4"  style="width: 400px; text-align:left" data-options="precision: 0, decimalSeparator:'.', required: true, invalidMessage: 'Tahun harus diisi'">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Month</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_periodemo_month" class="easyui-numberbox" mapping="periodemo_month" maxlength="2"  style="width: 400px; text-align:left" data-options="precision: 0, decimalSeparator:'.',  required: true, invalidMessage: 'Bulan harus diisi'">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Start Date</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-dt_periodemo_dtstart" class="easyui-datebox" style="width: 400px" mapping="periodemo_dtstart" data-options="editable:false , disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">End Date</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-dt_periodemo_dtend" class="easyui-datebox" style="width: 400px" mapping="periodemo_dtend" data-options="editable:false , disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_periodemo_isclosed" class="easyui-checkbox c1" mapping="periodemo_isclosed" data-options="label: 'Closed', labelPosition: 'after', disabled:false, checked: false , disabled: true">
+			</div>
+		</div>
+
+
+
+		<div class="form_row" style="visibility: hidden">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Close By</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_periodemo_closeby" class="easyui-textbox" mapping="periodemo_closeby"  maxlength="14" style="width: 400px" data-options="multiline: false , disabled: true ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row" style="visibility: hidden">
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Close Date</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-dt_periodemo_closedate" class="easyui-datebox" style="width: 400px" mapping="periodemo_closedate" data-options="editable:false , disabled: true">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+	</form>
+
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<a id="pnl_edit-btn_save" class="easyui-linkbutton c1" style="width">Simpan</a>
+		</div>
+	</div>	
+
+
+
+
+
+	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; height: 40px; display: flex; justify-content: space-between; padding: 5px 2px 2px 2px ">
+		<div>
+			<!-- letakkan tombol yang lin disini -->
+			<a id="pnl_edit-btn_close" href="javascript:void(0)" class="easyui-linkbutton c8" style="margin-left:10px;">Close</a>			
+			<a id="pnl_edit-btn_reopen" href="javascript:void(0)" class="easyui-linkbutton c8" style="margin-left:10px;">Re-Open</a>			
+		</div>
+		<div>
+			<a id="pnl_edit-btn_delete" class="easyui-linkbutton c5" style="width">Hapus</a>
+		</div>
+	</div>
+
+</div>
+

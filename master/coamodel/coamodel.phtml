@@ -1,0 +1,12 @@
+<?php require_once dirname(__FILE__).'/coamodel-list.phtml' ?>
+<?php require_once dirname(__FILE__).'/coamodel-edit.phtml' ?>
+
+
+
+<?php
+$customrecordstatus = __DIR__.'/coamodel-customrecordstatus.phtml'; 
+if (is_file($customrecordstatus)) {
+	include $customrecordstatus;
+} else { ?>
+
+<?php } ?>

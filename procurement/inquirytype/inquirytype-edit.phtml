@@ -1,0 +1,500 @@
+<div id="pnl_edit">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Edit Inquiry Type</div>
+		<a id="pnl_edit-btn_edit" href="javascript:void(0)" class="easyui-linkbutton fgta-button-edit" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+
+
+	<form id="pnl_edit-form">
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_inquirytype_id" class="easyui-textbox" mapping="inquirytype_id"  maxlength="14" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Model</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_inquirymodel_id" class="easyui-combo" style="width: 400px" mapping="inquirymodel_id" display="inquirymodel_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Model harus diisi'"   validType="requiredcombo['pnl_edit-cbo_inquirymodel_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Inquiry Type Name</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_inquirytype_name" class="easyui-textbox" mapping="inquirytype_name"  maxlength="90" style="width: 400px" data-options="multiline: false , required: true, invalidMessage: 'Nama Tipe harus diisi' ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isdisabled" class="easyui-checkbox c1" mapping="inquirytype_isdisabled" data-options="label: 'Disabled', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Descr</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_inquirytype_descr" class="easyui-textbox" mapping="inquirytype_descr"  maxlength="255" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Selection</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_inquiryselect_id" class="easyui-combo" style="width: 400px" mapping="inquiryselect_id" display="inquiryselect_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Selection harus diisi'"   validType="requiredcombo['pnl_edit-cbo_inquiryselect_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isperempl" class="easyui-checkbox c1" mapping="inquirytype_isperempl" data-options="label: 'Per Employee', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Manage As</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_itemmanage_id" class="easyui-combo" style="width: 400px" mapping="itemmanage_id" display="itemmanage_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Order Doc harus diisi'"   validType="requiredcombo['pnl_edit-cbo_itemmanage_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Destination Dept</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_related_dept_id" class="easyui-combo" style="width: 400px" mapping="related_dept_id" display="related_dept_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Related Departemen harus diisi'"   validType="requiredcombo['pnl_edit-cbo_related_dept_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">inquiry item untuk barang yg dikelola oleh dept ini</div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Destination Team</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_related_team_id" class="easyui-combo" style="width: 400px" mapping="related_team_id" display="related_team_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Base Site Cek</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_site_id" class="easyui-combo" style="width: 400px" mapping="site_id" display="site_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Inquiry untuk asset yang tersedia di <b>Site</b> ini</div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Base Room Cek</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_room_id" class="easyui-combo" style="width: 400px" mapping="room_id" display="room_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Inquiry untuk asset yang tersedia di <b>room</b> ini</div>
+			</div>
+		</div>
+
+		<?=$this->Section('Advance', true, true, '')?>
+		<div class="fgta_section_collapsible " style="display: none">
+					
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Request Advance</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isallowadvance" class="easyui-checkbox c1" mapping="inquirytype_isallowadvance" data-options="label: 'Allowed', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">AR Partner</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isemplaspartner" class="easyui-checkbox c1" mapping="inquirytype_isemplaspartner" data-options="label: 'Use Responsible Employee', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Max Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_inquirytype_maxadvancevalue" class="easyui-numberbox" mapping="inquirytype_maxadvancevalue" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		</div>
+					
+		<?=$this->Section('Related Dept', true, true, '')?>
+		<div class="fgta_section_collapsible " style="display: none">
+					
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Item Owner</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_owner_dept_id" class="easyui-combo" style="width: 400px" mapping="owner_dept_id" display="owner_dept_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Batasi inquiry item hanya untuk barang yg dimiliki oleh dept ini</div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Team of Owner</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_owner_team_id" class="easyui-combo" style="width: 400px" mapping="owner_team_id" display="owner_team_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Order Process By</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_orderout_dept_id" class="easyui-combo" style="width: 400px" mapping="orderout_dept_id" display="orderout_dept_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Departemen Pemroses harus diisi'"   validType="requiredcombo['pnl_edit-cbo_orderout_dept_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Pembuat PO Apabila inquiry ini ditindaklanjuti order ke vendor/supplier/3rd party</div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Order Team</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_orderout_team_id" class="easyui-combo" style="width: 400px" mapping="orderout_team_id" display="owner_team_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Transaksi Default</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_trxmodel_id" class="easyui-combo" style="width: 400px" mapping="trxmodel_id" display="trxmodel_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Default Model Transaksi harus diisi'"   validType="requiredcombo['pnl_edit-cbo_trxmodel_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Default Followup Transaksi Order yang akan dilakukan, apabila diperlukan</div>
+			</div>
+		</div>
+
+		</div>
+					
+		<?=$this->Section('Inquiry Document', true, true, '')?>
+		<div class="fgta_section_collapsible " style="display: none">
+					
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Judul Inquiry (1)</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_inquiry_title_ina" class="easyui-textbox" mapping="inquiry_title_ina"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Judul Inquiry (2)</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_inquiry_title_eng" class="easyui-textbox" mapping="inquiry_title_eng"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Inquiry Doc</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_inquiry_doc_id" class="easyui-combo" style="width: 400px" mapping="inquiry_doc_id" display="inquiry_doc_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Inquiry Doc harus diisi'"   validType="requiredcombo['pnl_edit-cbo_inquiry_doc_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		</div>
+					
+		<?=$this->Section('Request Document', true, true, '')?>
+		<div class="fgta_section_collapsible " style="display: none">
+					
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Judul Request (1)</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_request_title_ina" class="easyui-textbox" mapping="request_title_ina"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Judul Request (2)</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_request_title_eng" class="easyui-textbox" mapping="request_title_eng"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Request Doc</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_request_doc_id" class="easyui-combo" style="width: 400px" mapping="request_doc_id" display="request_doc_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Request Doc harus diisi'"   validType="requiredcombo['pnl_edit-cbo_request_doc_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		</div>
+					
+		<?=$this->Section('OrderOut Document', true, true, '')?>
+		<div class="fgta_section_collapsible " style="display: none">
+					
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Judul Orderout (1)</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_orderout_title_ina" class="easyui-textbox" mapping="orderout_title_ina"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Judul Orderout (2)</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_orderout_title_eng" class="easyui-textbox" mapping="orderout_title_eng"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Order Doc</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_orderout_doc_id" class="easyui-combo" style="width: 400px" mapping="orderout_doc_id" display="orderout_doc_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Order Doc harus diisi'"   validType="requiredcombo['pnl_edit-cbo_orderout_doc_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		</div>
+					
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Selection</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquiryselect_isshowitemasset" class="easyui-checkbox c1" mapping="inquiryselect_isshowitemasset" data-options="label: 'Show Itemasset', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquiryselect_isshowitem" class="easyui-checkbox c1" mapping="inquiryselect_isshowitem" data-options="label: 'Show Item', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquiryselect_isshowitemstock" class="easyui-checkbox c1" mapping="inquiryselect_isshowitemstock" data-options="label: 'Show Itemstock', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquiryselect_isshowpartner" class="easyui-checkbox c1" mapping="inquiryselect_isshowpartner" data-options="label: 'Show Partner', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquiryselect_isshowitemclass" class="easyui-checkbox c1" mapping="inquiryselect_isshowitemclass" data-options="label: 'Show Itemclass', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquiryselect_isitemclassdisabled" class="easyui-checkbox c1" mapping="inquiryselect_isitemclassdisabled" data-options="label: 'Itemclass Disabled', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Header</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_ispartnerheader" class="easyui-checkbox c1" mapping="inquirytype_ispartnerheader" data-options="label: 'Select Partner at Header', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Metrics</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isuseqty" class="easyui-checkbox c1" mapping="inquirytype_isuseqty" data-options="label: 'Use Qty', labelPosition: 'after', checked: false ">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isusedays" class="easyui-checkbox c1" mapping="inquirytype_isusedays" data-options="label: 'Use Days', labelPosition: 'after', checked: false ">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isusetask" class="easyui-checkbox c1" mapping="inquirytype_isusetask" data-options="label: 'Use Task', labelPosition: 'after', checked: false ">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Restrict To Budget</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_islimitqty" class="easyui-checkbox c1" mapping="inquirytype_islimitqty" data-options="label: 'Limit Qty by Budget', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_islimitdays" class="easyui-checkbox c1" mapping="inquirytype_islimitdays" data-options="label: 'Limit Days by Budget', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_islimittask" class="easyui-checkbox c1" mapping="inquirytype_islimittask" data-options="label: 'Limit Task by Budget', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_islimitvalue" class="easyui-checkbox c1" mapping="inquirytype_islimitvalue" data-options="label: 'Limit Value By Budget', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isallowunbudget" class="easyui-checkbox c1" mapping="inquirytype_isallowunbudget" data-options="label: 'Allow Request UnBudgeted', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isallowitemunbudget" class="easyui-checkbox c1" mapping="inquirytype_isallowitemunbudget" data-options="label: 'Allow Items UnBudgeted', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isallowoverbudget" class="easyui-checkbox c1" mapping="inquirytype_isallowoverbudget" data-options="label: 'Allow Request Over Budget', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Item</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isdeptuser" class="easyui-checkbox c1" mapping="inquirytype_isdeptuser" data-options="label: 'Filter by User Dept', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isdeptowner" class="easyui-checkbox c1" mapping="inquirytype_isdeptowner" data-options="label: 'Filter to Owner Dept', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" style="display: none">
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isdeptmaintainer" class="easyui-checkbox c1" mapping="inquirytype_isdeptmaintainer" data-options="label: 'Filter by Maintainer Dept', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isqtybreakdown" class="easyui-checkbox c1" mapping="inquirytype_isqtybreakdown" data-options="label: 'Breakdown Quantity', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Followup</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_istoberequest" class="easyui-checkbox c1" mapping="inquirytype_istoberequest" data-options="label: 'Mark As To be Request', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isautorequest" class="easyui-checkbox c1" mapping="inquirytype_isautorequest" data-options="label: 'Auto create Request when processed', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isautoorder" class="easyui-checkbox c1" mapping="inquirytype_isautoorder" data-options="label: 'Auto create Order when processed', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_ismovinginit" class="easyui-checkbox c1" mapping="inquirytype_ismovinginit" data-options="label: 'Auto create Moving Init when processed', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col">Range</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_inquirytype_isdateinterval" class="easyui-checkbox c1" mapping="inquirytype_isdateinterval" data-options="label: 'Date Interval', labelPosition: 'after', checked: false , labelWidth: '300px'">
+			</div>
+		</div>
+
+	</form>
+
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<a id="pnl_edit-btn_save" class="easyui-linkbutton c1 fgta-button-save" style="width">Simpan</a>
+		</div>
+	</div>	
+
+
+
+		<div id="pnl_edit-detil" class="form_row" style="margin-top: 30px">
+			<div class="form_label_col"></div>
+			<div class="form_input_col detilbox" style="border: 0px solid black">
+				<div class="fgtable-head" style="height: 25px; padding: 5px 0px 0px 5px">Detil Informations</div>
+				<div class="fgtable-head-drow" style="height: 25px; padding: 5px 5px 0px 5px; " onclick="$ui.getPages().ITEMS['pnl_edit'].handler.detil_open('pnl_editpartnertypegrid')">
+					<div id="pnl_edit-txt_partnertype_title" class="detilgrid-text">Partner Type</div>
+					<div id="pnl_edit-txt_partnertype_value" class="detilgrid-value">&nbsp;</div>
+				</div>
+				<div class="fgtable-head-drow" style="height: 25px; padding: 5px 5px 0px 5px; " onclick="$ui.getPages().ITEMS['pnl_edit'].handler.detil_open('pnl_editmodeltransaksigrid')">
+					<div id="pnl_edit-txt_modeltransaksi_title" class="detilgrid-text">Model Transaksi</div>
+					<div id="pnl_edit-txt_modeltransaksi_value" class="detilgrid-value">&nbsp;</div>
+				</div>
+				<div class="fgtable-head-drow" style="height: 25px; padding: 5px 5px 0px 5px; " onclick="$ui.getPages().ITEMS['pnl_edit'].handler.detil_open('pnl_edititemclassgrid')">
+					<div id="pnl_edit-txt_itemclass_title" class="detilgrid-text">Item Class</div>
+					<div id="pnl_edit-txt_itemclass_value" class="detilgrid-value">&nbsp;</div>
+				</div>
+
+			</div>		
+		</div>		
+		
+		
+
+
+	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; display: flex; justify-content: space-between; padding: 10px 2px 2px 2px ">
+		<div>
+			<!-- letakkan tombol-tombol xtion disini -->
+			<?php
+			$customheaderxtion = __DIR__.'/inquirytype-edit-customxtion.phtml'; 
+			if (is_file($customheaderxtion)) {
+				include $customheaderxtion;
+			} else { ?>
+			
+			
+			
+			
+			<?php } ?>
+		</div>
+		<div>
+			<a id="pnl_edit-btn_delete" class="easyui-linkbutton c5 fgta-button-delete" style="margin-bottom: 10px; margin-right: 10px">Hapus</a>
+		</div>
+	</div>
+
+</div>
+

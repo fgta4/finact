@@ -1,0 +1,18 @@
+<?php require_once dirname(__FILE__).'/inquirytype-list.phtml' ?>
+<?php require_once dirname(__FILE__).'/inquirytype-edit.phtml' ?>
+<?php require_once dirname(__FILE__).'/inquirytype-partnertypegrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/inquirytype-partnertypeform.phtml' ?>
+<?php require_once dirname(__FILE__).'/inquirytype-modeltransaksigrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/inquirytype-modeltransaksiform.phtml' ?>
+<?php require_once dirname(__FILE__).'/inquirytype-itemclassgrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/inquirytype-itemclassform.phtml' ?>
+
+
+
+<?php
+$customrecordstatus = __DIR__.'/inquirytype-customrecordstatus.phtml'; 
+if (is_file($customrecordstatus)) {
+	include $customrecordstatus;
+} else { ?>
+
+<?php } ?>

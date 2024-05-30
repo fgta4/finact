@@ -1,0 +1,30 @@
+.rptdata-col-no {
+	width: 10mm;
+	padding-right: 3mm;
+	text-align: right;
+}
+
+
+.rptdata-col-accfinname {
+	font-weight: normal;
+}
+
+.rptdata-col-accfinname.parent {
+	font-weight: bold;
+}
+
+.rptdata-col-accfinname.detil  {
+	font-weight: normal;
+}
+
+
+.rptdata-col-accfincode {
+	width: 20mm;
+	text-align: center;
+}
+
+
+.rptdata-col-accfinparent {
+	width: 20mm;
+	text-align: center;
+}

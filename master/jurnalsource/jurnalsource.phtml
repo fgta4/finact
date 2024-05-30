@@ -1,0 +1,14 @@
+<?php require_once dirname(__FILE__).'/jurnalsource-list.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsource-edit.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsource-jurnaltypegrid.phtml' ?>
+<?php require_once dirname(__FILE__).'/jurnalsource-jurnaltypeform.phtml' ?>
+
+
+
+<?php
+$customrecordstatus = __DIR__.'/jurnalsource-customrecordstatus.phtml'; 
+if (is_file($customrecordstatus)) {
+	include $customrecordstatus;
+} else { ?>
+
+<?php } ?>

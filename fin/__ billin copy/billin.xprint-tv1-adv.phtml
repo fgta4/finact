@@ -1,0 +1,249 @@
+<?php
+
+	$doc_iso_reg = "ISO/Number/xxxx";
+	$report_title['id'] = "PERMINTAAN UANG MUKA";
+	$report_title['en'] = "ADVANCE REQUEST";
+
+	$report_printid = strtoupper(uniqid());
+	$report_printdate = date('d/m/Y');
+
+	$doc_id = $this->billin_id;
+	$doc_descr = $this->billin_descr ;
+?>
+
+
+
+<div style="position: absolute; z-index: 1">
+	<div  id="pagemeasure">&nbsp;</div>
+</div>
+
+
+<div id="wrapper" style="z-index: 10">
+
+	<!-- page header: selalu ditampilkan pada tiap halaman, kecuali halaman 1 -->
+	<div id="pageheader" class="fullwidth">
+		<div>
+			<div><?=$doc_id?></div>
+			<div style="font-style: italic"><?=$doc_descr?></div>
+		</div>
+		<div style="text-align: right; width: 70mm;">
+			<div style="display:inline-block; width: 38mm;"><b>Print Id</b> <?=$report_printid?></div>
+			<div style="display:inline-block; width: 30mm;">&nbsp;</div>
+			
+		</div>
+	</div>
+
+	<!-- Gak dipakai -->
+	<div id="reporthead-col-qrcode" style="text-align: right; margin-left: 5mm; display:none">
+		<img id="elqrcode" value="<?=$doc_id?>" size="250">
+		<div id="reporttotalpage">1</div>
+	</div>
+
+	<!-- report header --->
+	<div id="reporttitle" class="fullwidth">
+		<div style="display: flex; justify-content: space-between">
+			<div>
+				<img id="ellogo" src="index.php/public/assets/logo-printform.svg">
+			</div>
+			<div style="text-align: right">
+				<div style="font-size: 7pt; font-style: italic"><?=$doc_iso_reg?></div>
+				<div style="font-weight: bold; font-size: 12pt; margin-top: 2mm"><?=$report_title['id']?></div>
+				<div style="font-weight: bold; font-style: italic; font-size: 10pt; color: #666"><?=$report_title['en']?></div>
+			</div>	
+		</div>
+	</div>
+
+	<div class="fullwidth" style="position: relative; margin-top: 2mm; display: flex; justify-content: space-between; background-color: #fff">
+		<div id="reporthead-col-dochead-1" class="content-width">
+			<table width="100%" cellpadding="3" cellspacing="0" style="border: 1px solid #000">
+
+				<tr>
+					<td class="rhead-tcol-label-1 border" style="border-bottom: 1px dotted #000">Tanggal Permintaan</td>
+					<td class="rhead-tcol-value-1 border" style="border-bottom: 1px dotted #000">&nbsp;</td>
+					<td class="rhead-tcol-label-2 border" style="border-bottom: 1px dotted #000">No/Ref</td>
+					<td class="rhead-tcol-value-2 border" style="border-bottom: 1px dotted #000"><?=$doc_id?></td>
+				</tr>
+				<tr>
+					<td class="rhead-tcol-label-1 border" style="border-top: 0px; border-bottom: 1px dotted #000">Pemohon</td>
+					<td class="rhead-tcol-value-1 border" style="border-top: 0px; border-bottom: 1px dotted #000">&nbsp;</td>
+					<td class="rhead-tcol-label-2 border" style="border-top: 0px; border-bottom: 1px dotted #000">No AP</td>
+					<td class="rhead-tcol-value-2 border" style="border-top: 0px; border-bottom: 1px dotted #000">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="rhead-tcol-label-1 border" style="border-top: 0px;">Departemen</td>
+					<td class="rhead-tcol-value-1 border" style="border-top: 0px;"><?=$this->dept_name?></td>
+					<td class="rhead-tcol-label-2 border" style="border-top: 0px;">Project/Program</td>
+					<td class="rhead-tcol-value-2 border" style="border-top: 0px;"><?=$this->projbudget_name?></td>
+				</tr>
+
+				<tr>
+					<td class="rhead-tcol-label-1 border" style="border-bottom: 1px dotted #000">Dibayarkan Kepada</td>
+					<td class="rhead-tcol-value-1 border" style="border-bottom: 1px dotted #000"><?=$this->partner_name?> </td>
+					<td class="rhead-tcol-label-2 border" style="border-bottom: 1px dotted #000">Episode</td>
+					<td class="rhead-tcol-value-2 border" style="border-bottom: 1px dotted #000">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="rhead-tcol-label-1 border" style="border-top: 0px; border-bottom: 1px dotted #000">Cara Pembayaran</td>
+					<td class="rhead-tcol-value-1 border" style="border-top: 0px; border-bottom: 1px dotted #000">&nbsp;</td>
+					<td class="rhead-tcol-label-2 border" style="border-top: 0px; border-bottom: 1px dotted #000">Budget</td>
+					<td class="rhead-tcol-value-2 border" style="border-top: 0px; border-bottom: 1px dotted #000">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="rhead-tcol-label-1 border" style="border-top: 0px;">Tanggal Pembayaran</td>
+					<td class="rhead-tcol-value-1 border" style="border-top: 0px;">&nbsp;</td>
+					<td class="rhead-tcol-label-2 border" style="border-top: 0px;">Sub Budget</td>
+					<td class="rhead-tcol-value-2 border" style="border-top: 0px;">&nbsp;</td>
+				</tr>
+
+				<tr>
+					<td class="rhead-tcol-label-1 border" style="vertical-align: top">Alamat Pembayaran</td>
+					<td class="rhead-tcol-value-1 border" style="height: 10mm" colspan="3">&nbsp;</td>
+				</tr>				
+			</table>
+		</div>
+
+	</div>
+
+
+	<!-- report content -->
+	<div id="reportcontent" class="fullwidth">
+		
+		<table width="100%" cellpadding="3" cellspacing="0" >
+			<thead>
+				<tr>
+					<th class="billing-col-no border" style="height: 8mm; border-top: 2px solid #000; border-left: 2px solid #000">No</th>
+					<th class="billing-col-descr border" style="height: 8mm; border-top: 2px solid #000">Keterangan</th>
+					<th class="billing-col-value border" style="height: 8mm; border-top: 2px solid #000; border-right: 2px solid #000">Jumlah</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+					$i = 0;
+					$total_value = 0;
+					foreach ($this->rows as $row){
+						$i++;										
+						$total_value += $row['billindetil_validr'];
+				?>
+				<tr>
+					<td class="row billing-col-no" style="height: 8mm"><?=$i?></td>
+					<td class="row billing-col-descr"  style="height: 8mm"><?=$row['billindetil_descr']?></td>
+					<td class="row billing-col-value" style="height: 8mm"><?=number_format($row['billindetil_validr'])?></td>
+
+				</tr>
+				<?php } ?>
+
+				<!-- <tr>
+					<td class="rowfoot" colspan="2">TOTAL</td>
+					<td class="rowfoot billing-col-value"><?=number_format($total_value)?></td>
+				</tr>				 -->
+			</tbody>
+			<tfoot>
+			</tfoot>			
+		</table>
+
+		<script>global.totalrowcount = '<?=($i-1)?>'</script>
+	</div>
+
+
+</div>
+
+<div id="wrapperfooter" class="fullwidth" style="z-index: 20">
+	<div id="reportfooter" style="height: 114mm; ">
+		<table width="100%" cellpadding="3" cellspacing="0" style="border: 1px solid #000; margin-bottom: 1mm">				
+			<tr>
+				<td style="height: 3mm; text-align: right; font-weight: bold; border: 1px solid #000">TOTAL</td>
+				<td class="row billing-col-value" rowspan="2"style="height: 3mm; text-align: right; vertical-align:top; font-weight: bold; border: 1px solid #000 "><?=number_format($total_value)?></td>
+			</tr>
+			<tr>			
+				<td style="height: 15mm; font-size: 8pt;  border: 1px solid #000">
+					<div style="display: flex">	
+						<div style="padding-top: 0px"><input type="checkbox"></div>
+						<div style="width: 60mm; transform: translate(0,16)">Rincian Rencana Penggunaan Dana</div>
+						<div style="><input type="checkbox"></div>
+						<div style="width: 40mm; border-bottom: 1px solid #666">&nbsp;</div>	
+					</div>
+					<div style="display: flex">	
+						<div style="padding-top: 0px"><input type="checkbox"></div>
+						<div style="width: 60mm; transform: translate(0,16)">Persetujuan Perjalanan Dinas</div>
+						<div><input type="checkbox"></div>
+						<div style="width: 40mm; border-bottom: 1px solid #666">&nbsp;</div>	
+					</div>
+				</td>
+			</tr>			
+		</table>				
+		<div style="height: 35mm; display: flex; ">
+			<div style="height: 34mm; margin-right: 1mm">
+				<table style=" width: 115mm; border: 1px solid;" celpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="3" class="border"  style="height: 6mm;width: 75mm; text-align: center; font-weight:bold ">Pemohon</td>
+					<tr>
+					<tr>
+						<td class="border" style="height: 25mm; width: 25mm; vertical-align: top; text-align: center; font-size: 8pt">Pemohon</td>
+						<td class="border" style="height: 25mm; width: 25mm; vertical-align: top; text-align: center; font-size: 8pt">Kepala Departemen<br>EP/Producer</td>
+						<td class="border" style="height: 25mm; width: 25mm; vertical-align: top; text-align: center; font-size: 8pt">Kepala Divisi</td>
+					</tr>	
+				</table>	
+			</div>
+			<div style="height: 34mm;">
+				<table style="width: 80mm; border: 1px solid;" celpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="2" style="height: 6mm; text-align: center; font-weight:bold; border: 1px solid #000 ">Data Outstanding Uang Muka</td>
+					<tr>
+					<tr>
+						<td class="outstd border">Outstanding > 31 hari</td>
+						<td class="outstd border">&nbsp;</td>
+					</tr>	
+					<tr>
+						<td class="outstd border">Outstanding 1-30</td>
+						<td class="outstd border">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="outstd border">Current</td>
+						<td class="outstd border">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="outstd border">Total Outstanding</td>
+						<td class="outstd border">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="outstd border">Total Request</td>
+						<td class="outstd border">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="outstd border">Total Advance</td>
+						<td class="outstd border">&nbsp;</td>
+					</tr>
+				</table>		
+			</div>
+
+		</div>
+
+		<div style="height: 35mm; display: flex">
+			<div style="height: 34mm; margin-right: 1mm">
+				<table style="border: 1px solid; width: 115mm" celpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="3" class="border"  style="height: 6mm;width: 75mm; text-align: center; font-weight:bold ">Diperiksa</td>
+					<tr>
+					<tr>
+						<td class="border" style="height: 25mm; width: 25mm; vertical-align: top; text-align: center; font-size: 8pt">BCC</td>
+						<td class="border" style="height: 25mm; width: 25mm; vertical-align: top; text-align: center; font-size: 8pt">Keuangan</td>
+						<td class="border" style="height: 25mm; width: 25mm; vertical-align: top; text-align: center; font-size: 8pt">Akuntansi</td>
+					</tr>	
+				</table>	
+			</div>
+			<div style="height: 34mm;">
+				<table style="width: 80mm; border: 1px solid;" celpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="2" style="height: 6mm; text-align: center; font-weight:bold; border: 1px solid #000 ">Disetujui Oleh</td>
+					<tr>
+					<tr>
+						<td class="outstd border" style="height: 25mm; text-align: center; vertical-align: top">Direktur</td>
+						<td class="outstd border" style="height: 25mm; text-align: center; vertical-align: top">Direktur</td>
+					</tr>	
+				</table>	
+			</div>
+		</div>				
+	<div>	
+	
+				
+</div>
