@@ -20,7 +20,6 @@ const chk_autoadd = $('#pnl_editdetilform-autoadd')
 const pnl_form = $('#pnl_editdetilform-form')
 const obj = {
 	txt_jurnaldetil_id: $('#pnl_editdetilform-txt_jurnaldetil_id'),
-	chk_jurnaldetil_isprelinked: $('#pnl_editdetilform-chk_jurnaldetil_isprelinked'),
 	txt_jurnaldetil_descr: $('#pnl_editdetilform-txt_jurnaldetil_descr'),
 	txt_jurnaldetil_valfrg: $('#pnl_editdetilform-txt_jurnaldetil_valfrg'),
 	cbo_curr_id: $('#pnl_editdetilform-cbo_curr_id'),

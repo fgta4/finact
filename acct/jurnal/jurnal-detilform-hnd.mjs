@@ -1,9 +1,6 @@
 const btn_edit = $('#pnl_editdetilform-btn_edit');
 const btn_link = $('#pnl_editdetilform-btn_link');
 const btn_unlink = $('#pnl_editdetilform-btn_unlink');
-const btn_linkpayable = $('#pnl_editdetilform-btn_link_payable');
-const btn_linkreceivable = $('#pnl_editdetilform-btn_link_receivable');
-
 
 let editor, form, obj, opt;
 let caneditdetil = false;
@@ -31,15 +28,7 @@ export function init(ed) {
 		onClick: () => { btn_unlink_click() }
 	});
 
-	btn_linkpayable.linkbutton({
-		onClick: () => { btn_linkpayable_click() }
-	});
 
-	btn_linkreceivable.linkbutton({
-		onClick: () => { btn_linkreceivable_click() }
-	});
-
-	
 	document.addEventListener('OnViewModeChanged', (ev) => {
 		if (ev.detail.viewmode===true) {
 			caneditdetil = false;
@@ -66,6 +55,7 @@ export function setupTitle(txt_title, header_data, state) {
 	txt_title[0].classList.remove('fgta-page-subtitle');
 	var title = '';
 
+
 	if (state=='new') {
 		console.log('new');
 	}
@@ -76,18 +66,8 @@ export function setupTitle(txt_title, header_data, state) {
 	`;
 
 	txt_title.html(title);
+
 }	
-
-
-export function form_viewmodechanged(viewonly) {
-	var fn_state = 'disable';
-	if (!viewonly) {
-		fn_state = 'enable';
-	} 
-	btn_linkpayable.linkbutton(fn_state)
-	btn_linkreceivable.linkbutton(fn_state)
-}
-
 
 export function form_gettingdata(data) {
 	data.curr_name = obj.cbo_curr_id.combo('getText');
@@ -327,23 +307,6 @@ function btn_unlink_click() {
 		}, 
 	})
 }
-
-function btn_linkpayable_click() {
-	var data = form.getData();
-	$ui.getPages().show('pnl_editlink', ()=>{
-		//var args = { data: data, form: form, obj: obj }
-		//$ui.getPages().ITEMS['pnl_editlink'].handler.setupJurnalTobeLinked(args);
-	});
-}
-
-function btn_linkreceivable_click() {
-	var data = form.getData();
-	$ui.getPages().show('pnl_editlink', ()=>{
-		//var args = { data: data, form: form, obj: obj }
-		//$ui.getPages().ITEMS['pnl_editlink'].handler.setupJurnalTobeLinked(args);
-	});
-}
-
 
 async function unlinkjurnal() {
 	var data = form.getData();

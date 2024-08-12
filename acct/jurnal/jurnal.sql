@@ -173,7 +173,6 @@ ALTER TABLE `trn_jurnal` ADD CONSTRAINT `fk_trn_jurnal_mst_project` FOREIGN KEY 
 
 CREATE TABLE IF NOT EXISTS `trn_jurnaldetil` (
 	`jurnaldetil_id` varchar(14) NOT NULL , 
-	`jurnaldetil_isprelinked` tinyint(1) NOT NULL DEFAULT 0, 
 	`jurnaldetil_descr` varchar(255) NOT NULL , 
 	`jurnaldetil_valfrg` decimal(14, 2) NOT NULL DEFAULT 0, 
 	`curr_id` varchar(10) NOT NULL , 
@@ -200,8 +199,7 @@ ENGINE=InnoDB
 COMMENT='Jurnal Detil';
 
 
-ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `jurnaldetil_isprelinked` tinyint(1) NOT NULL DEFAULT 0 AFTER `jurnaldetil_id`;
-ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `jurnaldetil_descr` varchar(255) NOT NULL  AFTER `jurnaldetil_isprelinked`;
+ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `jurnaldetil_descr` varchar(255) NOT NULL  AFTER `jurnaldetil_id`;
 ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `jurnaldetil_valfrg` decimal(14, 2) NOT NULL DEFAULT 0 AFTER `jurnaldetil_descr`;
 ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `curr_id` varchar(10) NOT NULL  AFTER `jurnaldetil_valfrg`;
 ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `jurnaldetil_valfrgrate` decimal(14, 0) NOT NULL DEFAULT 0 AFTER `curr_id`;
@@ -219,8 +217,7 @@ ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `jurnaldetil_blockorder`
 ALTER TABLE `trn_jurnaldetil` ADD COLUMN IF NOT EXISTS  `jurnal_id` varchar(30) NOT NULL  AFTER `jurnaldetil_blockorder`;
 
 
-ALTER TABLE `trn_jurnaldetil` MODIFY COLUMN IF EXISTS  `jurnaldetil_isprelinked` tinyint(1) NOT NULL DEFAULT 0  AFTER `jurnaldetil_id`;
-ALTER TABLE `trn_jurnaldetil` MODIFY COLUMN IF EXISTS  `jurnaldetil_descr` varchar(255) NOT NULL   AFTER `jurnaldetil_isprelinked`;
+ALTER TABLE `trn_jurnaldetil` MODIFY COLUMN IF EXISTS  `jurnaldetil_descr` varchar(255) NOT NULL   AFTER `jurnaldetil_id`;
 ALTER TABLE `trn_jurnaldetil` MODIFY COLUMN IF EXISTS  `jurnaldetil_valfrg` decimal(14, 2) NOT NULL DEFAULT 0  AFTER `jurnaldetil_descr`;
 ALTER TABLE `trn_jurnaldetil` MODIFY COLUMN IF EXISTS  `curr_id` varchar(10) NOT NULL   AFTER `jurnaldetil_valfrg`;
 ALTER TABLE `trn_jurnaldetil` MODIFY COLUMN IF EXISTS  `jurnaldetil_valfrgrate` decimal(14, 0) NOT NULL DEFAULT 0  AFTER `curr_id`;
