@@ -5,7 +5,7 @@
 			"name": "Finance Accounting Module"
 		},
 		{
-			"path": "../fgta4_generator",
+			"path": "../generator",
 			"name": "FGTA4 Generator"
 		}
 	],
