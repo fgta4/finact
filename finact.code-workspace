@@ -1,7 +1,12 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".",
+			"name": "Finance Accounting Module"
+		},
+		{
+			"path": "../fgta4_generator",
+			"name": "FGTA4 Generator"
 		}
 	],
 	"settings": {}

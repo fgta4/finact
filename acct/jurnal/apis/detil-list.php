@@ -27,7 +27,7 @@ use \FGTA4\exceptions\WebException;
  * Tangerang, 26 Maret 2021
  *
  * digenerate dengan FGTA4 generator
- * tanggal 21/12/2023
+ * tanggal 30/11/2023
  */
 $API = new class extends jurnalBase {
 
@@ -83,11 +83,11 @@ $API = new class extends jurnalBase {
 			
 			/* Data Query Configuration */
 			$sqlFieldList = [
-				'jurnaldetil_id' => 'A.`jurnaldetil_id`', 'jurnaldetil_isprelinked' => 'A.`jurnaldetil_isprelinked`', 'jurnaldetil_descr' => 'A.`jurnaldetil_descr`', 'jurnaldetil_valfrg' => 'A.`jurnaldetil_valfrg`',
-				'curr_id' => 'A.`curr_id`', 'jurnaldetil_valfrgrate' => 'A.`jurnaldetil_valfrgrate`', 'jurnaldetil_validr' => 'A.`jurnaldetil_validr`', 'coa_id' => 'A.`coa_id`',
-				'unit_id' => 'A.`unit_id`', 'dept_id' => 'A.`dept_id`', 'partner_id' => 'A.`partner_id`', 'project_id' => 'A.`project_id`',
-				'jurnaldetil_outstanding_frg' => 'A.`jurnaldetil_outstanding_frg`', 'jurnaldetil_outstanding_idr' => 'A.`jurnaldetil_outstanding_idr`', 'jurnaldetil_id_ref' => 'A.`jurnaldetil_id_ref`', 'jurnaldetil_head' => 'A.`jurnaldetil_head`',
-				'jurnaldetil_blockorder' => 'A.`jurnaldetil_blockorder`', 'jurnal_id' => 'A.`jurnal_id`', '_createby' => 'A.`_createby`', '_createdate' => 'A.`_createdate`',
+				'jurnaldetil_id' => 'A.`jurnaldetil_id`', 'jurnaldetil_descr' => 'A.`jurnaldetil_descr`', 'jurnaldetil_valfrg' => 'A.`jurnaldetil_valfrg`', 'curr_id' => 'A.`curr_id`',
+				'jurnaldetil_valfrgrate' => 'A.`jurnaldetil_valfrgrate`', 'jurnaldetil_validr' => 'A.`jurnaldetil_validr`', 'coa_id' => 'A.`coa_id`', 'unit_id' => 'A.`unit_id`',
+				'dept_id' => 'A.`dept_id`', 'partner_id' => 'A.`partner_id`', 'project_id' => 'A.`project_id`', 'jurnaldetil_outstanding_frg' => 'A.`jurnaldetil_outstanding_frg`',
+				'jurnaldetil_outstanding_idr' => 'A.`jurnaldetil_outstanding_idr`', 'jurnaldetil_id_ref' => 'A.`jurnaldetil_id_ref`', 'jurnaldetil_head' => 'A.`jurnaldetil_head`', 'jurnaldetil_blockorder' => 'A.`jurnaldetil_blockorder`',
+				'jurnal_id' => 'A.`jurnal_id`', '_createby' => 'A.`_createby`', '_createdate' => 'A.`_createdate`', '_modifyby' => 'A.`_modifyby`',
 				'_createby' => 'A.`_createby`', '_createdate' => 'A.`_createdate`', '_modifyby' => 'A.`_modifyby`', '_modifydate' => 'A.`_modifydate`'
 			];
 			$sqlFromTable = "trn_jurnaldetil A";

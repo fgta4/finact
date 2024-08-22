@@ -301,14 +301,8 @@ module.exports = {
 			primarykeys: ['jurnaldetil_id'],		
 			data: {
 
-				jurnaldetil_id: { 
-					text: 'ID', type: dbtype.varchar(14), null: false,  suppresslist: true, hidden: true,
-					after: `
-					<?php require_once __DIR__ . '/jurnal-detilform-linkdata.phtml'; ?>
-					`
-				},
+				jurnaldetil_id: { text: 'ID', type: dbtype.varchar(14), null: false,  suppresslist: true, hidden: true},
 
-				jurnaldetil_isprelinked: { text: 'PreLinked', type: dbtype.boolean, null: false, default: '0', suppresslist: true, options: { disabled: true } },
 				jurnaldetil_descr: { 
 					text: 'Descr', type: dbtype.varchar(255), null: false, 
 					options: { required: true, invalidMessage: 'Descr harus diisi' } 
