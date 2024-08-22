@@ -1,13 +1,13 @@
 <div id="pnl_edit">
 	<div class="fgta-page-title" style="display: flex; align-items: center ">
-		<div>Edit Item Group</div>
-		<a id="pnl_edit-btn_edit" href="javascript:void(0)" class="easyui-linkbutton" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+		<div id="pnl_edit-caption">{{STATE_BEG}}Item Group{{STATE_END}}</div>
+		<a id="pnl_edit-btn_edit" href="javascript:void(0)" class="easyui-linkbutton fgta-button-edit" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
 	</div>
 
 
 	<form id="pnl_edit-form">
 
-		<div class="form_row pnl_edit_row txt_itemgroup_id" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">ID</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_id" class="easyui-textbox" mapping="itemgroup_id"  maxlength="17" style="width: 400px" data-options="multiline: false , required: true, invalidMessage: 'ID Group harus diisi' ">
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row txt_itemgroup_name" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Item Group Name</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_name" class="easyui-textbox" mapping="itemgroup_name"  maxlength="60" style="width: 400px" data-options="multiline: false , required: true, invalidMessage: 'Nama Group harus diisi' ">
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row txt_itemgroup_nameshort" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Short Name</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_nameshort" class="easyui-textbox" mapping="itemgroup_nameshort"  maxlength="60" style="width: 400px" data-options="multiline: false , required: true, invalidMessage: 'Nama Group harus diisi' ">
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row txt_itemgroup_descr" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Descr</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_descr" class="easyui-textbox" mapping="itemgroup_descr"  maxlength="90" style="width: 400px" data-options="multiline: false  ">
@@ -39,14 +39,14 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row chk_itemgroup_isparent" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"></div>
 			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-chk_itemgroup_isparent" class="easyui-checkbox c1" mapping="itemgroup_isparent" data-options="label: 'Parent Dept', labelPosition: 'after', checked: false ">
+				<input id="pnl_edit-chk_itemgroup_isparent" class="easyui-checkbox c1" mapping="itemgroup_isparent" data-options="label: 'Parent Group', labelPosition: 'after', checked: false ">
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row cbo_itemgroup_parent" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Parent</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-cbo_itemgroup_parent" class="easyui-combo" style="width: 400px" mapping="itemgroup_parent" display="itemgroup_parent_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: '-- PILIH --'"  >
@@ -54,7 +54,7 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row txt_itemgroup_pathid" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">PathId</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_pathid" class="easyui-textbox" mapping="itemgroup_pathid"  maxlength="17" style="width: 400px" data-options="multiline: false , disabled: true ">
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row txt_itemgroup_path" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Path</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_path" class="easyui-textbox" mapping="itemgroup_path"  maxlength="390" style="width: 400px" data-options="multiline: false , disabled: true ">
@@ -70,7 +70,7 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row txt_itemgroup_level" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Level</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_level" class="easyui-numberbox" mapping="itemgroup_level" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , disabled: true">
@@ -78,14 +78,14 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row chk_itemgroup_isexselect" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"></div>
 			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-chk_itemgroup_isexselect" class="easyui-checkbox c1" mapping="itemgroup_isexselect" data-options="label: 'Exclude From Selection', labelPosition: 'after', checked: false ">
+				<input id="pnl_edit-chk_itemgroup_isexselect" class="easyui-checkbox c1" mapping="itemgroup_isexselect" data-options="label: 'Exclude From Selection', labelPosition: 'after', checked: false , labelWidth: '200px'">
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row cbo_itemmodel_id" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Model</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-cbo_itemmodel_id" class="easyui-combo" style="width: 400px" mapping="itemmodel_id" display="itemmodel_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Model harus diisi'"   validType="requiredcombo['pnl_edit-cbo_itemmodel_id']" >
@@ -93,7 +93,7 @@
 			</div>
 		</div>
 
-		<div class="form_row pnl_edit_row cbo_dept_id" >
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Dept</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-cbo_dept_id" class="easyui-combo" style="width: 400px" mapping="dept_id" display="dept_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Dept harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_dept_id']" >
@@ -107,7 +107,7 @@
 	<div class="form_row" style="margin-top: 30px">
 		<div class="form_label_col"></div>
 		<div class="form_input_col" style="border: 0px solid black">
-			<a id="pnl_edit-btn_save" class="easyui-linkbutton c1" style="width">Simpan</a>
+			<a id="pnl_edit-btn_save" class="easyui-linkbutton c1 fgta-button-save" style="width">Simpan</a>
 		</div>
 	</div>	
 
@@ -117,14 +117,20 @@
 
 	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; display: flex; justify-content: space-between; padding: 10px 2px 2px 2px ">
 		<div>
-			<!-- letakkan tombol yang lin disini -->
+			<!-- letakkan tombol-tombol xtion disini -->
+			<?php
+			$customheaderxtion = __DIR__.'/itemgroup-edit-customxtion.phtml'; 
+			if (is_file($customheaderxtion)) {
+				include $customheaderxtion;
+			} else { ?>
 			
 			
 			
 			
+			<?php } ?>
 		</div>
 		<div>
-			<a id="pnl_edit-btn_delete" class="easyui-linkbutton c5" style="margin-bottom: 10px; margin-right: 10px">Hapus</a>
+			<a id="pnl_edit-btn_delete" class="easyui-linkbutton c5 fgta-button-delete" style="margin-bottom: 10px; margin-right: 10px">Hapus</a>
 		</div>
 	</div>
 

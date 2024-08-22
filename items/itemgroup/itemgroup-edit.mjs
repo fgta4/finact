@@ -4,6 +4,8 @@ var this_page_options;
 import {fgta4slideselect} from  '../../../../../index.php/asset/fgta/framework/fgta4libs/fgta4slideselect.mjs'
 import * as hnd from  './itemgroup-edit-hnd.mjs'
 
+const txt_caption = $('#pnl_edit-caption')
+
 
 const btn_edit = $('#pnl_edit-btn_edit')
 const btn_save = $('#pnl_edit-btn_save')
@@ -40,16 +42,8 @@ export async function init(opt) {
 	this_page_id = opt.id;
 	this_page_options = opt;
 
-
+	txt_caption.template = txt_caption.html();
 	var disableedit = false;
-	// switch (this_page_options.variancename) {
-	// 	case 'commit' :
-	//		disableedit = true;
-	//		btn_edit.linkbutton('disable');
-	//		btn_save.linkbutton('disable');
-	//		btn_delete.linkbutton('disable');
-	//		break;
-	// }
 
 
 	form = new global.fgta4form(pnl_form, {
@@ -75,119 +69,57 @@ export async function init(opt) {
 		return getHeaderData();
 	}
 
+	// Generator: Print Handler not exist
+	// Generator: Commit Handler not exist
+	// Generator: Approval Handler not exist
+	// Generator: Xtion Handler not exist
+	// Generator: Object Handler not exist
+
+	// Generator: Upload Handler not exist
 
 
-
-
-
-
-
-
-
+	obj.cbo_itemgroup_parent.name = 'pnl_edit-cbo_itemgroup_parent'		
 	new fgta4slideselect(obj.cbo_itemgroup_parent, {
 		title: 'Pilih itemgroup_parent',
 		returnpage: this_page_id,
 		api: $ui.apis.load_itemgroup_parent,
 		fieldValue: 'itemgroup_parent',
+		fieldDisplay: 'itemgroup_parent_name',
 		fieldValueMap: 'itemgroup_id',
-		fieldDisplay: 'itemgroup_name',
+		fieldDisplayMap: 'itemgroup_name',
 		fields: [
 			{mapping: 'itemgroup_id', text: 'itemgroup_id'},
-			{mapping: 'itemgroup_name', text: 'itemgroup_name'},
+			{mapping: 'itemgroup_name', text: 'itemgroup_name'}
 		],
-		OnDataLoading: (criteria, options) => {
-			
-			if (typeof hnd.cbo_itemgroup_parent_dataloading === 'function') {
-				hnd.cbo_itemgroup_parent_dataloading(criteria, options);
-			}	
-		},
-		OnDataLoaded : (result, options) => {
-			
-			// hapus pilihan yang sama dengan data saat ini
-			var id = obj.txt_itemgroup_id.textbox('getText')
-			var i = 0; var idx = -1;
-			for (var d of result.records) {
-				if (d.itemgroup_id==id) { idx = i; }
-				i++;
-			}
-			if (idx>=0) { result.records.splice(idx, 1); }					
-			
-			result.records.unshift({itemgroup_id:'--NULL--', itemgroup_name:'NONE'});	
-			if (typeof hnd.cbo_itemgroup_parent_dataloaded === 'function') {
-				hnd.cbo_itemgroup_parent_dataloaded(result, options);
-			}
-		},
-		OnSelected: (value, display, record, args) => {
-			if (value!=args.PreviousValue ) {
-				if (typeof hnd.cbo_itemgroup_parent_selected === 'function') {
-					hnd.cbo_itemgroup_parent_selected(value, display, record, args);
-				}
-			}
-		}
+
 	})				
 				
+	obj.cbo_itemmodel_id.name = 'pnl_edit-cbo_itemmodel_id'		
 	new fgta4slideselect(obj.cbo_itemmodel_id, {
 		title: 'Pilih itemmodel_id',
 		returnpage: this_page_id,
 		api: $ui.apis.load_itemmodel_id,
 		fieldValue: 'itemmodel_id',
-		fieldValueMap: 'itemmodel_id',
 		fieldDisplay: 'itemmodel_name',
 		fields: [
 			{mapping: 'itemmodel_id', text: 'itemmodel_id'},
-			{mapping: 'itemmodel_name', text: 'itemmodel_name'},
+			{mapping: 'itemmodel_name', text: 'itemmodel_name'}
 		],
-		OnDataLoading: (criteria, options) => {
-			
-			if (typeof hnd.cbo_itemmodel_id_dataloading === 'function') {
-				hnd.cbo_itemmodel_id_dataloading(criteria, options);
-			}	
-		},
-		OnDataLoaded : (result, options) => {
-				
-			if (typeof hnd.cbo_itemmodel_id_dataloaded === 'function') {
-				hnd.cbo_itemmodel_id_dataloaded(result, options);
-			}
-		},
-		OnSelected: (value, display, record, args) => {
-			if (value!=args.PreviousValue ) {
-				if (typeof hnd.cbo_itemmodel_id_selected === 'function') {
-					hnd.cbo_itemmodel_id_selected(value, display, record, args);
-				}
-			}
-		}
+
 	})				
 				
+	obj.cbo_dept_id.name = 'pnl_edit-cbo_dept_id'		
 	new fgta4slideselect(obj.cbo_dept_id, {
 		title: 'Pilih dept_id',
 		returnpage: this_page_id,
 		api: $ui.apis.load_dept_id,
 		fieldValue: 'dept_id',
-		fieldValueMap: 'dept_id',
 		fieldDisplay: 'dept_name',
 		fields: [
 			{mapping: 'dept_id', text: 'dept_id'},
-			{mapping: 'dept_name', text: 'dept_name'},
+			{mapping: 'dept_name', text: 'dept_name'}
 		],
-		OnDataLoading: (criteria, options) => {
-			
-			if (typeof hnd.cbo_dept_id_dataloading === 'function') {
-				hnd.cbo_dept_id_dataloading(criteria, options);
-			}	
-		},
-		OnDataLoaded : (result, options) => {
-				
-			if (typeof hnd.cbo_dept_id_dataloaded === 'function') {
-				hnd.cbo_dept_id_dataloaded(result, options);
-			}
-		},
-		OnSelected: (value, display, record, args) => {
-			if (value!=args.PreviousValue ) {
-				if (typeof hnd.cbo_dept_id_selected === 'function') {
-					hnd.cbo_dept_id_selected(value, display, record, args);
-				}
-			}
-		}
+
 	})				
 				
 
@@ -211,6 +143,8 @@ export async function init(opt) {
 	})	
 
 	document.addEventListener('OnButtonBack', (ev) => {
+		var element = document.activeElement;
+		element.blur();
 		if ($ui.getPages().getCurrentPage()==this_page_id) {
 			ev.detail.cancel = true;
 			if (form.isDataChanged()) {
@@ -245,6 +179,11 @@ export async function init(opt) {
 			form: form,
 			obj: obj,
 			opt: opt,
+			btn_action_click: (actionargs) => {
+				if (typeof btn_action_click == 'function') {
+					btn_action_click(actionargs);
+				}
+			}
 		})
 	}
 
@@ -262,6 +201,12 @@ export function getCurrentRowdata() {
 }
 
 export function open(data, rowid, viewmode=true, fn_callback) {
+
+	var caption = txt_caption.template;
+	caption = caption.replace('{{STATE_BEG}}', '');
+	caption = caption.replace('{{STATE_END}}', ' View');
+	txt_caption.html(caption);
+
 
 	rowdata = {
 		data: data,
@@ -292,6 +237,12 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 			}
 		}
   		updaterecordstatus(record)
+
+		/* handle data saat opening data */   
+		if (typeof hnd.form_dataopening == 'function') {
+			hnd.form_dataopening(result, options);
+		}
+
 
 		form.SuspendEvent(true);
 		form
@@ -343,6 +294,13 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 
 
 export function createnew() {
+
+	var caption = txt_caption.template;
+	caption = caption.replace('{{STATE_BEG}}', 'Create New ');
+	caption = caption.replace('{{STATE_END}}', '');
+	txt_caption.html(caption);
+
+
 	form.createnew(async (data, options)=>{
 		// console.log(data)
 		// console.log(options)
@@ -361,6 +319,11 @@ export function createnew() {
 		data.dept_name = '-- PILIH --'
 
 		if (typeof hnd.form_newdata == 'function') {
+			// untuk mengambil nilai ui component,
+			// di dalam handler form_newdata, gunakan perintah:
+			// options.OnNewData = () => {
+			// 		...
+			// }		
 			hnd.form_newdata(data, options);
 		}
 
@@ -415,24 +378,57 @@ export function detil_open(pnlname) {
 function updatefilebox(record) {
 	// apabila ada keperluan untuk menampilkan data dari object storage
 
+
+	if (typeof hnd.form_updatefilebox == 'function') {
+		hnd.form_updatefilebox(record);
+	}
 }
 
 function updaterecordstatus(record) {
 	// apabila ada keperluan untuk update status record di sini
 
+
+	if (typeof hnd.form_updaterecordstatus == 'function') {
+		hnd.form_updaterecordstatus(record);
+	}
 }
 
 function updatebuttonstate(record) {
 	// apabila ada keperluan untuk update state action button di sini
-	
+
+
+	if (typeof hnd.form_updatebuttonstate == 'function') {
+		hnd.form_updatebuttonstate(record);
+	}
 }
 
 function updategridstate(record) {
+	var updategriddata = {}
+
 	// apabila ada keperluan untuk update state grid list di sini
-	
+
+
+	if (typeof hnd.form_updategridstate == 'function') {
+		hnd.form_updategridstate(updategriddata, record);
+	}
+
+	$ui.getPages().ITEMS['pnl_list'].handler.updategrid(updategriddata, form.rowid);
+
 }
 
 function form_viewmodechanged(viewmode) {
+
+	var caption = txt_caption.template;
+	if (viewmode) {
+		caption = caption.replace('{{STATE_BEG}}', '');
+		caption = caption.replace('{{STATE_END}}', ' View');
+	} else {
+		caption = caption.replace('{{STATE_BEG}}', '');
+		caption = caption.replace('{{STATE_END}}', ' Edit');
+	}
+	txt_caption.html(caption);
+
+
 	var OnViewModeChangedEvent = new CustomEvent('OnViewModeChanged', {detail: {}})
 	$ui.triggerevent(OnViewModeChangedEvent, {
 		viewmode: viewmode
@@ -469,14 +465,14 @@ async function form_datasaving(data, options) {
 	//    options.cancel = true
 
 	// Modifikasi object data, apabila ingin menambahkan variabel yang akan dikirim ke server
-	// options.skipmappingresponse = [itemgroup_parent, ];
+	// options.skipmappingresponse = ['itemgroup_parent', ];
 	options.skipmappingresponse = [];
 	for (var objid in obj) {
 		var o = obj[objid]
 		if (o.isCombo() && !o.isRequired()) {
 			var id = o.getFieldValueName()
 			options.skipmappingresponse.push(id)
-			console.log(id)
+			// console.log(id)
 		}
 	}
 
@@ -489,7 +485,14 @@ async function form_datasaving(data, options) {
 async function form_datasaveerror(err, options) {
 	// apabila mau olah error messagenya
 	// $ui.ShowMessage(err.errormessage)
-	console.log(err)
+	console.error(err)
+	if (typeof hnd.form_datasaveerror == 'function') {
+		hnd.form_datasaveerror(err, options);
+	}
+	if (options.supress_error_dialog!=true) {
+		$ui.ShowMessage('[ERROR]'+err.message);
+	}
+
 }
 
 
@@ -529,7 +532,7 @@ async function form_datasaved(result, options) {
 		}
 	}
 	form.rowid = $ui.getPages().ITEMS['pnl_list'].handler.updategrid(data, form.rowid)
-	rowdata = {
+	var rowdata = {
 		data: data,
 		rowid: form.rowid
 	}
@@ -541,9 +544,9 @@ async function form_datasaved(result, options) {
 
 
 
-async function form_deleting(data) {
+async function form_deleting(data, options) {
 	if (typeof hnd.form_deleting == 'function') {
-		hnd.form_deleting(data);
+		hnd.form_deleting(data, options);
 	}
 }
 

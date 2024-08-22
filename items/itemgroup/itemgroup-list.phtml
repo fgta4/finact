@@ -69,5 +69,11 @@
 	} 
 	?>	
 
+	<?php
+	$custompagefooter = __DIR__.'/itemgroup-list-custompagefooter.phtml'; 
+	if (is_file($custompagefooter)) {
+		include $custompagefooter;
+	} 
+	?>	
 
 </div>

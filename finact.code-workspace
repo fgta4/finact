@@ -9,9 +9,7 @@
 			"name": "FGTA4 Generator"
 		},
 		{
-			"path": "../framework",
-			"name": "Framework"
-		}
+<		}
 	],
 	"settings": {}
 }
