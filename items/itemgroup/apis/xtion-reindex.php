@@ -40,11 +40,7 @@ $API = new class extends itemgroupBase {
 			try {
 
 				$sql = "
-					set @itemgroup_skip_trigger = 1;
-					set max_sp_recursion_depth = 10;
 					call itemgroup_reindex(); 
-					set max_sp_recursion_depth = 0;
-					set @itemgroup_skip_trigger = null;
 				";
 				$this->db->exec($sql);
 

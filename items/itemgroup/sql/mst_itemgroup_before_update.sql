@@ -1,8 +1,7 @@
 
 DROP TRIGGER IF EXISTS mst_itemgroup_before_update;
 
-DELIMITER $$
-$$
+DELIMITER //
 
 CREATE TRIGGER `mst_itemgroup_before_update` BEFORE UPDATE ON `mst_itemgroup` FOR EACH ROW BEGIN
 
@@ -54,7 +53,6 @@ CREATE TRIGGER `mst_itemgroup_before_update` BEFORE UPDATE ON `mst_itemgroup` FO
 
 	end if;
 
-END
+END //
 
-$$
 DELIMITER ;

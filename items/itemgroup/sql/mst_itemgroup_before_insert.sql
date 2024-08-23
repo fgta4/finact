@@ -1,8 +1,6 @@
 DROP TRIGGER IF EXISTS mst_itemgroup_before_insert;
 
-DELIMITER $$
-$$
-
+DELIMITER //
 
 CREATE DEFINER=`root`@`localhost` TRIGGER `mst_itemgroup_before_insert` BEFORE INSERT ON `mst_itemgroup` FOR EACH ROW BEGIN
 
@@ -38,8 +36,6 @@ CREATE DEFINER=`root`@`localhost` TRIGGER `mst_itemgroup_before_insert` BEFORE I
 
 	end if;
 
-END
+END //
 
-
-$$
 DELIMITER ;
