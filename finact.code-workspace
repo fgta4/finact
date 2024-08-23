@@ -9,8 +9,8 @@
 			"name": "FGTA4 Generator"
 		},
 		{
-			"path": "../framework",
-			"name": "Framework"
+			"path": "../framework/localsetting",
+			"name": "LocalSetting"
 		}
 	],
 	"settings": {}

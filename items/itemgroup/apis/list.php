@@ -28,7 +28,7 @@ use \FGTA4\exceptions\WebException;
  * Tangerang, 26 Maret 2021
  *
  * digenerate dengan FGTA4 generator
- * tanggal 10/06/2022
+ * tanggal 24/08/2024
  */
 $API = new class extends itemgroupBase {
 
@@ -38,11 +38,11 @@ $API = new class extends itemgroupBase {
 
 		$handlerclassname = "\\FGTA4\\apis\\itemgroup_headerHandler";
 		if (class_exists($handlerclassname)) {
-			$hnd = new itemgroup_headerHandler($data, $options);
-			$hnd->caller = $this;
+			$hnd = new itemgroup_headerHandler($options);
+			$hnd->caller = &$this;
 			$hnd->db = $this->db;
 			$hnd->auth = $this->auth;
-			$hnd->reqinfo = $reqinfo->reqinfo;
+			$hnd->reqinfo = $this->reqinfo;
 		} else {
 			$hnd = new \stdClass;
 		}
@@ -55,41 +55,122 @@ $API = new class extends itemgroupBase {
 				throw new \Exception('your group authority is not allowed to do this action.');
 			}
 
-			// \FGTA4\utils\SqlUtility::setDefaultCriteria($options->criteria, '--fieldscriteria--', '--value--');
+			if (method_exists(get_class($hnd), 'init')) {
+				// init(object &$options) : void
+				$hnd->init($options);
+			}
+
 			$criteriaValues = [
 				"search" => " A.itemgroup_id LIKE CONCAT('%', :search, '%') OR A.itemgroup_name LIKE CONCAT('%', :search, '%') OR A.itemgroup_nameshort LIKE CONCAT('%', :search, '%') "
 			];
-			if (method_exists(get_class($hnd), 'buildCriteriaValues')) {
-				$hnd->buildCriteriaValues($options, $criteriaValues);
+
+			if (method_exists(get_class($hnd), 'buildListCriteriaValues')) {
+				// ** buildListCriteriaValues(object &$options, array &$criteriaValues) : void
+				//    apabila akan modifikasi parameter2 untuk query
+				//    $criteriaValues['fieldname'] = " A.fieldname = :fieldname";  <-- menambahkan field pada where dan memberi parameter value
+				//    $criteriaValues['fieldname'] = "--";                         <-- memberi parameter value tanpa menambahkan pada where
+				//    $criteriaValues['fieldname'] = null                          <-- tidak memberi efek pada query secara langsung, parameter digunakan untuk keperluan lain 
+				//
+				//    untuk memberikan nilai default apabila paramter tidak dikirim
+				//    // \FGTA4\utils\SqlUtility::setDefaultCriteria($options->criteria, '--fieldscriteria--', '--value--');
+				$hnd->buildListCriteriaValues($options, $criteriaValues);
 			}
 
 			$where = \FGTA4\utils\SqlUtility::BuildCriteria($options->criteria, $criteriaValues);
-			$result = new \stdClass; 
+			
 			$maxrow = 30;
 			$offset = (property_exists($options, 'offset')) ? $options->offset : 0;
 
-			$stmt = $this->db->prepare("select count(*) as n from mst_itemgroup A" . $where->sql);
+			/* prepare DbLayer Temporay Data Helper if needed */
+			if (method_exists(get_class($hnd), 'prepareListData')) {
+				// ** prepareListData(object $options, array $criteriaValues) : void
+				//    misalnya perlu mebuat temporary table,
+				//    untuk membuat query komplex dapat dibuat disini	
+				$hnd->prepareListData($options, $criteriaValues);
+			}
+
+
+			/* Data Query Configuration */
+			$sqlFieldList = [
+				'itemgroup_id' => 'A.`itemgroup_id`', 'itemgroup_name' => 'A.`itemgroup_name`', 'itemgroup_nameshort' => 'A.`itemgroup_nameshort`', 'itemgroup_descr' => 'A.`itemgroup_descr`',
+				'itemgroup_isparent' => 'A.`itemgroup_isparent`', 'itemgroup_parent' => 'A.`itemgroup_parent`', 'itemgroup_pathid' => 'A.`itemgroup_pathid`', 'itemgroup_path' => 'A.`itemgroup_path`',
+				'itemgroup_level' => 'A.`itemgroup_level`', 'itemgroup_isexselect' => 'A.`itemgroup_isexselect`', 'itemmodel_id' => 'A.`itemmodel_id`', 'dept_id' => 'A.`dept_id`',
+				'_createby' => 'A.`_createby`', '_createdate' => 'A.`_createdate`', '_modifyby' => 'A.`_modifyby`', '_modifydate' => 'A.`_modifydate`'
+			];
+			$sqlFromTable = "mst_itemgroup A";
+			$sqlWhere = $where->sql;
+			$sqlLimit = "LIMIT $maxrow OFFSET $offset";
+
+			if (method_exists(get_class($hnd), 'SqlQueryListBuilder')) {
+				// ** SqlQueryListBuilder(array &$sqlFieldList, string &$sqlFromTable, string &$sqlWhere, array &$params) : void
+				//    menambah atau memodifikasi field-field yang akan ditampilkan
+				//    apabila akan memodifikasi join table
+				//    apabila akan memodifikasi nilai parameter
+				$hnd->SqlQueryListBuilder($sqlFieldList, $sqlFromTable, $sqlWhere, $where->params);
+			}
+			
+			// filter select columns
+			if (!property_exists($options, 'selectFields')) {
+				$options->selectFields = [];
+			}
+			$columsSelected = $this->SelectColumns($sqlFieldList, $options->selectFields);
+			$sqlFields = \FGTA4\utils\SqlUtility::generateSqlSelectFieldList($columsSelected);
+
+
+			/* Sort Configuration */
+			if (!property_exists($options, 'sortData')) {
+				$options->sortData = [];
+			}
+			if (!is_array($options->sortData)) {
+				if (is_object($options->sortData)) {
+					$options->sortData = (array)$options->sortData;
+				} else {
+					$options->sortData = [];
+				}
+			}
+
+		
+
+
+			if (method_exists(get_class($hnd), 'sortListOrder')) {
+				// ** sortListOrder(array &$sortData) : void
+				//    jika ada keperluan mengurutkan data
+				//    $sortData['fieldname'] = 'ASC/DESC';
+				$hnd->sortListOrder($options->sortData);
+			}
+			$sqlOrders = \FGTA4\utils\SqlUtility::generateSqlSelectSort($options->sortData);
+
+
+			/* Compose SQL Query */
+			$sqlCount = "select count(*) as n from $sqlFromTable $sqlWhere";
+			$sqlData = "
+				select 
+				$sqlFields 
+				from 
+				$sqlFromTable 
+				$sqlWhere 
+				$sqlOrders 
+				$sqlLimit
+			";
+
+			/* Execute Query: Count */
+			$stmt = $this->db->prepare($sqlCount );
 			$stmt->execute($where->params);
 			$row  = $stmt->fetch(\PDO::FETCH_ASSOC);
 			$total = (float) $row['n'];
 
-			$orders = method_exists(get_class($hnd), 'sortOrder') ? $hnd->sortOrder($options->sortdata) : " ";
-			$limit = " LIMIT $maxrow OFFSET $offset ";
-			$stmt = $this->db->prepare("
-				select 
-				A.itemgroup_id, A.itemgroup_name, A.itemgroup_nameshort, A.itemgroup_descr, A.itemgroup_isparent, A.itemgroup_parent, A.itemgroup_pathid, A.itemgroup_path, A.itemgroup_level, A.itemgroup_isexselect, A.itemmodel_id, A.dept_id, A._createby, A._createdate, A._modifyby, A._modifydate 
-				from mst_itemgroup A
-			" . $where->sql . $orders . $limit);
+			/* Execute Query: Retrieve Data */
+			$stmt = $this->db->prepare($sqlData);
 			$stmt->execute($where->params);
 			$rows  = $stmt->fetchall(\PDO::FETCH_ASSOC);
 
-			$beforeloopdata = new \stdClass;
-			if (is_object($hnd)) {
-				if (method_exists(get_class($hnd), 'DataListBeforeLoop')) {
-					$beforeloopdata = $hnd->DataListBeforeLoop((object[]));
-				}
+
+			$handleloop = false;
+			if (method_exists(get_class($hnd), 'DataListLooping')) {
+				$handleloop = true;
 			}
 
+			/* Proces result */
 			$records = [];
 			foreach ($rows as $row) {
 				$record = [];
@@ -97,13 +178,9 @@ $API = new class extends itemgroupBase {
 					$record[$key] = $value;
 				}
 
-				if (is_object($hnd)) {
-					if (method_exists(get_class($hnd), 'DataListLooping')) {
-						$hnd->DataListLooping($record, $beforeloopdata);
-					}
-				}
 
-				array_push($records, array_merge($record, [
+				/*
+				$record = array_merge($record, [
 					// // jikalau ingin menambah atau edit field di result record, dapat dilakukan sesuai contoh sbb: 
 					//'tanggal' => date("d/m/y", strtotime($record['tanggal'])),
 				 	//'tambahan' => 'dta'
@@ -111,14 +188,35 @@ $API = new class extends itemgroupBase {
 					'itemmodel_name' => \FGTA4\utils\SqlUtility::Lookup($record['itemmodel_id'], $this->db, 'mst_itemmodel', 'itemmodel_id', 'itemmodel_name'),
 					'dept_name' => \FGTA4\utils\SqlUtility::Lookup($record['dept_id'], $this->db, 'mst_dept', 'dept_id', 'dept_name'),
 					 
-				]));
+				]);
+				*/
 
 
+				// lookup data id yang refer ke table lain
+				$this->addFields('itemgroup_parent_name', 'itemgroup_parent', $record, 'mst_itemgroup', 'itemgroup_name', 'itemgroup_id');
+				$this->addFields('itemmodel_name', 'itemmodel_id', $record, 'mst_itemmodel', 'itemmodel_name', 'itemmodel_id');
+				$this->addFields('dept_name', 'dept_id', $record, 'mst_dept', 'dept_name', 'dept_id');
+					 
 
 
+				if ($handleloop) {
+					// ** DataListLooping(array &$record) : void
+					//    apabila akan menambahkan field di record
+					$hnd->DataListLooping($record);
+				}
+
+				array_push($records, $record);
+			}
+
+			/* modify and finalize records */
+			if (method_exists(get_class($hnd), 'DataListFinal')) {
+				// ** DataListFinal(array &$records) : void
+				//    finalisasi data list
+				$hnd->DataListFinal($records);
 			}
 
 			// kembalikan hasilnya
+			$result = new \stdClass; 
 			$result->total = $total;
 			$result->offset = $offset + $maxrow;
 			$result->maxrow = $maxrow;

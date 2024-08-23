@@ -2,6 +2,7 @@ import {fgta4grid} from  '../../../../../index.php/asset/fgta/framework/fgta4lib
 import {fgta4form} from  '../../../../../index.php/asset/fgta/framework/fgta4libs/fgta4form.mjs'
 import * as fgta4pages from '../../../../../index.php/asset/fgta/framework/fgta4libs/fgta4pages.mjs'
 import * as fgta4pageslider from '../../../../../index.php/asset/fgta/framework/fgta4libs/fgta4pageslider.mjs'
+import * as settings from './itemgroup.settings.mjs'
 import * as apis from './itemgroup.apis.mjs'
 import * as pList from './itemgroup-list.mjs'
 import * as pEdit from './itemgroup-edit.mjs'
@@ -27,8 +28,13 @@ export async function init(opt) {
 	global.fgta4grid = fgta4grid
 	global.fgta4form = fgta4form
 
+
+
 	$ui.apis = apis
 	document.getElementsByTagName("body")[0].style.margin = '5px 5px 5px 5px'
+
+	opt.variancedata = global.setup.variancedata;
+	settings.setup(opt);
 
 	pages
 		.setSlider(slider)

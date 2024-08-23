@@ -12,8 +12,8 @@ module.exports = {
 			primarykeys: ['itemgroup_id'],
 			comment: 'Daftar Group Items',
 			data: {
-				itemgroup_id: {text:'ID', type: dbtype.varchar(17), null:false, options:{required:true,invalidMessage:'ID Group harus diisi'}},
-				itemgroup_name: {text:'Item Group Name', type: dbtype.varchar(60), null:false, options:{required:true,invalidMessage:'Nama Group harus diisi'}},
+				itemgroup_id: {text:'ID', type: dbtype.varchar(17), uppercase: true, null:false, options:{required:true,invalidMessage:'ID Group harus diisi'}},
+				itemgroup_name: {text:'Item Group Name', type: dbtype.varchar(60),uppercase: true, null:false, options:{required:true,invalidMessage:'Nama Group harus diisi'}},
 				itemgroup_nameshort: {text:'Short Name', type: dbtype.varchar(60), null:false, suppresslist: true, options:{required:true,invalidMessage:'Nama Group harus diisi'}},
 				itemgroup_descr: {text:'Descr', type: dbtype.varchar(90), null:true, suppresslist: true},
 				itemgroup_isparent: { text: 'Parent Dept', type: dbtype.boolean, null: false, default: '0', suppresslist: true },
@@ -23,12 +23,20 @@ module.exports = {
 					comp: comp.Combo({
 						table: 'mst_itemgroup', 
 						field_value: 'itemgroup_id', field_display: 'itemgroup_name', field_display_name: 'itemgroup_parent_name', 
-						api: 'finact/asset/itemgroup/list'})					
+						api: 'finact/items/itemgroup/list',
+						onDataLoadingHandler: true,
+						onDataLoadedHandler: false,
+						onSelectingHandler: false,
+						onSelectedHandler: false
+					})					
 				},
 				itemgroup_pathid: {text:'PathId', type: dbtype.varchar(17), null:false, suppresslist: true, options:{disabled:true}},
 				itemgroup_path: {text:'Path', type: dbtype.varchar(390), null:true,  suppresslist: true, options:{disabled:true}},
 				itemgroup_level: {text:'Level', type: dbtype.int(2), null:false, default:'0', suppresslist: true, options:{disabled:true}},
-				itemgroup_isexselect : {text:'Exclude From Selection', type: dbtype.boolean, null:false, suppresslist: true, default:'0'},
+				itemgroup_isexselect : {
+					text:'Exclude From Selection', type: dbtype.boolean, null:false, suppresslist: true, default:'0',
+					options:{labelWidth: '200px'}
+				},
 
 				itemmodel_id: { 
 					text: 'Model', type: dbtype.varchar(10), null: true, 
@@ -36,7 +44,7 @@ module.exports = {
 					comp: comp.Combo({
 						table: 'mst_itemmodel', 
 						field_value: 'itemmodel_id', field_display: 'itemmodel_name', field_display_name: 'itemmodel_name', 
-						api: 'finact/asset/itemmodel/list'})
+						api: 'finact/items/itemmodel/list'})
 				
 				},
 
@@ -48,7 +56,12 @@ module.exports = {
 					comp: comp.Combo({
 						table: 'mst_dept', 
 						field_value: 'dept_id', field_display: 'dept_name', field_display_name: 'dept_name', 
-						api: 'ent/organisation/dept/list-foritem'})				
+						api: 'ent/organisation/dept/list',
+						onDataLoadingHandler: true,
+						onDataLoadedHandler: false,
+						onSelectingHandler: false,
+						onSelectedHandler: false
+					})				
 				},					
 			},
 
