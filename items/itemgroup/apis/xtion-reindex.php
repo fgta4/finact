@@ -39,13 +39,8 @@ $API = new class extends itemgroupBase {
 			//ieMWilI0jhJiPJDWKsDqx2jgrCrxqw
 			try {
 
-				$sql = "
-					call itemgroup_reindex(); 
-				";
+				$sql = "call itemgroup_reindex(); ";
 				$this->db->exec($sql);
-
-
-				
 				$this->db->commit();
 				return (object)[
 					'success' => true,
