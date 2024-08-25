@@ -102,7 +102,7 @@ export function grd_list_rowrender(row) {
 	var td = row.td;
 	var mapping = row.mapping;
 	if (mapping=='itemgroup_name') {
-		var indent = record.itemgroup_level * 15;
+		var indent = 10 + ((record.itemgroup_level-1) * 15);
 		$(td).css("padding-left", `${indent}px`);
 		if (record.itemgroup_isparent=='1') {
 			$(td).css('font-weight', 'bold');

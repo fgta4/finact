@@ -22,14 +22,13 @@ const obj = {
 	txt_itemgroup_name: $('#pnl_edit-txt_itemgroup_name'),
 	txt_itemgroup_nameshort: $('#pnl_edit-txt_itemgroup_nameshort'),
 	txt_itemgroup_descr: $('#pnl_edit-txt_itemgroup_descr'),
-	chk_itemgroup_isparent: $('#pnl_edit-chk_itemgroup_isparent'),
 	cbo_itemgroup_parent: $('#pnl_edit-cbo_itemgroup_parent'),
+	cbo_itemmodel_id: $('#pnl_edit-cbo_itemmodel_id'),
+	chk_itemgroup_isparent: $('#pnl_edit-chk_itemgroup_isparent'),
+	chk_itemgroup_isexselect: $('#pnl_edit-chk_itemgroup_isexselect'),
 	txt_itemgroup_pathid: $('#pnl_edit-txt_itemgroup_pathid'),
 	txt_itemgroup_path: $('#pnl_edit-txt_itemgroup_path'),
-	txt_itemgroup_level: $('#pnl_edit-txt_itemgroup_level'),
-	chk_itemgroup_isexselect: $('#pnl_edit-chk_itemgroup_isexselect'),
-	cbo_itemmodel_id: $('#pnl_edit-cbo_itemmodel_id'),
-	cbo_dept_id: $('#pnl_edit-cbo_dept_id')
+	txt_itemgroup_level: $('#pnl_edit-txt_itemgroup_level')
 }
 
 
@@ -111,26 +110,6 @@ export async function init(opt) {
 			{mapping: 'itemmodel_id', text: 'itemmodel_id'},
 			{mapping: 'itemmodel_name', text: 'itemmodel_name'}
 		],
-
-	})				
-				
-	obj.cbo_dept_id.name = 'pnl_edit-cbo_dept_id'		
-	new fgta4slideselect(obj.cbo_dept_id, {
-		title: 'Pilih dept_id',
-		returnpage: this_page_id,
-		api: $ui.apis.load_dept_id,
-		fieldValue: 'dept_id',
-		fieldDisplay: 'dept_name',
-		fields: [
-			{mapping: 'dept_id', text: 'dept_id'},
-			{mapping: 'dept_name', text: 'dept_name'}
-		],
-		OnDataLoading: (criteria, options) => {
-			
-			if (typeof hnd.cbo_dept_id_dataloading === 'function') {
-				hnd.cbo_dept_id_dataloading(criteria, options);
-			}						
-		},					
 
 	})				
 				
@@ -261,7 +240,6 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 			.fill(record)
 			.setValue(obj.cbo_itemgroup_parent, record.itemgroup_parent, record.itemgroup_parent_name)
 			.setValue(obj.cbo_itemmodel_id, record.itemmodel_id, record.itemmodel_name)
-			.setValue(obj.cbo_dept_id, record.dept_id, record.dept_name)
 			.setViewMode(viewmode)
 			.lock(false)
 			.rowid = rowid
@@ -320,15 +298,13 @@ export function createnew() {
 
 		// set nilai-nilai default untuk form
 		data.itemgroup_isparent = '0'
-		data.itemgroup_level = 0
 		data.itemgroup_isexselect = '0'
+		data.itemgroup_level = 0
 
 		data.itemgroup_parent = '--NULL--'
 		data.itemgroup_parent_name = 'NONE'
 		data.itemmodel_id = '0'
 		data.itemmodel_name = '-- PILIH --'
-		data.dept_id = '0'
-		data.dept_name = '-- PILIH --'
 
 		if (typeof hnd.form_newdata == 'function') {
 			// untuk mengambil nilai ui component,

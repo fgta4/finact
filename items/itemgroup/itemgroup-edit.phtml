@@ -40,17 +40,32 @@
 		</div>
 
 		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"></div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-chk_itemgroup_isparent" class="easyui-checkbox c1" mapping="itemgroup_isparent" data-options="label: 'Parent Dept', labelPosition: 'after', checked: false ">
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Parent</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-cbo_itemgroup_parent" class="easyui-combo" style="width: 400px" mapping="itemgroup_parent" display="itemgroup_parent_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: '-- PILIH --'"  >
 				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Model</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_itemmodel_id" class="easyui-combo" style="width: 400px" mapping="itemmodel_id" display="itemmodel_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Model harus diisi'"   validType="requiredcombo['pnl_edit-cbo_itemmodel_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_itemgroup_isparent" class="easyui-checkbox c1" mapping="itemgroup_isparent" data-options="label: 'Parent Group', labelPosition: 'after', checked: false ">
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-chk_itemgroup_isexselect" class="easyui-checkbox c1" mapping="itemgroup_isexselect" data-options="label: 'Exclude From Selection', labelPosition: 'after', checked: false , labelWidth: '200px'">
 			</div>
 		</div>
 
@@ -75,29 +90,6 @@
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemgroup_level" class="easyui-numberbox" mapping="itemgroup_level" style="width: 400px; text-align:right" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','  , disabled: true">
 				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"></div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-chk_itemgroup_isexselect" class="easyui-checkbox c1" mapping="itemgroup_isexselect" data-options="label: 'Exclude From Selection', labelPosition: 'after', checked: false , labelWidth: '200px'">
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Model</div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-cbo_itemmodel_id" class="easyui-combo" style="width: 400px" mapping="itemmodel_id" display="itemmodel_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Model harus diisi'"   validType="requiredcombo['pnl_edit-cbo_itemmodel_id']" >
-				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Dept</div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-cbo_dept_id" class="easyui-combo" style="width: 400px" mapping="dept_id" display="dept_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Dept harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_dept_id']" >
-				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Owner Dept yang akan manage tipe item ini</div>
 			</div>
 		</div>
 
