@@ -101,16 +101,29 @@ export function OnSizeRecalculated(width, height) {
 export function createnew(data, options) {
 	// pada saat membuat data baru di header
 	grd_list.clear();
-	txt_title.html(data.itemclass_name)
 	header_data = data;
+
+	txt_title.html(data.itemclass_name)
+	if (typeof hnd!=='undefined') { 
+		if (typeof hnd.setupTitle === 'function') {
+			hnd.setupTitle(txt_title, header_data, 'new');
+		}
+	}
 }
+
 
 export function OpenDetil(data) {
 	// saat di klik di edit utama, pada detil information
 
 	grd_list.clear();
-	txt_title.html(data.itemclass_name)
 	header_data = data;
+
+	txt_title.html(data.itemclass_name)
+	if (typeof hnd!=='undefined') { 
+		if (typeof hnd.setupTitle === 'function') {
+			hnd.setupTitle(txt_title, header_data, 'open');
+		}
+	}
 
 	var fn_listloading = async (options) => {
 		options.api = `${global.modulefullname}/account-list`
@@ -125,10 +138,6 @@ export function OpenDetil(data) {
 	var fn_listloaded = async (result, options) => {
 		// console.log(result)
 
-
-
-
-
 		var detilform = $ui.getPages().ITEMS['pnl_editaccountform'].handler.getForm()
 
 		if (detilform.AllowAddRecord) {
@@ -140,8 +149,28 @@ export function OpenDetil(data) {
 		if (detilform.AllowRemoveRecord) {
 			btn_removechecked.show()
 		} else {
-			btn_removechecked.hide()
+			btn_removechecked.hide();
 		}
+
+		setTimeout(()=>{
+			var checkcolumns = document.querySelectorAll('#pnl_editaccountgrid-tbl_list .rowcheck');
+			
+			for (var c of checkcolumns) {
+				if (detilform.AllowRemoveRecord) {
+					c.classList.remove('hidden');
+				} else {
+					c.classList.add('hidden');
+				}
+			}
+
+			var selectbutton = document.getElementById('pnl_editaccountgrid-tbl_list-selectall-button');
+			if (detilform.AllowRemoveRecord) {
+				selectbutton.classList.remove('hidden');
+			} else {
+				selectbutton.classList.add('hidden');
+			}
+		},100);
+
 
 		if (typeof hnd!=='undefined') { 
 			if (typeof hnd.OpenDetil === 'function') {
@@ -236,6 +265,7 @@ function btn_removechecked_click() {
 						let result = await $ui.apicall(apiurl, args)
 					} catch (err) {
 						console.log(err)
+						$ui.ShowMessage('[ERROR]'+err.message);
 					}
 				}
 			})

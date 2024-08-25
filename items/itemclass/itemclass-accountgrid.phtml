@@ -1,6 +1,6 @@
 <div id="pnl_editaccountgrid">
 	<div class="fgta-page-title">Daftar Account Ovveride by Project Type</div>
-	<div id="pnl_editaccountgrid-title" style="margin-top: 0px; margin-bottom: 30px; font-weight: bold; font-size: 1.2em">XXXXXXX</div>
+	<div id="pnl_editaccountgrid-title" class="fgta-page-subtitle">XXXXXXX</div>
 
 	<!--// Untuk keperluan search di detil
 	<div id="pnl_editaccountgrid-pnl_head" style="display: flex; align-items: flex-end">
@@ -40,13 +40,21 @@
 					<th mapping=""></th>
 				</tr>
 				<tr style="background-color: #cccccc; height: 30px">
-<td class="fgtable-head" style="width: 30px; border-bottom: 1px solid #000000; text-align: center">*</td>
+<td class="fgtable-head rowcheck" style="width: 30px; border-bottom: 1px solid #000000; text-align: center">*</td>
 					<td class="fgtable-head" style="width: 100px; border-bottom: 1px solid #000000">Inquiry Budget Account</td>
 
 					<td class="fgtable-head" style="border-bottom: 1px solid #000000; text-align: center">&nbsp;</td>
 				</tr>
 			</thead>
 			<?php } ?>
+			
+			<?php
+			$tablefooter = __DIR__.'/itemclass-accountgrid-tablefooter.phtml';
+			if (is_file($tablefooter)) {
+				include $tablefooter;
+			} 
+			?>
+			
 		</table>
 	</div>
 

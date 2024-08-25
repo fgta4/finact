@@ -26,7 +26,7 @@ use \FGTA4\CouchDbClient;
  * Tangerang, 26 Maret 2021
  *
  * digenerate dengan FGTA4 generator
- * tanggal 19/07/2023
+ * tanggal 25/08/2024
  */
 class itemclassBase extends WebAPI {
 
@@ -57,13 +57,6 @@ class itemclassBase extends WebAPI {
 		$this->cdb = new CouchDbClient((object)DB_CONFIG[$FSCONFIGNAME]);
 	}
 
-	function pre_action_check($data, $action) {
-		try {
-			return true;
-		} catch (\Exception $ex) {
-			throw $ex;
-		}
-	}
 
 	public function get_header_row($id) {
 		try {

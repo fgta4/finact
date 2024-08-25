@@ -28,7 +28,7 @@ use \FGTA4\exceptions\WebException;
  * Tangerang, 26 Maret 2021
  *
  * digenerate dengan FGTA4 generator
- * tanggal 19/07/2023
+ * tanggal 25/08/2024
  */
 $API = new class extends itemclassBase {
 	
@@ -77,9 +77,22 @@ $API = new class extends itemclassBase {
 
 			try {
 				
+				// Deleting child data referenced to this table
 				$tabletodelete = ['mst_itemclassaccbudget', 'mst_itemclassfiles'];
+				if (method_exists(get_class($hnd), 'DocumentDeleting')) {
+					// ** DocumentDeleting(string $id, array &$tabletodelete)
+					$hnd->DocumentDeleting($data->{$primarykey}, $tabletodelete);
+				}
+
 				foreach ($tabletodelete as $reftablename) {
-					$cmd = \FGTA4\utils\SqlUtility::CreateSQLDelete($reftablename, $key);
+					$detilkeys = clone $key;
+					// handle data sebelum pada saat pembuatan SQL Delete
+					if (method_exists(get_class($hnd), 'RowDeleting')) {
+						// ** RowDeleting(string &$reftablename, object &$key, string $primarykey, string $primarykeyvalue)
+						$hnd->RowDeleting($reftablename, $detilkeys, $key->{$primarykey}, $data->{$primarykey});
+					}
+					
+					$cmd = \FGTA4\utils\SqlUtility::CreateSQLDelete($reftablename, $detilkeys);
 					$stmt = $this->db->prepare($cmd->sql);
 					$stmt->execute($cmd->params);
 				}
@@ -87,8 +100,12 @@ $API = new class extends itemclassBase {
 				$cmd = \FGTA4\utils\SqlUtility::CreateSQLDelete($tablename, $key);
 				$stmt = $this->db->prepare($cmd->sql);
 				$stmt->execute($cmd->params);
-
 				\FGTA4\utils\SqlUtility::WriteLog($this->db, $this->reqinfo->modulefullname, $tablename, $key->{$primarykey}, 'DELETE', $userdata->username, (object)[]);
+
+				if (method_exists(get_class($hnd), 'DocumentDeleted')) {
+					// DocumentDeleted(string $id)
+					$hnd->DocumentDeleted($data->{$primarykey});
+				}
 
 				$this->db->commit();
 

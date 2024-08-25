@@ -1,8 +1,8 @@
--- SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=0;
 
--- drop table if exists `mst_itemclass`;
--- drop table if exists `mst_itemclassaccbudget`;
--- drop table if exists `mst_itemclassfiles`;
+drop table if exists `mst_itemclass`;
+drop table if exists `mst_itemclassaccbudget`;
+drop table if exists `mst_itemclassfiles`;
 
 
 CREATE TABLE IF NOT EXISTS `mst_itemclass` (

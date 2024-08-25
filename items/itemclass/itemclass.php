@@ -20,8 +20,8 @@ if (is_file(__DIR__ .'/itemclass.php-handler.php')) {
  * 
  * digenerate dengan FGTA4 generator versi 2 
  * Agung Nugroho <agung@fgta.net> http://www.fgta.net (Tangerang, 26 Maret 2021)
- * awal dibuat tanggal 11/12/2019
- * terakhir di generate tanggal 19/07/2023
+ * awal dibuat tanggal 22/08/2024
+ * terakhir di generate tanggal 25/08/2024
  */
 $MODULE = new class extends WebModule {
 
@@ -59,6 +59,7 @@ $MODULE = new class extends WebModule {
 			// parameter=parameter yang bisa diakses langsung dari javascript module
 			// dengan memanggil variable global.setup.<namavariable>
 			$this->setup = (object)array(
+				'local_curr_id' => __LOCAL_CURR,
 				'variancename' => $variancename,
 				'variancedata' => $variancedata,
 				'print_to_new_window' => false,

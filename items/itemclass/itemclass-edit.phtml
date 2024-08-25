@@ -1,6 +1,6 @@
 <div id="pnl_edit">
 	<div class="fgta-page-title" style="display: flex; align-items: center ">
-		<div>Edit Item Class</div>
+		<div id="pnl_edit-caption">{{STATE_BEG}}Item Class{{STATE_END}}</div>
 		<a id="pnl_edit-btn_edit" href="javascript:void(0)" class="easyui-linkbutton fgta-button-edit" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
 	</div>
 
@@ -192,7 +192,7 @@
 			</div>
 		</div>
 
-		<?=$this->Section('Item Settings', true, true, '')?>
+		<?=$this->SectionBegin('Item Settings', true, true, '')?>
 		<div class="fgta_section_collapsible " style="display: none">
 					
 		<div class="form_row pnl_edit_row" >
@@ -272,7 +272,8 @@
 			</div>
 		</div>
 
-		</div>
+		</div>			
+		<?=$this->SectionEnd('')?>
 					
 	</form>
 
@@ -292,11 +293,11 @@
 				<div class="fgtable-head" style="height: 25px; padding: 5px 0px 0px 5px">Detil Informations</div>
 				<div class="fgtable-head-drow" style="height: 25px; padding: 5px 5px 0px 5px; " onclick="$ui.getPages().ITEMS['pnl_edit'].handler.detil_open('pnl_editaccountgrid')">
 					<div id="pnl_edit-txt_account_title" class="detilgrid-text">Account Ovveride by Project Type</div>
-					<div id="pnl_edit-txt_account_value" class="detilgrid-value">&nbsp;</div>
+					<div id="pnl_edit-txt_account_value" class="detilgrid-value account_totalvalue">&nbsp;</div>
 				</div>
 				<div class="fgtable-head-drow" style="height: 25px; padding: 5px 5px 0px 5px; " onclick="$ui.getPages().ITEMS['pnl_edit'].handler.detil_open('pnl_editfilesgrid')">
 					<div id="pnl_edit-txt_files_title" class="detilgrid-text">Files</div>
-					<div id="pnl_edit-txt_files_value" class="detilgrid-value">&nbsp;</div>
+					<div id="pnl_edit-txt_files_value" class="detilgrid-value files_totalvalue">&nbsp;</div>
 				</div>
 
 			</div>		
