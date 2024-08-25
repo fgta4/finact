@@ -1,29 +1,29 @@
--- SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=0;
 
--- drop table if exists `mst_itemstock`;
--- drop table if exists `mst_itemstockposition`;
--- drop table if exists `mst_itemstockcompound`;
--- drop table if exists `mst_itemstockconversion`;
--- drop table if exists `mst_itemstockprop`;
--- drop table if exists `mst_itemstockbarcode`;
--- drop table if exists `mst_itemstockpic`;
--- drop table if exists `trn_itemstockmoving`;
--- drop table if exists `mst_itemstocksaldo`;
+drop table if exists `mst_itemstock`;
+drop table if exists `mst_itemstockposition`;
+drop table if exists `mst_itemstockcompound`;
+drop table if exists `mst_itemstockconversion`;
+drop table if exists `mst_itemstockprop`;
+drop table if exists `mst_itemstockbarcode`;
+drop table if exists `mst_itemstockpic`;
+drop table if exists `trn_itemstockmoving`;
+drop table if exists `mst_itemstocksaldo`;
 
 
 CREATE TABLE IF NOT EXISTS `mst_itemstock` (
 	`itemstock_id` varchar(14) NOT NULL , 
-	`itemgroup_id` varchar(15)  , 
+	`itemgroup_id` varchar(15) NOT NULL , 
+	`itemclass_id` varchar(14) NOT NULL , 
 	`itemstock_code` varchar(150) NOT NULL , 
 	`itemstock_name` varchar(150) NOT NULL , 
 	`itemstock_nameshort` varchar(150) NOT NULL , 
 	`itemstock_descr` varchar(2500)  , 
+	`dept_id` varchar(30) NOT NULL , 
+	`unit_id` varchar(10) NOT NULL , 
+	`unitmeasurement_id` varchar(10) NOT NULL , 
 	`itemstock_couchdbid` varchar(255)  , 
 	`itemstock_picture` varchar(90)  , 
-	`unitmeasurement_id` varchar(10)  , 
-	`dept_id` varchar(30) NOT NULL , 
-	`itemclass_id` varchar(14) NOT NULL , 
-	`unit_id` varchar(10) NOT NULL , 
 	`itemstock_isdisabled` tinyint(1) NOT NULL DEFAULT 0, 
 	`itemstock_ishascompound` tinyint(1) NOT NULL DEFAULT 0, 
 	`itemstock_issellable` tinyint(1) NOT NULL DEFAULT 0, 
@@ -64,18 +64,18 @@ ENGINE=InnoDB
 COMMENT='Daftar Item Stock';
 
 
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemgroup_id` varchar(15)   AFTER `itemstock_id`;
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_code` varchar(150) NOT NULL  AFTER `itemgroup_id`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemgroup_id` varchar(15) NOT NULL  AFTER `itemstock_id`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemclass_id` varchar(14) NOT NULL  AFTER `itemgroup_id`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_code` varchar(150) NOT NULL  AFTER `itemclass_id`;
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_name` varchar(150) NOT NULL  AFTER `itemstock_code`;
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_nameshort` varchar(150) NOT NULL  AFTER `itemstock_name`;
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_descr` varchar(2500)   AFTER `itemstock_nameshort`;
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_couchdbid` varchar(255)   AFTER `itemstock_descr`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `dept_id` varchar(30) NOT NULL  AFTER `itemstock_descr`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `unit_id` varchar(10) NOT NULL  AFTER `dept_id`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `unitmeasurement_id` varchar(10) NOT NULL  AFTER `unit_id`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_couchdbid` varchar(255)   AFTER `unitmeasurement_id`;
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_picture` varchar(90)   AFTER `itemstock_couchdbid`;
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `unitmeasurement_id` varchar(10)   AFTER `itemstock_picture`;
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `dept_id` varchar(30) NOT NULL  AFTER `unitmeasurement_id`;
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemclass_id` varchar(14) NOT NULL  AFTER `dept_id`;
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `unit_id` varchar(10) NOT NULL  AFTER `itemclass_id`;
-ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_isdisabled` tinyint(1) NOT NULL DEFAULT 0 AFTER `unit_id`;
+ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_isdisabled` tinyint(1) NOT NULL DEFAULT 0 AFTER `itemstock_picture`;
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_ishascompound` tinyint(1) NOT NULL DEFAULT 0 AFTER `itemstock_isdisabled`;
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_issellable` tinyint(1) NOT NULL DEFAULT 0 AFTER `itemstock_ishascompound`;
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_priceori` decimal(16, 0) NOT NULL DEFAULT 0 AFTER `itemstock_issellable`;
@@ -106,18 +106,18 @@ ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_refname` varcha
 ALTER TABLE `mst_itemstock` ADD COLUMN IF NOT EXISTS  `itemstock_uploadbatchcode` varchar(32)   AFTER `itemstock_refname`;
 
 
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemgroup_id` varchar(15)    AFTER `itemstock_id`;
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_code` varchar(150) NOT NULL   AFTER `itemgroup_id`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemgroup_id` varchar(15) NOT NULL   AFTER `itemstock_id`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemclass_id` varchar(14) NOT NULL   AFTER `itemgroup_id`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_code` varchar(150) NOT NULL   AFTER `itemclass_id`;
 ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_name` varchar(150) NOT NULL   AFTER `itemstock_code`;
 ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_nameshort` varchar(150) NOT NULL   AFTER `itemstock_name`;
 ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_descr` varchar(2500)    AFTER `itemstock_nameshort`;
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_couchdbid` varchar(255)    AFTER `itemstock_descr`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `dept_id` varchar(30) NOT NULL   AFTER `itemstock_descr`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `unit_id` varchar(10) NOT NULL   AFTER `dept_id`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `unitmeasurement_id` varchar(10) NOT NULL   AFTER `unit_id`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_couchdbid` varchar(255)    AFTER `unitmeasurement_id`;
 ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_picture` varchar(90)    AFTER `itemstock_couchdbid`;
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `unitmeasurement_id` varchar(10)    AFTER `itemstock_picture`;
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `dept_id` varchar(30) NOT NULL   AFTER `unitmeasurement_id`;
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemclass_id` varchar(14) NOT NULL   AFTER `dept_id`;
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `unit_id` varchar(10) NOT NULL   AFTER `itemclass_id`;
-ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_isdisabled` tinyint(1) NOT NULL DEFAULT 0  AFTER `unit_id`;
+ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_isdisabled` tinyint(1) NOT NULL DEFAULT 0  AFTER `itemstock_picture`;
 ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_ishascompound` tinyint(1) NOT NULL DEFAULT 0  AFTER `itemstock_isdisabled`;
 ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_issellable` tinyint(1) NOT NULL DEFAULT 0  AFTER `itemstock_ishascompound`;
 ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_priceori` decimal(16, 0) NOT NULL DEFAULT 0  AFTER `itemstock_issellable`;
@@ -151,16 +151,16 @@ ALTER TABLE `mst_itemstock` MODIFY COLUMN IF EXISTS  `itemstock_uploadbatchcode`
 ALTER TABLE `mst_itemstock` ADD CONSTRAINT `itemstock_code` UNIQUE IF NOT EXISTS  (`dept_id`, `itemstock_code`);
 
 ALTER TABLE `mst_itemstock` ADD KEY IF NOT EXISTS `itemgroup_id` (`itemgroup_id`);
-ALTER TABLE `mst_itemstock` ADD KEY IF NOT EXISTS `unitmeasurement_id` (`unitmeasurement_id`);
-ALTER TABLE `mst_itemstock` ADD KEY IF NOT EXISTS `dept_id` (`dept_id`);
 ALTER TABLE `mst_itemstock` ADD KEY IF NOT EXISTS `itemclass_id` (`itemclass_id`);
+ALTER TABLE `mst_itemstock` ADD KEY IF NOT EXISTS `dept_id` (`dept_id`);
 ALTER TABLE `mst_itemstock` ADD KEY IF NOT EXISTS `unit_id` (`unit_id`);
+ALTER TABLE `mst_itemstock` ADD KEY IF NOT EXISTS `unitmeasurement_id` (`unitmeasurement_id`);
 
 ALTER TABLE `mst_itemstock` ADD CONSTRAINT `fk_mst_itemstock_mst_itemgroup` FOREIGN KEY IF NOT EXISTS  (`itemgroup_id`) REFERENCES `mst_itemgroup` (`itemgroup_id`);
-ALTER TABLE `mst_itemstock` ADD CONSTRAINT `fk_mst_itemstock_mst_unitmeasurement` FOREIGN KEY IF NOT EXISTS  (`unitmeasurement_id`) REFERENCES `mst_unitmeasurement` (`unitmeasurement_id`);
-ALTER TABLE `mst_itemstock` ADD CONSTRAINT `fk_mst_itemstock_mst_dept` FOREIGN KEY IF NOT EXISTS  (`dept_id`) REFERENCES `mst_dept` (`dept_id`);
 ALTER TABLE `mst_itemstock` ADD CONSTRAINT `fk_mst_itemstock_mst_itemclass` FOREIGN KEY IF NOT EXISTS  (`itemclass_id`) REFERENCES `mst_itemclass` (`itemclass_id`);
+ALTER TABLE `mst_itemstock` ADD CONSTRAINT `fk_mst_itemstock_mst_dept` FOREIGN KEY IF NOT EXISTS  (`dept_id`) REFERENCES `mst_dept` (`dept_id`);
 ALTER TABLE `mst_itemstock` ADD CONSTRAINT `fk_mst_itemstock_mst_unit` FOREIGN KEY IF NOT EXISTS  (`unit_id`) REFERENCES `mst_unit` (`unit_id`);
+ALTER TABLE `mst_itemstock` ADD CONSTRAINT `fk_mst_itemstock_mst_unitmeasurement` FOREIGN KEY IF NOT EXISTS  (`unitmeasurement_id`) REFERENCES `mst_unitmeasurement` (`unitmeasurement_id`);
 
 
 

@@ -16,31 +16,27 @@ module.exports = {
 				itemstock_id: { text: 'ID', type: dbtype.varchar(14), null: false, options: { required: true, invalidMessage: 'ID harus diisi' } },
 
 				itemgroup_id: {
-					text:'Group', type: dbtype.varchar(15), null:true, suppresslist: true,
-					options:{prompt:'NONE'},
+					text:'Item Group', type: dbtype.varchar(15), null:false, suppresslist: true,
+					options:{required:true,invalidMessage:'Item Group harus diisi', prompt:'-- PILIH --'},
 					comp: comp.Combo({
 						table: 'mst_itemgroup', 
 						field_value: 'itemgroup_id', field_display: 'itemgroup_name', field_display_name: 'itemgroup_name', 
 						api: 'finact/items/itemgroup/list'})					
 				},
 
+				itemclass_id: {
+					text:'Class', type: dbtype.varchar(14), null:false, suppresslist: true,
+					options: { required: true, invalidMessage: 'Class harus diisi' } ,
+					comp: comp.Combo({
+						table: 'mst_itemclass', 
+						field_value: 'itemclass_id', field_display: 'itemclass_name', field_display_name: 'itemclass_name', 
+						api: 'finact/items/itemclass/list'})					
+				},
+
 				itemstock_code: { text: 'Uniq Code', type: dbtype.varchar(150), null: false, options: { required: true, invalidMessage: 'Code Uniq (bydept) harus diisi' } },
 				itemstock_name: { text: 'Nama Item', type: dbtype.varchar(150), null: false, options: { required: true, invalidMessage: 'Nama item harus diisi' } },
 				itemstock_nameshort: { text: 'Nama Pendek', type: dbtype.varchar(150), null: false, suppresslist: true, options: { required: true, invalidMessage: 'Nama item harus diisi' } },
 				itemstock_descr: { text: 'Descr', type: dbtype.varchar(2500), suppresslist: true },
-				itemstock_couchdbid: {text:'CouchDb.Id', type: dbtype.varchar(255), null:true, suppresslist: true}, // id di couchdb
-				itemstock_picture: {text:'Picture', type: dbtype.varchar(90), suppresslist: true,  comp: comp.Filebox(), options: { accept: 'image/*' }},
-
-				unitmeasurement_id: { 
-					text: 'Unit of Measurement', 
-					type: dbtype.varchar(10),  null: true, suppresslist: true,
-					options: { prompt:'NONE' },
-					comp: comp.Combo({
-						table: 'mst_unitmeasurement', 
-						field_value: 'unitmeasurement_id', field_display: 'unitmeasurement_name', 
-						api: 'ent/general/unitmeasurement/list'})
-				},	
-
 		
 
 				dept_id: {
@@ -54,16 +50,6 @@ module.exports = {
 						field_value: 'dept_id', field_display: 'dept_name', field_display_name: 'dept_name', 
 						api: 'ent/organisation/dept/list'})				
 				},	
-
-				itemclass_id: {
-					text:'Class', type: dbtype.varchar(14), null:false, suppresslist: true,
-					options: { required: true, invalidMessage: 'Class harus diisi' } ,
-					comp: comp.Combo({
-						table: 'mst_itemclass', 
-						field_value: 'itemclass_id', field_display: 'itemclass_name', field_display_name: 'itemclass_name', 
-						api: 'finact/items/itemclass/list'})					
-				},
-
 
 				unit_id: {
 					text: 'Unit', type: dbtype.varchar(10), null:false,  suppresslist: true,
@@ -82,6 +68,19 @@ module.exports = {
 						onSelectedHandler: false							
 					})				
 				},
+
+				unitmeasurement_id: { 
+					text: 'Unit of Measurement', 
+					type: dbtype.varchar(10),  null: false, suppresslist: true,
+					options:{required:true,invalidMessage:'Item Group harus diisi', prompt:'-- PILIH --'},
+					comp: comp.Combo({
+						table: 'mst_unitmeasurement', 
+						field_value: 'unitmeasurement_id', field_display: 'unitmeasurement_name', 
+						api: 'ent/general/unitmeasurement/list'})
+				},	
+
+				itemstock_couchdbid: {text:'CouchDb.Id', type: dbtype.varchar(255), null:true, suppresslist: true}, // id di couchdb
+				itemstock_picture: {text:'Picture', type: dbtype.varchar(90), suppresslist: true,  comp: comp.Filebox(), options: { accept: 'image/*' }},
 
 				itemstock_isdisabled: { text: 'Disabled', type: dbtype.boolean, null: false, default: '0' },
 				itemstock_ishascompound: { text: 'Has Compound', type: dbtype.boolean, null: false, default: '0', suppresslist: true, options: {labelWidth:'300px'} },

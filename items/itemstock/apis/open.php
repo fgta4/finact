@@ -91,9 +91,9 @@ $API = new class extends itemstockBase {
 
 
 			$sqlFieldList = [
-				'itemstock_id' => 'A.`itemstock_id`', 'itemgroup_id' => 'A.`itemgroup_id`', 'itemstock_code' => 'A.`itemstock_code`', 'itemstock_name' => 'A.`itemstock_name`',
-				'itemstock_nameshort' => 'A.`itemstock_nameshort`', 'itemstock_descr' => 'A.`itemstock_descr`', 'itemstock_couchdbid' => 'A.`itemstock_couchdbid`', 'itemstock_picture' => 'A.`itemstock_picture`',
-				'unitmeasurement_id' => 'A.`unitmeasurement_id`', 'dept_id' => 'A.`dept_id`', 'itemclass_id' => 'A.`itemclass_id`', 'unit_id' => 'A.`unit_id`',
+				'itemstock_id' => 'A.`itemstock_id`', 'itemgroup_id' => 'A.`itemgroup_id`', 'itemclass_id' => 'A.`itemclass_id`', 'itemstock_code' => 'A.`itemstock_code`',
+				'itemstock_name' => 'A.`itemstock_name`', 'itemstock_nameshort' => 'A.`itemstock_nameshort`', 'itemstock_descr' => 'A.`itemstock_descr`', 'dept_id' => 'A.`dept_id`',
+				'unit_id' => 'A.`unit_id`', 'unitmeasurement_id' => 'A.`unitmeasurement_id`', 'itemstock_couchdbid' => 'A.`itemstock_couchdbid`', 'itemstock_picture' => 'A.`itemstock_picture`',
 				'itemstock_isdisabled' => 'A.`itemstock_isdisabled`', 'itemstock_ishascompound' => 'A.`itemstock_ishascompound`', 'itemstock_issellable' => 'A.`itemstock_issellable`', 'itemstock_priceori' => 'A.`itemstock_priceori`',
 				'itemstock_priceadj' => 'A.`itemstock_priceadj`', 'itemstock_priceadjdate' => 'A.`itemstock_priceadjdate`', 'itemstock_grossprice' => 'A.`itemstock_grossprice`', 'itemstock_isdiscvalue' => 'A.`itemstock_isdiscvalue`',
 				'itemstock_disc' => 'A.`itemstock_disc`', 'itemstock_discval' => 'A.`itemstock_discval`', 'itemstock_sellprice' => 'A.`itemstock_sellprice`', 'itemstock_estcost' => 'A.`itemstock_estcost`',
@@ -141,10 +141,10 @@ $API = new class extends itemstockBase {
 				//'gendername' => $record['gender']
 				
 				'itemgroup_name' => \FGTA4\utils\SqlUtility::Lookup($record['itemgroup_id'], $this->db, 'mst_itemgroup', 'itemgroup_id', 'itemgroup_name'),
-				'unitmeasurement_name' => \FGTA4\utils\SqlUtility::Lookup($record['unitmeasurement_id'], $this->db, 'mst_unitmeasurement', 'unitmeasurement_id', 'unitmeasurement_name'),
-				'dept_name' => \FGTA4\utils\SqlUtility::Lookup($record['dept_id'], $this->db, 'mst_dept', 'dept_id', 'dept_name'),
 				'itemclass_name' => \FGTA4\utils\SqlUtility::Lookup($record['itemclass_id'], $this->db, 'mst_itemclass', 'itemclass_id', 'itemclass_name'),
+				'dept_name' => \FGTA4\utils\SqlUtility::Lookup($record['dept_id'], $this->db, 'mst_dept', 'dept_id', 'dept_name'),
 				'unit_name' => \FGTA4\utils\SqlUtility::Lookup($record['unit_id'], $this->db, 'mst_unit', 'unit_id', 'unit_name'),
+				'unitmeasurement_name' => \FGTA4\utils\SqlUtility::Lookup($record['unitmeasurement_id'], $this->db, 'mst_unitmeasurement', 'unitmeasurement_id', 'unitmeasurement_name'),
 
 
 				'_createby' => \FGTA4\utils\SqlUtility::Lookup($record['_createby'], $this->db, $GLOBALS['MAIN_USERTABLE'], 'user_id', 'user_fullname'),

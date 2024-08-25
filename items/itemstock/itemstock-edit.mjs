@@ -23,16 +23,16 @@ const pnl_form = $('#pnl_edit-form')
 const obj = {
 	txt_itemstock_id: $('#pnl_edit-txt_itemstock_id'),
 	cbo_itemgroup_id: $('#pnl_edit-cbo_itemgroup_id'),
+	cbo_itemclass_id: $('#pnl_edit-cbo_itemclass_id'),
 	txt_itemstock_code: $('#pnl_edit-txt_itemstock_code'),
 	txt_itemstock_name: $('#pnl_edit-txt_itemstock_name'),
 	txt_itemstock_nameshort: $('#pnl_edit-txt_itemstock_nameshort'),
 	txt_itemstock_descr: $('#pnl_edit-txt_itemstock_descr'),
+	cbo_dept_id: $('#pnl_edit-cbo_dept_id'),
+	cbo_unit_id: $('#pnl_edit-cbo_unit_id'),
+	cbo_unitmeasurement_id: $('#pnl_edit-cbo_unitmeasurement_id'),
 	txt_itemstock_couchdbid: $('#pnl_edit-txt_itemstock_couchdbid'),
 	fl_itemstock_picture: $('#pnl_edit-fl_itemstock_picture'),
-	cbo_unitmeasurement_id: $('#pnl_edit-cbo_unitmeasurement_id'),
-	cbo_dept_id: $('#pnl_edit-cbo_dept_id'),
-	cbo_itemclass_id: $('#pnl_edit-cbo_itemclass_id'),
-	cbo_unit_id: $('#pnl_edit-cbo_unit_id'),
 	chk_itemstock_isdisabled: $('#pnl_edit-chk_itemstock_isdisabled'),
 	chk_itemstock_ishascompound: $('#pnl_edit-chk_itemstock_ishascompound'),
 	chk_itemstock_issellable: $('#pnl_edit-chk_itemstock_issellable'),
@@ -149,16 +149,16 @@ export async function init(opt) {
 
 	})				
 				
-	obj.cbo_unitmeasurement_id.name = 'pnl_edit-cbo_unitmeasurement_id'		
-	new fgta4slideselect(obj.cbo_unitmeasurement_id, {
-		title: 'Pilih unitmeasurement_id',
+	obj.cbo_itemclass_id.name = 'pnl_edit-cbo_itemclass_id'		
+	new fgta4slideselect(obj.cbo_itemclass_id, {
+		title: 'Pilih itemclass_id',
 		returnpage: this_page_id,
-		api: $ui.apis.load_unitmeasurement_id,
-		fieldValue: 'unitmeasurement_id',
-		fieldDisplay: 'unitmeasurement_name',
+		api: $ui.apis.load_itemclass_id,
+		fieldValue: 'itemclass_id',
+		fieldDisplay: 'itemclass_name',
 		fields: [
-			{mapping: 'unitmeasurement_id', text: 'unitmeasurement_id'},
-			{mapping: 'unitmeasurement_name', text: 'unitmeasurement_name'}
+			{mapping: 'itemclass_id', text: 'itemclass_id'},
+			{mapping: 'itemclass_name', text: 'itemclass_name'}
 		],
 
 	})				
@@ -177,20 +177,6 @@ export async function init(opt) {
 
 	})				
 				
-	obj.cbo_itemclass_id.name = 'pnl_edit-cbo_itemclass_id'		
-	new fgta4slideselect(obj.cbo_itemclass_id, {
-		title: 'Pilih itemclass_id',
-		returnpage: this_page_id,
-		api: $ui.apis.load_itemclass_id,
-		fieldValue: 'itemclass_id',
-		fieldDisplay: 'itemclass_name',
-		fields: [
-			{mapping: 'itemclass_id', text: 'itemclass_id'},
-			{mapping: 'itemclass_name', text: 'itemclass_name'}
-		],
-
-	})				
-				
 	obj.cbo_unit_id.name = 'pnl_edit-cbo_unit_id'		
 	new fgta4slideselect(obj.cbo_unit_id, {
 		title: 'Pilih Unit',
@@ -201,6 +187,20 @@ export async function init(opt) {
 		fields: [
 			{mapping: 'unit_id', text: 'unit_id'},
 			{mapping: 'unit_name', text: 'unit_name'}
+		],
+
+	})				
+				
+	obj.cbo_unitmeasurement_id.name = 'pnl_edit-cbo_unitmeasurement_id'		
+	new fgta4slideselect(obj.cbo_unitmeasurement_id, {
+		title: 'Pilih unitmeasurement_id',
+		returnpage: this_page_id,
+		api: $ui.apis.load_unitmeasurement_id,
+		fieldValue: 'unitmeasurement_id',
+		fieldDisplay: 'unitmeasurement_name',
+		fields: [
+			{mapping: 'unitmeasurement_id', text: 'unitmeasurement_id'},
+			{mapping: 'unitmeasurement_name', text: 'unitmeasurement_name'}
 		],
 
 	})				
@@ -306,8 +306,6 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 		updatefilebox(record);
 
 		/*
-		if (result.record.itemgroup_id==null) { result.record.itemgroup_id='--NULL--'; result.record.itemgroup_name='NONE'; }
-		if (result.record.unitmeasurement_id==null) { result.record.unitmeasurement_id='--NULL--'; result.record.unitmeasurement_name='NONE'; }
 
 		*/
 		for (var objid in obj) {
@@ -332,10 +330,10 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 		form
 			.fill(record)
 			.setValue(obj.cbo_itemgroup_id, record.itemgroup_id, record.itemgroup_name)
-			.setValue(obj.cbo_unitmeasurement_id, record.unitmeasurement_id, record.unitmeasurement_name)
-			.setValue(obj.cbo_dept_id, record.dept_id, record.dept_name)
 			.setValue(obj.cbo_itemclass_id, record.itemclass_id, record.itemclass_name)
+			.setValue(obj.cbo_dept_id, record.dept_id, record.dept_name)
 			.setValue(obj.cbo_unit_id, record.unit_id, record.unit_name)
+			.setValue(obj.cbo_unitmeasurement_id, record.unitmeasurement_id, record.unitmeasurement_name)
 			.setViewMode(viewmode)
 			.lock(false)
 			.rowid = rowid
@@ -414,16 +412,16 @@ export function createnew() {
 		data.itemstock_lastrecvqty = 0
 		data.itemstock_lastcost = 0
 
-		data.itemgroup_id = '--NULL--'
-		data.itemgroup_name = 'NONE'
-		data.unitmeasurement_id = '--NULL--'
-		data.unitmeasurement_name = 'NONE'
-		data.dept_id = global.setup.dept_id
-		data.dept_name = global.setup.dept_name
+		data.itemgroup_id = '0'
+		data.itemgroup_name = '-- PILIH --'
 		data.itemclass_id = '0'
 		data.itemclass_name = '-- PILIH --'
+		data.dept_id = global.setup.dept_id
+		data.dept_name = global.setup.dept_name
 		data.unit_id = '0'
 		data.unit_name = '-- PILIH --'
+		data.unitmeasurement_id = '0'
+		data.unitmeasurement_name = '-- PILIH --'
 
 		if (typeof hnd.form_newdata == 'function') {
 			// untuk mengambil nilai ui component,
@@ -601,7 +599,7 @@ async function form_datasaving(data, options) {
 	//    options.cancel = true
 
 	// Modifikasi object data, apabila ingin menambahkan variabel yang akan dikirim ke server
-	// options.skipmappingresponse = ['itemgroup_id', 'unitmeasurement_id', ];
+	// options.skipmappingresponse = [];
 	options.skipmappingresponse = [];
 	for (var objid in obj) {
 		var o = obj[objid]
@@ -650,8 +648,6 @@ async function form_datasaved(result, options) {
 	var data = {}
 	Object.assign(data, form.getData(), result.dataresponse)
 	/*
-	form.setValue(obj.cbo_itemgroup_id, result.dataresponse.itemgroup_name!=='--NULL--' ? result.dataresponse.itemgroup_id : '--NULL--', result.dataresponse.itemgroup_name!=='--NULL--'?result.dataresponse.itemgroup_name:'NONE')
-	form.setValue(obj.cbo_unitmeasurement_id, result.dataresponse.unitmeasurement_name!=='--NULL--' ? result.dataresponse.unitmeasurement_id : '--NULL--', result.dataresponse.unitmeasurement_name!=='--NULL--'?result.dataresponse.unitmeasurement_name:'NONE')
 
 	*/
 

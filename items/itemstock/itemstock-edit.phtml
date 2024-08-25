@@ -16,9 +16,17 @@
 		</div>
 
 		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Group</div>
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Item Group</div>
 			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-cbo_itemgroup_id" class="easyui-combo" style="width: 400px" mapping="itemgroup_id" display="itemgroup_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
+				<input id="pnl_edit-cbo_itemgroup_id" class="easyui-combo" style="width: 400px" mapping="itemgroup_id" display="itemgroup_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Item Group harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_itemgroup_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Class</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_itemclass_id" class="easyui-combo" style="width: 400px" mapping="itemclass_id" display="itemclass_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Class harus diisi'"   validType="requiredcombo['pnl_edit-cbo_itemclass_id']" >
 				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
 			</div>
 		</div>
@@ -56,6 +64,30 @@
 		</div>
 
 		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Owner Dept</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_dept_id" class="easyui-combo" style="width: 400px" mapping="dept_id" display="dept_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Dept harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_dept_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Owner Dept yang akan manage item ini</div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Unit</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_unit_id" class="easyui-combo" style="width: 400px" mapping="unit_id" display="unit_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Unit harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_unit_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
+			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Unit of Measurement</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-cbo_unitmeasurement_id" class="easyui-combo" style="width: 400px" mapping="unitmeasurement_id" display="unitmeasurement_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Item Group harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_unitmeasurement_id']" >
+				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
+			</div>
+		</div>
+
+		<div class="form_row pnl_edit_row" >
 			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">CouchDb.Id</div>
 			<div class="form_input_col" style="border: 0px solid black">
 				<input id="pnl_edit-txt_itemstock_couchdbid" class="easyui-textbox" mapping="itemstock_couchdbid"  maxlength="255" style="width: 400px" data-options="multiline: false  ">
@@ -73,38 +105,6 @@
 					<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
 				</div>
 				<img id="pnl_edit-fl_itemstock_picture_img" style="width: 200px; width: 200px; border: 1px solid: #ccc; display:none">				
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Unit of Measurement</div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-cbo_unitmeasurement_id" class="easyui-combo" style="width: 400px" mapping="unitmeasurement_id" display="unitmeasurement_name" data-options="editable:false, valueField:'id', textField:'text' , prompt: 'NONE'"  >
-				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Owner Dept</div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-cbo_dept_id" class="easyui-combo" style="width: 400px" mapping="dept_id" display="dept_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Dept harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_dept_id']" >
-				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;">Owner Dept yang akan manage item ini</div>
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Class</div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-cbo_itemclass_id" class="easyui-combo" style="width: 400px" mapping="itemclass_id" display="itemclass_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Class harus diisi'"   validType="requiredcombo['pnl_edit-cbo_itemclass_id']" >
-				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
-			</div>
-		</div>
-
-		<div class="form_row pnl_edit_row" >
-			<div class="form_label_col"  style="border: 0px solid black; vertical-align: top; margin-top: 7px;">Unit</div>
-			<div class="form_input_col" style="border: 0px solid black">
-				<input id="pnl_edit-cbo_unit_id" class="easyui-combo" style="width: 400px" mapping="unit_id" display="unit_name" data-options="editable:false, valueField:'id', textField:'text' , required: true, invalidMessage: 'Unit harus diisi', prompt: '-- PILIH --'"   validType="requiredcombo['pnl_edit-cbo_unit_id']" >
-				<div style="margin-top: 3px; margin-bottom: 5px; font-size: 0.75em; font-style: italic; color:#54381d;"></div>
 			</div>
 		</div>
 
