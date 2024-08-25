@@ -20,12 +20,12 @@ const pnl_form = $('#pnl_edit-form')
 const obj = {
 	txt_itemclass_id: $('#pnl_edit-txt_itemclass_id'),
 	cbo_itemmodel_id: $('#pnl_edit-cbo_itemmodel_id'),
+	cbo_itemmanage_id: $('#pnl_edit-cbo_itemmanage_id'),
 	txt_itemclass_name: $('#pnl_edit-txt_itemclass_name'),
 	chk_itemclass_isdisabled: $('#pnl_edit-chk_itemclass_isdisabled'),
 	chk_itemclass_isadvproces: $('#pnl_edit-chk_itemclass_isadvproces'),
 	txt_itemclass_descr: $('#pnl_edit-txt_itemclass_descr'),
 	cbo_itemclassgroup_id: $('#pnl_edit-cbo_itemclassgroup_id'),
-	cbo_itemmanage_id: $('#pnl_edit-cbo_itemmanage_id'),
 	cbo_owner_unit_id: $('#pnl_edit-cbo_owner_unit_id'),
 	cbo_owner_dept_id: $('#pnl_edit-cbo_owner_dept_id'),
 	cbo_maintainer_dept_id: $('#pnl_edit-cbo_maintainer_dept_id'),
@@ -122,20 +122,6 @@ export async function init(opt) {
 
 	})				
 				
-	obj.cbo_itemclassgroup_id.name = 'pnl_edit-cbo_itemclassgroup_id'		
-	new fgta4slideselect(obj.cbo_itemclassgroup_id, {
-		title: 'Pilih Group Class',
-		returnpage: this_page_id,
-		api: $ui.apis.load_itemclassgroup_id,
-		fieldValue: 'itemclassgroup_id',
-		fieldDisplay: 'itemclassgroup_name',
-		fields: [
-			{mapping: 'itemclassgroup_id', text: 'itemclassgroup_id'},
-			{mapping: 'itemclassgroup_name', text: 'itemclassgroup_name'}
-		],
-
-	})				
-				
 	obj.cbo_itemmanage_id.name = 'pnl_edit-cbo_itemmanage_id'		
 	new fgta4slideselect(obj.cbo_itemmanage_id, {
 		title: 'Pilih Item Manage',
@@ -154,6 +140,20 @@ export async function init(opt) {
 				}
 			}
 		},
+
+	})				
+				
+	obj.cbo_itemclassgroup_id.name = 'pnl_edit-cbo_itemclassgroup_id'		
+	new fgta4slideselect(obj.cbo_itemclassgroup_id, {
+		title: 'Pilih Group Class',
+		returnpage: this_page_id,
+		api: $ui.apis.load_itemclassgroup_id,
+		fieldValue: 'itemclassgroup_id',
+		fieldDisplay: 'itemclassgroup_name',
+		fields: [
+			{mapping: 'itemclassgroup_id', text: 'itemclassgroup_id'},
+			{mapping: 'itemclassgroup_name', text: 'itemclassgroup_name'}
+		],
 
 	})				
 				
@@ -414,6 +414,8 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 
 		/*
 		if (result.record.itemclassgroup_id==null) { result.record.itemclassgroup_id='--NULL--'; result.record.itemclassgroup_name='NONE'; }
+		if (result.record.owner_unit_id==null) { result.record.owner_unit_id='--NULL--'; result.record.owner_unit_name='NONE'; }
+		if (result.record.owner_dept_id==null) { result.record.owner_dept_id='--NULL--'; result.record.owner_dept_name='NONE'; }
 		if (result.record.maintainer_dept_id==null) { result.record.maintainer_dept_id='--NULL--'; result.record.maintainer_dept_name='NONE'; }
 		if (result.record.inquiry_accbudget_id==null) { result.record.inquiry_accbudget_id='--NULL--'; result.record.inquiry_accbudget_name='NONE'; }
 		if (result.record.nr_coa_id==null) { result.record.nr_coa_id='--NULL--'; result.record.settl_coa_name='NONE'; }
@@ -443,8 +445,8 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 		form
 			.fill(record)
 			.setValue(obj.cbo_itemmodel_id, record.itemmodel_id, record.itemmodel_name)
-			.setValue(obj.cbo_itemclassgroup_id, record.itemclassgroup_id, record.itemclassgroup_name)
 			.setValue(obj.cbo_itemmanage_id, record.itemmanage_id, record.itemmanage_name)
+			.setValue(obj.cbo_itemclassgroup_id, record.itemclassgroup_id, record.itemclassgroup_name)
 			.setValue(obj.cbo_owner_unit_id, record.owner_unit_id, record.owner_unit_name)
 			.setValue(obj.cbo_owner_dept_id, record.owner_dept_id, record.owner_dept_name)
 			.setValue(obj.cbo_maintainer_dept_id, record.maintainer_dept_id, record.maintainer_dept_name)
@@ -534,14 +536,14 @@ export function createnew() {
 
 		data.itemmodel_id = '0'
 		data.itemmodel_name = '-- PILIH --'
-		data.itemclassgroup_id = '--NULL--'
-		data.itemclassgroup_name = 'NONE'
 		data.itemmanage_id = '0'
 		data.itemmanage_name = '-- PILIH --'
-		data.owner_unit_id = '0'
-		data.owner_unit_name = '-- PILIH --'
-		data.owner_dept_id = '0'
-		data.owner_dept_name = '-- PILIH --'
+		data.itemclassgroup_id = '--NULL--'
+		data.itemclassgroup_name = 'NONE'
+		data.owner_unit_id = '--NULL--'
+		data.owner_unit_name = 'NONE'
+		data.owner_dept_id = '--NULL--'
+		data.owner_dept_name = 'NONE'
 		data.maintainer_dept_id = '--NULL--'
 		data.maintainer_dept_name = 'NONE'
 		data.unitmeasurement_id = '0'
@@ -704,7 +706,7 @@ async function form_datasaving(data, options) {
 	//    options.cancel = true
 
 	// Modifikasi object data, apabila ingin menambahkan variabel yang akan dikirim ke server
-	// options.skipmappingresponse = ['itemclassgroup_id', 'maintainer_dept_id', 'inquiry_accbudget_id', 'nr_coa_id', 'lr_coa_id', 'depremodel_id', ];
+	// options.skipmappingresponse = ['itemclassgroup_id', 'owner_unit_id', 'owner_dept_id', 'maintainer_dept_id', 'inquiry_accbudget_id', 'nr_coa_id', 'lr_coa_id', 'depremodel_id', ];
 	options.skipmappingresponse = [];
 	for (var objid in obj) {
 		var o = obj[objid]
@@ -754,6 +756,8 @@ async function form_datasaved(result, options) {
 	Object.assign(data, form.getData(), result.dataresponse)
 	/*
 	form.setValue(obj.cbo_itemclassgroup_id, result.dataresponse.itemclassgroup_name!=='--NULL--' ? result.dataresponse.itemclassgroup_id : '--NULL--', result.dataresponse.itemclassgroup_name!=='--NULL--'?result.dataresponse.itemclassgroup_name:'NONE')
+	form.setValue(obj.cbo_owner_unit_id, result.dataresponse.owner_unit_name!=='--NULL--' ? result.dataresponse.owner_unit_id : '--NULL--', result.dataresponse.owner_unit_name!=='--NULL--'?result.dataresponse.owner_unit_name:'NONE')
+	form.setValue(obj.cbo_owner_dept_id, result.dataresponse.owner_dept_name!=='--NULL--' ? result.dataresponse.owner_dept_id : '--NULL--', result.dataresponse.owner_dept_name!=='--NULL--'?result.dataresponse.owner_dept_name:'NONE')
 	form.setValue(obj.cbo_maintainer_dept_id, result.dataresponse.maintainer_dept_name!=='--NULL--' ? result.dataresponse.maintainer_dept_id : '--NULL--', result.dataresponse.maintainer_dept_name!=='--NULL--'?result.dataresponse.maintainer_dept_name:'NONE')
 	form.setValue(obj.cbo_inquiry_accbudget_id, result.dataresponse.inquiry_accbudget_name!=='--NULL--' ? result.dataresponse.inquiry_accbudget_id : '--NULL--', result.dataresponse.inquiry_accbudget_name!=='--NULL--'?result.dataresponse.inquiry_accbudget_name:'NONE')
 	form.setValue(obj.cbo_nr_coa_id, result.dataresponse.settl_coa_name!=='--NULL--' ? result.dataresponse.nr_coa_id : '--NULL--', result.dataresponse.settl_coa_name!=='--NULL--'?result.dataresponse.settl_coa_name:'NONE')

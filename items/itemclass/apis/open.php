@@ -91,8 +91,8 @@ $API = new class extends itemclassBase {
 
 
 			$sqlFieldList = [
-				'itemclass_id' => 'A.`itemclass_id`', 'itemmodel_id' => 'A.`itemmodel_id`', 'itemclass_name' => 'A.`itemclass_name`', 'itemclass_isdisabled' => 'A.`itemclass_isdisabled`',
-				'itemclass_isadvproces' => 'A.`itemclass_isadvproces`', 'itemclass_descr' => 'A.`itemclass_descr`', 'itemclassgroup_id' => 'A.`itemclassgroup_id`', 'itemmanage_id' => 'A.`itemmanage_id`',
+				'itemclass_id' => 'A.`itemclass_id`', 'itemmodel_id' => 'A.`itemmodel_id`', 'itemmanage_id' => 'A.`itemmanage_id`', 'itemclass_name' => 'A.`itemclass_name`',
+				'itemclass_isdisabled' => 'A.`itemclass_isdisabled`', 'itemclass_isadvproces' => 'A.`itemclass_isadvproces`', 'itemclass_descr' => 'A.`itemclass_descr`', 'itemclassgroup_id' => 'A.`itemclassgroup_id`',
 				'owner_unit_id' => 'A.`owner_unit_id`', 'owner_dept_id' => 'A.`owner_dept_id`', 'maintainer_dept_id' => 'A.`maintainer_dept_id`', 'unitmeasurement_id' => 'A.`unitmeasurement_id`',
 				'itemclass_minassetvalue' => 'A.`itemclass_minassetvalue`', 'inquiry_accbudget_id' => 'A.`inquiry_accbudget_id`', 'nr_coa_id' => 'A.`nr_coa_id`', 'lr_coa_id' => 'A.`lr_coa_id`',
 				'depremodel_id' => 'A.`depremodel_id`', 'itemclass_depreage' => 'A.`itemclass_depreage`', 'itemclass_depreresidu' => 'A.`itemclass_depreresidu`', 'itemclass_isallowoverqty' => 'A.`itemclass_isallowoverqty`',
@@ -139,8 +139,8 @@ $API = new class extends itemclassBase {
 				//'gendername' => $record['gender']
 				
 				'itemmodel_name' => \FGTA4\utils\SqlUtility::Lookup($record['itemmodel_id'], $this->db, 'mst_itemmodel', 'itemmodel_id', 'itemmodel_name'),
-				'itemclassgroup_name' => \FGTA4\utils\SqlUtility::Lookup($record['itemclassgroup_id'], $this->db, 'mst_itemclassgroup', 'itemclassgroup_id', 'itemclassgroup_name'),
 				'itemmanage_name' => \FGTA4\utils\SqlUtility::Lookup($record['itemmanage_id'], $this->db, 'mst_itemmanage', 'itemmanage_id', 'itemmanage_name'),
+				'itemclassgroup_name' => \FGTA4\utils\SqlUtility::Lookup($record['itemclassgroup_id'], $this->db, 'mst_itemclassgroup', 'itemclassgroup_id', 'itemclassgroup_name'),
 				'owner_unit_name' => \FGTA4\utils\SqlUtility::Lookup($record['owner_unit_id'], $this->db, 'mst_unit', 'unit_id', 'unit_name'),
 				'owner_dept_name' => \FGTA4\utils\SqlUtility::Lookup($record['owner_dept_id'], $this->db, 'mst_dept', 'dept_id', 'dept_name'),
 				'maintainer_dept_name' => \FGTA4\utils\SqlUtility::Lookup($record['maintainer_dept_id'], $this->db, 'mst_dept', 'dept_id', 'dept_name'),

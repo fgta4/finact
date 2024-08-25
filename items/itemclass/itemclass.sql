@@ -1,21 +1,21 @@
-SET FOREIGN_KEY_CHECKS=0;
+-- SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists `mst_itemclass`;
-drop table if exists `mst_itemclassaccbudget`;
-drop table if exists `mst_itemclassfiles`;
+-- drop table if exists `mst_itemclass`;
+-- drop table if exists `mst_itemclassaccbudget`;
+-- drop table if exists `mst_itemclassfiles`;
 
 
 CREATE TABLE IF NOT EXISTS `mst_itemclass` (
 	`itemclass_id` varchar(14) NOT NULL , 
 	`itemmodel_id` varchar(10) NOT NULL , 
+	`itemmanage_id` varchar(2) NOT NULL , 
 	`itemclass_name` varchar(30) NOT NULL , 
 	`itemclass_isdisabled` tinyint(1) NOT NULL DEFAULT 0, 
 	`itemclass_isadvproces` tinyint(1) NOT NULL DEFAULT 0, 
 	`itemclass_descr` varchar(90)  , 
 	`itemclassgroup_id` varchar(17)  , 
-	`itemmanage_id` varchar(2) NOT NULL , 
-	`owner_unit_id` varchar(10) NOT NULL , 
-	`owner_dept_id` varchar(30) NOT NULL , 
+	`owner_unit_id` varchar(10)  , 
+	`owner_dept_id` varchar(30)  , 
 	`maintainer_dept_id` varchar(30)  , 
 	`unitmeasurement_id` varchar(10) NOT NULL , 
 	`itemclass_minassetvalue` decimal(11, 2) NOT NULL DEFAULT 0, 
@@ -53,14 +53,14 @@ COMMENT='Daftar Klasifikasi Item';
 
 
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemmodel_id` varchar(10) NOT NULL  AFTER `itemclass_id`;
-ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemclass_name` varchar(30) NOT NULL  AFTER `itemmodel_id`;
+ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemmanage_id` varchar(2) NOT NULL  AFTER `itemmodel_id`;
+ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemclass_name` varchar(30) NOT NULL  AFTER `itemmanage_id`;
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemclass_isdisabled` tinyint(1) NOT NULL DEFAULT 0 AFTER `itemclass_name`;
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemclass_isadvproces` tinyint(1) NOT NULL DEFAULT 0 AFTER `itemclass_isdisabled`;
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemclass_descr` varchar(90)   AFTER `itemclass_isadvproces`;
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemclassgroup_id` varchar(17)   AFTER `itemclass_descr`;
-ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemmanage_id` varchar(2) NOT NULL  AFTER `itemclassgroup_id`;
-ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `owner_unit_id` varchar(10) NOT NULL  AFTER `itemmanage_id`;
-ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `owner_dept_id` varchar(30) NOT NULL  AFTER `owner_unit_id`;
+ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `owner_unit_id` varchar(10)   AFTER `itemclassgroup_id`;
+ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `owner_dept_id` varchar(30)   AFTER `owner_unit_id`;
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `maintainer_dept_id` varchar(30)   AFTER `owner_dept_id`;
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `unitmeasurement_id` varchar(10) NOT NULL  AFTER `maintainer_dept_id`;
 ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemclass_minassetvalue` decimal(11, 2) NOT NULL DEFAULT 0 AFTER `unitmeasurement_id`;
@@ -89,14 +89,14 @@ ALTER TABLE `mst_itemclass` ADD COLUMN IF NOT EXISTS  `itemmanage_isbypartnersel
 
 
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemmodel_id` varchar(10) NOT NULL   AFTER `itemclass_id`;
-ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemclass_name` varchar(30) NOT NULL   AFTER `itemmodel_id`;
+ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemmanage_id` varchar(2) NOT NULL   AFTER `itemmodel_id`;
+ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemclass_name` varchar(30) NOT NULL   AFTER `itemmanage_id`;
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemclass_isdisabled` tinyint(1) NOT NULL DEFAULT 0  AFTER `itemclass_name`;
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemclass_isadvproces` tinyint(1) NOT NULL DEFAULT 0  AFTER `itemclass_isdisabled`;
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemclass_descr` varchar(90)    AFTER `itemclass_isadvproces`;
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemclassgroup_id` varchar(17)    AFTER `itemclass_descr`;
-ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemmanage_id` varchar(2) NOT NULL   AFTER `itemclassgroup_id`;
-ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `owner_unit_id` varchar(10) NOT NULL   AFTER `itemmanage_id`;
-ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `owner_dept_id` varchar(30) NOT NULL   AFTER `owner_unit_id`;
+ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `owner_unit_id` varchar(10)    AFTER `itemclassgroup_id`;
+ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `owner_dept_id` varchar(30)    AFTER `owner_unit_id`;
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `maintainer_dept_id` varchar(30)    AFTER `owner_dept_id`;
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `unitmeasurement_id` varchar(10) NOT NULL   AFTER `maintainer_dept_id`;
 ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemclass_minassetvalue` decimal(11, 2) NOT NULL DEFAULT 0  AFTER `unitmeasurement_id`;
@@ -127,8 +127,8 @@ ALTER TABLE `mst_itemclass` MODIFY COLUMN IF EXISTS  `itemmanage_isbypartnersele
 ALTER TABLE `mst_itemclass` ADD CONSTRAINT `itemclass_name` UNIQUE IF NOT EXISTS  (`itemclass_name`);
 
 ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `itemmodel_id` (`itemmodel_id`);
-ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `itemclassgroup_id` (`itemclassgroup_id`);
 ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `itemmanage_id` (`itemmanage_id`);
+ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `itemclassgroup_id` (`itemclassgroup_id`);
 ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `owner_unit_id` (`owner_unit_id`);
 ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `owner_dept_id` (`owner_dept_id`);
 ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `maintainer_dept_id` (`maintainer_dept_id`);
@@ -139,8 +139,8 @@ ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `lr_coa_id` (`lr_coa_id`);
 ALTER TABLE `mst_itemclass` ADD KEY IF NOT EXISTS `depremodel_id` (`depremodel_id`);
 
 ALTER TABLE `mst_itemclass` ADD CONSTRAINT `fk_mst_itemclass_mst_itemmodel` FOREIGN KEY IF NOT EXISTS  (`itemmodel_id`) REFERENCES `mst_itemmodel` (`itemmodel_id`);
-ALTER TABLE `mst_itemclass` ADD CONSTRAINT `fk_mst_itemclass_mst_itemclassgroup` FOREIGN KEY IF NOT EXISTS  (`itemclassgroup_id`) REFERENCES `mst_itemclassgroup` (`itemclassgroup_id`);
 ALTER TABLE `mst_itemclass` ADD CONSTRAINT `fk_mst_itemclass_mst_itemmanage` FOREIGN KEY IF NOT EXISTS  (`itemmanage_id`) REFERENCES `mst_itemmanage` (`itemmanage_id`);
+ALTER TABLE `mst_itemclass` ADD CONSTRAINT `fk_mst_itemclass_mst_itemclassgroup` FOREIGN KEY IF NOT EXISTS  (`itemclassgroup_id`) REFERENCES `mst_itemclassgroup` (`itemclassgroup_id`);
 ALTER TABLE `mst_itemclass` ADD CONSTRAINT `fk_mst_itemclass_mst_unit` FOREIGN KEY IF NOT EXISTS  (`owner_unit_id`) REFERENCES `mst_unit` (`unit_id`);
 ALTER TABLE `mst_itemclass` ADD CONSTRAINT `fk_mst_itemclass_mst_dept` FOREIGN KEY IF NOT EXISTS  (`owner_dept_id`) REFERENCES `mst_dept` (`dept_id`);
 ALTER TABLE `mst_itemclass` ADD CONSTRAINT `fk_mst_itemclass_mst_dept_2` FOREIGN KEY IF NOT EXISTS  (`maintainer_dept_id`) REFERENCES `mst_dept` (`dept_id`);

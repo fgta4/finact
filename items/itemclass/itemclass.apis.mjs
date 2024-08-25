@@ -11,8 +11,8 @@ kemdian, di program bisa diakses dengan
 */
 
 export const load_itemmodel_id = 'finact/items/itemmodel/list'
-export const load_itemclassgroup_id = 'finact/items/itemclassgroup/list'
 export const load_itemmanage_id = 'finact/items/itemmanage/list'
+export const load_itemclassgroup_id = 'finact/items/itemclassgroup/list'
 export const load_owner_unit_id = 'ent/organisation/unit/list'
 export const load_owner_dept_id = 'ent/organisation/dept/list'
 export const load_maintainer_dept_id = 'ent/organisation/dept/list'

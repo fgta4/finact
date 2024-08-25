@@ -34,23 +34,7 @@ module.exports = {
 					})
 				},					
 				
-				itemclass_name: { text: 'Item Class', type: dbtype.varchar(30), null: false, uppercase: true, options: { required: true, invalidMessage: 'Nama Klasifikasi item harus diisi' } },
-				itemclass_isdisabled: { text: 'Disabled', type: dbtype.boolean, null: false, default: '0' },
-				itemclass_isadvproces: { text: 'Process as Advance', type: dbtype.boolean, null: false, default: '0', suppresslist: true, options: {labelWidth:'200px'} },
-				itemclass_descr: { text: 'Descr', type: dbtype.varchar(90), suppresslist: true },
-
-
-				itemclassgroup_id: {
-					text:'Group', type: dbtype.varchar(17), null:true, suppresslist: true,
-					options: { prompt:'NONE' },
-					comp: comp.Combo({
-						title: 'Pilih Group Class',
-						table: 'mst_itemclassgroup', 
-						field_value: 'itemclassgroup_id', field_display: 'itemclassgroup_name', field_display_name: 'itemclassgroup_name', 
-						api: 'finact/items/itemclassgroup/list'
-					})					
-				},
-
+			
 				itemmanage_id: {
 					text:'Manage As', type: dbtype.varchar(2), null:false, suppresslist: true,
 					options: {required:true, invalidMessage:'Order Doc harus diisi' },
@@ -68,12 +52,31 @@ module.exports = {
 					})
 				},
 
+				itemclass_name: { text: 'Item Class Name', type: dbtype.varchar(30), null: false, uppercase: true, options: { required: true, invalidMessage: 'Nama Klasifikasi item harus diisi' } },
+
+
+				itemclass_isdisabled: { text: 'Disabled', type: dbtype.boolean, null: false, default: '0' },
+				itemclass_isadvproces: { text: 'Process as Advance', type: dbtype.boolean, null: false, default: '0', suppresslist: true, options: {labelWidth:'200px'} },
+				itemclass_descr: { text: 'Descr', type: dbtype.varchar(90), suppresslist: true },
+
+
+
+				itemclassgroup_id: {
+					text:'Class Group', type: dbtype.varchar(17), null:true, suppresslist: true,
+					options: { prompt:'NONE' },
+					comp: comp.Combo({
+						title: 'Pilih Group Class',
+						table: 'mst_itemclassgroup', 
+						field_value: 'itemclassgroup_id', field_display: 'itemclassgroup_name', field_display_name: 'itemclassgroup_name', 
+						api: 'finact/items/itemclassgroup/list'
+					})					
+				},
+
 				owner_unit_id: {
-					text: 'Unit', type: dbtype.varchar(10), null:false,  suppresslist: true,
-					options:{required:true,invalidMessage:'Unit harus diisi', prompt:'-- PILIH --'},
-					// tips: 'Maintainer Dept yang akan manage distribusi tipe item ini',
-					// tipstype: 'visible',
-					// options:{prompt:'NONE'},
+					text: 'Default Unit', type: dbtype.varchar(10), null:true,  suppresslist: true,
+					options:{prompt:'NONE'},
+					tips: 'apabila dikosongkan, saat transaksi, unit akan diisi sesuai data unit pada transaksi',
+					tipstype: 'visible',
 					comp: comp.Combo({
 						title: 'Pilih Unit',
 						table: 'mst_unit', 
@@ -87,10 +90,10 @@ module.exports = {
 				},
 
 				owner_dept_id: {
-					text: 'Owner', type: dbtype.varchar(30), null:false,  suppresslist: true,
-					// tipstype: 'visible',
-					// autobylogin: 'dept',
-					options:{required:true,invalidMessage:'Dept harus diisi', prompt:'-- PILIH --'},
+					text: 'Default Owner Dept', type: dbtype.varchar(30), null:true,  suppresslist: true,
+					options:{prompt:'NONE'},
+					tips: 'apabila dikosongkan, saat transaksi, dept akan diisi sesuai data dept pada transaksi',
+					tipstype: 'visible',
 					comp: comp.Combo({
 						title: 'Pilih Owner Dept',
 						table: 'mst_dept', 
@@ -126,7 +129,7 @@ module.exports = {
 				unitmeasurement_id: { 
 					text: 'Unit of Measurement', 
 					type: dbtype.varchar(10),  null: false, suppresslist: true,
-					options: { prompt:'NONE' },
+					options: {required:true, invalidMessage:'Unit Measurement harus diisi' },
 					comp: comp.Combo({
 						title: 'Pilih Maasurement',
 						table: 'mst_unitmeasurement', 
