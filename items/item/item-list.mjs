@@ -1,6 +1,8 @@
 var this_page_id;
 var this_page_options;
 
+import * as hnd from  './item-list-hnd.mjs'
+
 const tbl_list = $('#pnl_list-tbl_list')
 
 const txt_search = $('#pnl_list-txt_search')
@@ -16,7 +18,6 @@ export async function init(opt) {
 	this_page_id = opt.id;
 	this_page_options = opt;
 
-	
 	grd_list = new global.fgta4grid(tbl_list, {
 		OnRowFormatting: (tr) => { grd_list_rowformatting(tr) },
 		OnRowClick: (tr, ev) => { grd_list_rowclick(tr, ev) },
@@ -24,14 +25,18 @@ export async function init(opt) {
 		OnCellRender: (td) => { grd_list_cellrender(td) },
 		OnRowRender: (tr) => { grd_list_rowrender(tr) }
 	})
+	grd_list.doLoad = () => {
+		btn_load_click();
+	}
 
+	if (txt_search!=null) {
+		txt_search.textbox('textbox').bind('keypress', (evt)=>{
+			if (evt.key==='Enter') {
+				btn_load_click(self)
+			}
+		})
+	}
 
-	txt_search.textbox('textbox').bind('keypress', (evt)=>{
-		if (evt.key==='Enter') {
-			btn_load_click(self)
-		}
-	})
-	
 
 	btn_load.linkbutton({
 		onClick: () => { btn_load_click() }
@@ -54,11 +59,33 @@ export async function init(opt) {
 		}
 	})	
 	
-	//button state
 
-	btn_load_click()
+
+
+	grd_list.autoload = true;
+	if (typeof hnd.init==='function') {
+			hnd.init({
+				grd_list: grd_list,
+				opt: opt,
+			}, ()=>{
+				if (grd_list.autoload) {
+					btn_load_click();
+				}
+			})
+		} else {
+			btn_load_click();
+	}
+
 }
 
+export function getObject(name) {
+	switch (name) {
+		case 'grd_list' : return grd_list;
+		case 'page_id' : return this_page_id;
+		case 'page_options' : return this_page_options;
+		case 'last_scrolltop' : return last_scrolltop;
+	}
+}
 
 export function OnSizeRecalculated(width, height) {
 }
@@ -96,6 +123,13 @@ function btn_load_click() {
 			options.criteria['search'] = search
 		}
 
+		if (typeof hnd.customsearch === 'function') {
+			hnd.customsearch(options);
+		}
+		
+		if (typeof hnd.list_loading == 'function') {
+			hnd.list_loading(options);
+		}
 		// switch (this_page_options.variancename) {
 		// 	case 'commit' :
 		//		break;
@@ -104,7 +138,9 @@ function btn_load_click() {
 	}
 
 	var fn_listloaded = async (result, options) => {
-		// console.log(result)
+		if (typeof hnd.list_loaded == 'function') {
+			hnd.list_loaded(result, options);
+		}
 	}
 
 	grd_list.listload(fn_listloading, fn_listloaded)
@@ -144,11 +180,9 @@ function grd_list_cellclick(td, ev) {
 }
 
 function grd_list_cellrender(td) {
-	// var text = td.innerHTML
-	// if (td.mapping == 'id') {
-	// 	// $(td).css('background-color', 'red')
-	// 	td.innerHTML = `<a href="javascript:void(0)">${text}</a>`
-	// }
+	if (typeof hnd.grd_list_cellrender === 'function') {
+		hnd.grd_list_cellrender({td:td, mapping:td.mapping, text:td.innerHTML});
+	}
 }
 
 function grd_list_rowrender(tr) {
@@ -156,16 +190,9 @@ function grd_list_rowrender(tr) {
 	var record = grd_list.DATA[dataid]
 
 	$(tr).find('td').each((i, td) => {
-		// var mapping = td.getAttribute('mapping')
-		// if (mapping=='id') {
-		// 	if (!record.disabled) {
-		// 		td.classList.add('fgtable-rowred')
-		// 	}
-		// }
-		if (record.disabled=="1" || record.disabled==true) {
-			td.classList.add('fgtable-row-disabled')
-		} else {
-			td.classList.remove('fgtable-row-disabled')
+		var mapping = td.getAttribute('mapping')
+		if (typeof hnd.grd_list_rowrender === 'function') {
+			hnd.grd_list_rowrender({tr:tr, td:td, record:record, mapping:mapping, dataid:dataid, i:i});
 		}
 	})
 }

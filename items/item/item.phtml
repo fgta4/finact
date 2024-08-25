@@ -3,3 +3,10 @@
 
 
 
+<?php
+$customrecordstatus = __DIR__.'/item-customrecordstatus.phtml'; 
+if (is_file($customrecordstatus)) {
+	include $customrecordstatus;
+} else { ?>
+
+<?php } ?>
