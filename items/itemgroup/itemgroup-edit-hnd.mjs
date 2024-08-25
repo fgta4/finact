@@ -12,6 +12,12 @@ export function init(ed) {
 }
 
 	
-export function cbo_dept_id_dataloading(criteria, options) {
-	criteria.dept_isitemowner = 1;
-}	
+
+
+export function cbo_itemgroup_parent_dataloading(criteria, options) {
+	criteria.itemgroup_isparent = 1
+}
+
+export function cbo_itemgroup_parent_selected(value, display, record, args) {
+	form.setValue(obj.cbo_itemmodel_id, record.itemmodel_id, record.itemmodel_name)
+}

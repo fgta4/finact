@@ -26,7 +26,7 @@ module.exports = {
 						onDataLoadingHandler: true,
 						onDataLoadedHandler: false,
 						onSelectingHandler: false,
-						onSelectedHandler: false
+						onSelectedHandler: true
 					})					
 				},
 
@@ -40,22 +40,6 @@ module.exports = {
 				
 				},
 
-				// dept_id: {
-				// 	text: 'Owner Dept', type: dbtype.varchar(30), null:true, suppresslist: false,
-				// 	tips: 'Owner Dept yang akan manage tipe item ini',
-				// 	tipstype: 'visible',
-				// 	options:{required:true,invalidMessage:'Dept harus diisi', prompt:'-- PILIH --'},
-				// 	comp: comp.Combo({
-				// 		table: 'mst_dept', 
-				// 		field_value: 'dept_id', field_display: 'dept_name', field_display_name: 'dept_name', 
-				// 		api: 'ent/organisation/dept/list',
-				// 		onDataLoadingHandler: true,
-				// 		onDataLoadedHandler: false,
-				// 		onSelectingHandler: false,
-				// 		onSelectedHandler: false
-				// 	})				
-				// },	
-				
 				itemgroup_isparent: { text: 'Parent Group', type: dbtype.boolean, null: false, default: '0', suppresslist: true },
 
 				itemgroup_isexselect : {

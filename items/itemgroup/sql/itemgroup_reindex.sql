@@ -14,9 +14,6 @@ BEGIN
 	declare continue handler for not found
 	set EOF = true;
 
-	-- sebelumnya matikan dulu triggernya agar tidak dobel eksekusi
-	set @itemgroup_skip_trigger = 1;
-	set max_sp_recursion_depth = 10;
 
 	update mst_itemgroup 
 	set
@@ -45,10 +42,7 @@ BEGIN
 	mst_itemgroup 
 	where 
 	itemgroup_path is null;
-	
 
-	set max_sp_recursion_depth = 0;
-	set @itemgroup_skip_trigger = null;
 	
 END //
 

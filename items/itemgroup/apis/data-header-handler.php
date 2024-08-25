@@ -8,9 +8,16 @@ if (!defined('FGTA4')) {
 
 class itemgroup_headerHandler extends WebAPI  {
 
-	public function DataSavedSuccess($result) {
-		// $this->caller->log('save success');
-	}	
+
+	public function buildListCriteriaValues(object &$options, array &$criteriaValues) : void {
+		$criteriaValues['itemgroup_isparent'] = " A.itemgroup_isparent = :itemgroup_isparent "; 
+	}
+
+	public function sortListOrder(array &$sortData) : void {
+		$sortData['itemgroup_path'] = 'ASC';
+		$sortData['itemgroup_pathid'] = 'ASC';
+	}
+
 }		
 		
 		

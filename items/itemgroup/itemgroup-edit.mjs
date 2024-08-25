@@ -96,6 +96,13 @@ export async function init(opt) {
 				hnd.cbo_itemgroup_parent_dataloading(criteria, options);
 			}						
 		},					
+		OnSelected: (value, display, record, args) => {
+			if (value!=args.PreviousValue ) {
+				if (typeof hnd.cbo_itemgroup_parent_selected === 'function') {
+					hnd.cbo_itemgroup_parent_selected(value, display, record, args);
+				}
+			}
+		},
 
 	})				
 				

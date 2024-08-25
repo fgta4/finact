@@ -1,6 +1,6 @@
-SET FOREIGN_KEY_CHECKS=0;
+-- SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists `mst_itemgroup`;
+-- drop table if exists `mst_itemgroup`;
 
 
 CREATE TABLE IF NOT EXISTS `mst_itemgroup` (
