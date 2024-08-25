@@ -14,6 +14,16 @@ module.exports = {
 			data: {
 				
 				itemstock_id: { text: 'ID', type: dbtype.varchar(14), null: false, options: { required: true, invalidMessage: 'ID harus diisi' } },
+
+				itemgroup_id: {
+					text:'Group', type: dbtype.varchar(15), null:true, suppresslist: true,
+					options:{prompt:'NONE'},
+					comp: comp.Combo({
+						table: 'mst_itemgroup', 
+						field_value: 'itemgroup_id', field_display: 'itemgroup_name', field_display_name: 'itemgroup_name', 
+						api: 'finact/items/itemgroup/list'})					
+				},
+
 				itemstock_code: { text: 'Uniq Code', type: dbtype.varchar(150), null: false, options: { required: true, invalidMessage: 'Code Uniq (bydept) harus diisi' } },
 				itemstock_name: { text: 'Nama Item', type: dbtype.varchar(150), null: false, options: { required: true, invalidMessage: 'Nama item harus diisi' } },
 				itemstock_nameshort: { text: 'Nama Pendek', type: dbtype.varchar(150), null: false, suppresslist: true, options: { required: true, invalidMessage: 'Nama item harus diisi' } },
@@ -31,9 +41,52 @@ module.exports = {
 						api: 'ent/general/unitmeasurement/list'})
 				},	
 
+		
+
+				dept_id: {
+					text: 'Owner Dept', type: dbtype.varchar(30), null:false, suppresslist: false,
+					tips: 'Owner Dept yang akan manage item ini',
+					autobylogin: 'dept',
+					tipstype: 'visible',
+					options:{required:true,invalidMessage:'Dept harus diisi', prompt:'-- PILIH --'},
+					comp: comp.Combo({
+						table: 'mst_dept', 
+						field_value: 'dept_id', field_display: 'dept_name', field_display_name: 'dept_name', 
+						api: 'ent/organisation/dept/list'})				
+				},	
+
+				itemclass_id: {
+					text:'Class', type: dbtype.varchar(14), null:false, suppresslist: true,
+					options: { required: true, invalidMessage: 'Class harus diisi' } ,
+					comp: comp.Combo({
+						table: 'mst_itemclass', 
+						field_value: 'itemclass_id', field_display: 'itemclass_name', field_display_name: 'itemclass_name', 
+						api: 'finact/items/itemclass/list'})					
+				},
+
+
+				unit_id: {
+					text: 'Unit', type: dbtype.varchar(10), null:false,  suppresslist: true,
+					options:{required:true,invalidMessage:'Unit harus diisi', prompt:'-- PILIH --'},
+					// tips: 'Maintainer Dept yang akan manage distribusi tipe item ini',
+					// tipstype: 'visible',
+					//options:{prompt:'NONE'},
+					comp: comp.Combo({
+						title: 'Pilih Unit',
+						table: 'mst_unit', 
+						field_value: 'unit_id', field_display: 'unit_name', field_display_name: 'unit_name',
+						api: 'ent/organisation/unit/list',
+						onDataLoadingHandler: false,
+						onDataLoadedHandler: false,
+						onSelectingHandler: false,
+						onSelectedHandler: false							
+					})				
+				},
+
 				itemstock_isdisabled: { text: 'Disabled', type: dbtype.boolean, null: false, default: '0' },
 				itemstock_ishascompound: { text: 'Has Compound', type: dbtype.boolean, null: false, default: '0', suppresslist: true, options: {labelWidth:'300px'} },
 				itemstock_issellable: { text: 'Sellable', type: dbtype.boolean, null: false, default:0, suppresslist: true },
+
 
 				itemstock_priceori: {
 					section: section.Begin('Basic Pricing & Values'),
@@ -48,6 +101,7 @@ module.exports = {
 				itemstock_estcost: { 
 					section: section.End(),
 					text: 'Estimated Cost', type: dbtype.decimal(12,0), suppresslist: true },
+
 
 				itemstock_weight: {
 					section: section.Begin('Weight & Dimension'),
@@ -81,15 +135,9 @@ module.exports = {
 
 
 
-				itemgroup_id: {
-					text:'Group', type: dbtype.varchar(15), null:true, suppresslist: true,
-					options:{prompt:'NONE'},
-					comp: comp.Combo({
-						table: 'mst_itemgroup', 
-						field_value: 'itemgroup_id', field_display: 'itemgroup_name', field_display_name: 'itemgroup_name', 
-						api: 'finact/items/itemgroup/list'})					
-				},
 
+
+				/*
 				itemctg_id: {
 					text:'Category', type: dbtype.varchar(30), null:true,  suppresslist: true,
 					options:{prompt:'NONE'},
@@ -98,51 +146,15 @@ module.exports = {
 						field_value: 'itemctg_id', field_display: 'itemctg_name', field_display_name: 'itemctg_name', 
 						api: 'finact/items/itemctg/list'})					
 				},
-
-				itemclass_id: {
-					text:'Class', type: dbtype.varchar(14), null:false, suppresslist: true,
-					options: { required: true, invalidMessage: 'Class harus diisi' } ,
-					comp: comp.Combo({
-						table: 'mst_itemclass', 
-						field_value: 'itemclass_id', field_display: 'itemclass_name', field_display_name: 'itemclass_name', 
-						api: 'finact/items/itemclass/list'})					
-				},
+				*/
 
 
-				unit_id: {
-					text: 'Unit', type: dbtype.varchar(10), null:false,  suppresslist: true,
-					options:{required:true,invalidMessage:'Unit harus diisi', prompt:'-- PILIH --'},
-					// tips: 'Maintainer Dept yang akan manage distribusi tipe item ini',
-					// tipstype: 'visible',
-					//options:{prompt:'NONE'},
-					comp: comp.Combo({
-						title: 'Pilih Unit',
-						table: 'mst_unit', 
-						field_value: 'unit_id', field_display: 'unit_name', field_display_name: 'unit_name',
-						api: 'ent/organisation/unit/list',
-						onDataLoadingHandler: false,
-						onDataLoadedHandler: false,
-						onSelectingHandler: false,
-						onSelectedHandler: false							
-					})				
-				},
 
-				dept_id: {
-					text: 'Dept', type: dbtype.varchar(30), null:false, suppresslist: false,
-					tips: 'Owner Dept yang akan manage item ini',
-					autobylogin: 'dept',
-					tipstype: 'visible',
-					options:{required:true,invalidMessage:'Dept harus diisi', prompt:'-- PILIH --'},
-					comp: comp.Combo({
-						table: 'mst_dept', 
-						field_value: 'dept_id', field_display: 'dept_name', field_display_name: 'dept_name', 
-						api: 'ent/organisation/dept/list-foritem'})				
-				},	
 				
 
-				itemstock_ref: { text: 'Ref', type: dbtype.varchar(90), suppresslist: true },
-				itemstock_refname: { text: 'RefName', type: dbtype.varchar(200), suppresslist: true },
-				itemstock_uploadbatchcode: { text: 'UploadBatch', type: dbtype.varchar(32), suppresslist: true, options: {disabled: true} },
+				itemstock_ref: { text: 'Ref', type: dbtype.varchar(90), suppresslist: true, options: {disabled: true}, hidden:true },
+				itemstock_refname: { text: 'RefName', type: dbtype.varchar(200), suppresslist: true, options: {disabled: true}, hidden:true },
+				itemstock_uploadbatchcode: { text: 'UploadBatch', type: dbtype.varchar(32), suppresslist: true, options: {disabled: true}, hidden:true },
 
 			},
 

@@ -115,7 +115,7 @@ function cbo_search_itemgroup_OnRowRender(tr) {
 		var mapping = td.getAttribute('mapping')
 		if (mapping=='itemgroup_name') {
 			// console.log(record.deptgroup_level);
-			var indent = record.itemgroup_level * 15;
+			var indent = 10 + ((record.itemgroup_level-1) * 15);
 			$(td).css("padding-left", `${indent}px`);
 			if (record.itemgroup_isparent=='1') {
 				$(td).css('font-weight', 'bold');
@@ -126,7 +126,6 @@ function cbo_search_itemgroup_OnRowRender(tr) {
 
 
 export function customsearch(options) {
-	options.api = `${global.modulefullname}/list-bydept`;
 	options.criteria.dept_id = cbo_search_dept.combo('getValue');
 	var search_itemgroup = cbo_search_itemgroup.combo('getValue');
 	if (search_itemgroup!='--ALL--') {

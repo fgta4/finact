@@ -22,6 +22,7 @@ const fl_itemstock_picture_lnk = $('#pnl_edit-fl_itemstock_picture_link');
 const pnl_form = $('#pnl_edit-form')
 const obj = {
 	txt_itemstock_id: $('#pnl_edit-txt_itemstock_id'),
+	cbo_itemgroup_id: $('#pnl_edit-cbo_itemgroup_id'),
 	txt_itemstock_code: $('#pnl_edit-txt_itemstock_code'),
 	txt_itemstock_name: $('#pnl_edit-txt_itemstock_name'),
 	txt_itemstock_nameshort: $('#pnl_edit-txt_itemstock_nameshort'),
@@ -29,6 +30,9 @@ const obj = {
 	txt_itemstock_couchdbid: $('#pnl_edit-txt_itemstock_couchdbid'),
 	fl_itemstock_picture: $('#pnl_edit-fl_itemstock_picture'),
 	cbo_unitmeasurement_id: $('#pnl_edit-cbo_unitmeasurement_id'),
+	cbo_dept_id: $('#pnl_edit-cbo_dept_id'),
+	cbo_itemclass_id: $('#pnl_edit-cbo_itemclass_id'),
+	cbo_unit_id: $('#pnl_edit-cbo_unit_id'),
 	chk_itemstock_isdisabled: $('#pnl_edit-chk_itemstock_isdisabled'),
 	chk_itemstock_ishascompound: $('#pnl_edit-chk_itemstock_ishascompound'),
 	chk_itemstock_issellable: $('#pnl_edit-chk_itemstock_issellable'),
@@ -55,11 +59,6 @@ const obj = {
 	txt_itemstock_lastrecvqty: $('#pnl_edit-txt_itemstock_lastrecvqty'),
 	txt_itemstock_lastcost: $('#pnl_edit-txt_itemstock_lastcost'),
 	txt_itemstock_lastcostdate: $('#pnl_edit-txt_itemstock_lastcostdate'),
-	cbo_itemgroup_id: $('#pnl_edit-cbo_itemgroup_id'),
-	cbo_itemctg_id: $('#pnl_edit-cbo_itemctg_id'),
-	cbo_itemclass_id: $('#pnl_edit-cbo_itemclass_id'),
-	cbo_unit_id: $('#pnl_edit-cbo_unit_id'),
-	cbo_dept_id: $('#pnl_edit-cbo_dept_id'),
 	txt_itemstock_ref: $('#pnl_edit-txt_itemstock_ref'),
 	txt_itemstock_refname: $('#pnl_edit-txt_itemstock_refname'),
 	txt_itemstock_uploadbatchcode: $('#pnl_edit-txt_itemstock_uploadbatchcode')
@@ -136,20 +135,6 @@ export async function init(opt) {
 				
 
 
-	obj.cbo_unitmeasurement_id.name = 'pnl_edit-cbo_unitmeasurement_id'		
-	new fgta4slideselect(obj.cbo_unitmeasurement_id, {
-		title: 'Pilih unitmeasurement_id',
-		returnpage: this_page_id,
-		api: $ui.apis.load_unitmeasurement_id,
-		fieldValue: 'unitmeasurement_id',
-		fieldDisplay: 'unitmeasurement_name',
-		fields: [
-			{mapping: 'unitmeasurement_id', text: 'unitmeasurement_id'},
-			{mapping: 'unitmeasurement_name', text: 'unitmeasurement_name'}
-		],
-
-	})				
-				
 	obj.cbo_itemgroup_id.name = 'pnl_edit-cbo_itemgroup_id'		
 	new fgta4slideselect(obj.cbo_itemgroup_id, {
 		title: 'Pilih itemgroup_id',
@@ -164,16 +149,30 @@ export async function init(opt) {
 
 	})				
 				
-	obj.cbo_itemctg_id.name = 'pnl_edit-cbo_itemctg_id'		
-	new fgta4slideselect(obj.cbo_itemctg_id, {
-		title: 'Pilih itemctg_id',
+	obj.cbo_unitmeasurement_id.name = 'pnl_edit-cbo_unitmeasurement_id'		
+	new fgta4slideselect(obj.cbo_unitmeasurement_id, {
+		title: 'Pilih unitmeasurement_id',
 		returnpage: this_page_id,
-		api: $ui.apis.load_itemctg_id,
-		fieldValue: 'itemctg_id',
-		fieldDisplay: 'itemctg_name',
+		api: $ui.apis.load_unitmeasurement_id,
+		fieldValue: 'unitmeasurement_id',
+		fieldDisplay: 'unitmeasurement_name',
 		fields: [
-			{mapping: 'itemctg_id', text: 'itemctg_id'},
-			{mapping: 'itemctg_name', text: 'itemctg_name'}
+			{mapping: 'unitmeasurement_id', text: 'unitmeasurement_id'},
+			{mapping: 'unitmeasurement_name', text: 'unitmeasurement_name'}
+		],
+
+	})				
+				
+	obj.cbo_dept_id.name = 'pnl_edit-cbo_dept_id'		
+	new fgta4slideselect(obj.cbo_dept_id, {
+		title: 'Pilih dept_id',
+		returnpage: this_page_id,
+		api: $ui.apis.load_dept_id,
+		fieldValue: 'dept_id',
+		fieldDisplay: 'dept_name',
+		fields: [
+			{mapping: 'dept_id', text: 'dept_id'},
+			{mapping: 'dept_name', text: 'dept_name'}
 		],
 
 	})				
@@ -202,20 +201,6 @@ export async function init(opt) {
 		fields: [
 			{mapping: 'unit_id', text: 'unit_id'},
 			{mapping: 'unit_name', text: 'unit_name'}
-		],
-
-	})				
-				
-	obj.cbo_dept_id.name = 'pnl_edit-cbo_dept_id'		
-	new fgta4slideselect(obj.cbo_dept_id, {
-		title: 'Pilih dept_id',
-		returnpage: this_page_id,
-		api: $ui.apis.load_dept_id,
-		fieldValue: 'dept_id',
-		fieldDisplay: 'dept_name',
-		fields: [
-			{mapping: 'dept_id', text: 'dept_id'},
-			{mapping: 'dept_name', text: 'dept_name'}
 		],
 
 	})				
@@ -321,9 +306,8 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 		updatefilebox(record);
 
 		/*
-		if (result.record.unitmeasurement_id==null) { result.record.unitmeasurement_id='--NULL--'; result.record.unitmeasurement_name='NONE'; }
 		if (result.record.itemgroup_id==null) { result.record.itemgroup_id='--NULL--'; result.record.itemgroup_name='NONE'; }
-		if (result.record.itemctg_id==null) { result.record.itemctg_id='--NULL--'; result.record.itemctg_name='NONE'; }
+		if (result.record.unitmeasurement_id==null) { result.record.unitmeasurement_id='--NULL--'; result.record.unitmeasurement_name='NONE'; }
 
 		*/
 		for (var objid in obj) {
@@ -347,12 +331,11 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 		form.SuspendEvent(true);
 		form
 			.fill(record)
-			.setValue(obj.cbo_unitmeasurement_id, record.unitmeasurement_id, record.unitmeasurement_name)
 			.setValue(obj.cbo_itemgroup_id, record.itemgroup_id, record.itemgroup_name)
-			.setValue(obj.cbo_itemctg_id, record.itemctg_id, record.itemctg_name)
+			.setValue(obj.cbo_unitmeasurement_id, record.unitmeasurement_id, record.unitmeasurement_name)
+			.setValue(obj.cbo_dept_id, record.dept_id, record.dept_name)
 			.setValue(obj.cbo_itemclass_id, record.itemclass_id, record.itemclass_name)
 			.setValue(obj.cbo_unit_id, record.unit_id, record.unit_name)
-			.setValue(obj.cbo_dept_id, record.dept_id, record.dept_name)
 			.setViewMode(viewmode)
 			.lock(false)
 			.rowid = rowid
@@ -431,18 +414,16 @@ export function createnew() {
 		data.itemstock_lastrecvqty = 0
 		data.itemstock_lastcost = 0
 
-		data.unitmeasurement_id = '--NULL--'
-		data.unitmeasurement_name = 'NONE'
 		data.itemgroup_id = '--NULL--'
 		data.itemgroup_name = 'NONE'
-		data.itemctg_id = '--NULL--'
-		data.itemctg_name = 'NONE'
+		data.unitmeasurement_id = '--NULL--'
+		data.unitmeasurement_name = 'NONE'
+		data.dept_id = global.setup.dept_id
+		data.dept_name = global.setup.dept_name
 		data.itemclass_id = '0'
 		data.itemclass_name = '-- PILIH --'
 		data.unit_id = '0'
 		data.unit_name = '-- PILIH --'
-		data.dept_id = global.setup.dept_id
-		data.dept_name = global.setup.dept_name
 
 		if (typeof hnd.form_newdata == 'function') {
 			// untuk mengambil nilai ui component,
@@ -620,7 +601,7 @@ async function form_datasaving(data, options) {
 	//    options.cancel = true
 
 	// Modifikasi object data, apabila ingin menambahkan variabel yang akan dikirim ke server
-	// options.skipmappingresponse = ['unitmeasurement_id', 'itemgroup_id', 'itemctg_id', ];
+	// options.skipmappingresponse = ['itemgroup_id', 'unitmeasurement_id', ];
 	options.skipmappingresponse = [];
 	for (var objid in obj) {
 		var o = obj[objid]
@@ -669,9 +650,8 @@ async function form_datasaved(result, options) {
 	var data = {}
 	Object.assign(data, form.getData(), result.dataresponse)
 	/*
-	form.setValue(obj.cbo_unitmeasurement_id, result.dataresponse.unitmeasurement_name!=='--NULL--' ? result.dataresponse.unitmeasurement_id : '--NULL--', result.dataresponse.unitmeasurement_name!=='--NULL--'?result.dataresponse.unitmeasurement_name:'NONE')
 	form.setValue(obj.cbo_itemgroup_id, result.dataresponse.itemgroup_name!=='--NULL--' ? result.dataresponse.itemgroup_id : '--NULL--', result.dataresponse.itemgroup_name!=='--NULL--'?result.dataresponse.itemgroup_name:'NONE')
-	form.setValue(obj.cbo_itemctg_id, result.dataresponse.itemctg_name!=='--NULL--' ? result.dataresponse.itemctg_id : '--NULL--', result.dataresponse.itemctg_name!=='--NULL--'?result.dataresponse.itemctg_name:'NONE')
+	form.setValue(obj.cbo_unitmeasurement_id, result.dataresponse.unitmeasurement_name!=='--NULL--' ? result.dataresponse.unitmeasurement_id : '--NULL--', result.dataresponse.unitmeasurement_name!=='--NULL--'?result.dataresponse.unitmeasurement_name:'NONE')
 
 	*/
 
