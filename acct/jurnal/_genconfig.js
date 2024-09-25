@@ -130,7 +130,7 @@ module.exports = {
 					comp: comp.Combo({
 						title: 'Pilih Mata Uang',
 						table: 'mst_curr', 
-						api: 'ent/general/curr/list-with-currentrate',
+						api: 'ent/financial/curr/list-with-currentrate',
 						field_value: 'curr_id', field_display: 'curr_name', 
 						field_mappings: [
 							`{mapping: 'curr_id', text: 'ID', hidden: true}`,
@@ -159,7 +159,7 @@ module.exports = {
 					comp: comp.Combo({
 						title: 'Pilih Mata Uang',
 						table: 'mst_coa', 
-						api: 'finact/master/coa/list',
+						api: 'ent/financial/coa/list',
 						field_value: 'coa_id', field_display: 'coa_name', 
 						field_mappings: [
 							`{mapping: 'coa_id', text: 'ID', style: 'width: 100px'}`,
@@ -318,7 +318,7 @@ module.exports = {
 					comp: comp.Combo({
 						title: 'Pilih Mata Uang',
 						table: 'mst_curr', 
-						api: 'ent/general/curr/list-with-currentrate',
+						api: 'ent/financial/curr/list-with-currentrate',
 						field_value: 'curr_id', field_display: 'curr_name', 						
 						field_mappings: [
 							`{mapping: 'curr_id', text: 'ID', hidden: true}`,
@@ -347,7 +347,7 @@ module.exports = {
 					comp: comp.Combo({
 						title: 'Pilih Account',
 						table: 'mst_coa', 
-						api: 'finact/master/coa/list',
+						api: 'ent/financial/coa/list',
 						field_value: 'coa_id', field_display: 'coa_name', 
 						field_mappings: [
 							`{mapping: 'coa_id', text: 'ID', style: 'width: 100px'}`,
