@@ -114,7 +114,7 @@ export async function init(opt) {
 	cbo_coa_id.comp = new fgta4slideselect(cbo_coa_id, {
 		title: 'Pilih COA',
 		returnpage: this_page_id,
-		api: 'finact/master/coa/list',
+		api: 'ent/financial/coa/list',
 		fieldValue: 'coa_id',
 		fieldValueMap: 'coa_id',
 		fieldDisplay: 'coa_name',
