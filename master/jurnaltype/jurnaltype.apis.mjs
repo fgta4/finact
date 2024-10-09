@@ -11,6 +11,6 @@ kemdian, di program bisa diakses dengan
 */
 
 export const load_jurnalmodel_id = 'finact/master/jurnalmodel/list'
-export const load_coa_id = 'finact/master/coa/list'
+export const load_coa_id = 'ent/financial/coa/list'
 
 

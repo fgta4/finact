@@ -65,7 +65,7 @@ module.exports = {
 							table: 'mst_coa',
 							field_value: 'coa_id',
 							field_display: 'coa_name',
-							api: 'finact/master/coa/list',
+							api: 'ent/financial/coa/list',
 							onDataLoadingHandler: false,
 							onDataLoadedHandler: false,
 							onSelectingHandler: false,
